@@ -1,0 +1,10 @@
+{
+  "files.eol": "\n",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.quoteStyle": "single",
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+}
