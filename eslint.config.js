@@ -5,6 +5,9 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import prettier from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
+import importPlugin from 'eslint-plugin-import';
+
+// import importResolverAlias from 'eslint-import-resolver-alias';
 
 export default [
   { ignores: ['dist'] },
@@ -19,12 +22,21 @@ export default [
         sourceType: 'module',
       },
     },
-    settings: { react: { version: '18.3' } },
+    settings: {
+      react: { version: '18.3' },
+      'import/resolver': {
+        alias: {
+          map: [['@', './src']],
+          extensions: ['.js', '.jsx', '.json'],
+        },
+      },
+    },
     plugins: {
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       prettier: prettierPlugin,
+      import: importPlugin,
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -37,6 +49,7 @@ export default [
         { allowConstantExport: true },
       ],
       'prettier/prettier': 'error',
+      'import/no-unresolved': ['error', { commonjs: true, amd: true }],
     },
   },
   prettier,
