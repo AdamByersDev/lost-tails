@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router';
 import './Navigation.css';
 // import logo from '@assets/images/logo.svg';
 
@@ -13,18 +14,25 @@ const Navigation = () => {
 
       {/* Desktop Navigation */}
       <div className="desktop-nav">
-        <a href="/" className="nav-item">
+        <NavLink to="/" className="nav-item" activeClassName="active">
           Home
-        </a>
-        <a href="/about" className="nav-item">
+        </NavLink>
+        <NavLink to="/lost-found" className="nav-item" activeClassName="active">
           Lost & Found
-        </a>
-        <a href="/contact" className="nav-item">
+        </NavLink>
+        <NavLink to="/adoption" className="nav-item" activeClassName="active">
           Adoptions
-        </a>
-        <a href="/contact" className="nav-item">
-          About
-        </a>
+        </NavLink>
+        <NavLink to="/donation" className="nav-item" activeClassName="active">
+          Donation
+        </NavLink>
+        <NavLink
+          to="/successful-cases"
+          className="nav-item"
+          activeClassName="active"
+        >
+          Success Stories
+        </NavLink>
       </div>
 
       {/* Hamburger Menu Button */}
@@ -34,15 +42,25 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       <div className={`mobile-nav ${isOpen ? 'open' : ''}`}>
-        <a href="/" className="nav-item">
+        <NavLink to="/" className="nav-item" activeClassName="active">
           Home
-        </a>
-        <a href="/about" className="nav-item">
-          About
-        </a>
-        <a href="/contact" className="nav-item">
-          Contact
-        </a>
+        </NavLink>
+        <NavLink to="/lost-found" className="nav-item" activeClassName="active">
+          Lost & Found
+        </NavLink>
+        <NavLink to="/adoption" className="nav-item" activeClassName="active">
+          Adoptions
+        </NavLink>
+        <NavLink to="/donation" className="nav-item" activeClassName="active">
+          Donation
+        </NavLink>
+        <NavLink
+          to="/successful-cases"
+          className="nav-item"
+          activeClassName="active"
+        >
+          Success Stories
+        </NavLink>
       </div>
     </nav>
   );
