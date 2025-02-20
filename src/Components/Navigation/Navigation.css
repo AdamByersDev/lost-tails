@@ -1,0 +1,94 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #3a3e59;
+  color: white;
+  font-family: sans-serif;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 400px; /* Set width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Desktop navigation */
+.desktop-nav {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: white;
+  font-size: 1.75rem; /* Increase font size */
+  transition:
+    color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.nav-item:hover {
+  color: var(--light-orange-color); /* Change color on hover */
+  transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+.nav-item.current-page {
+  color: var(--primary-color); /* Highlight current page with primary color */
+}
+
+.nav-item:hover:not(.current-page) {
+  color: var(--light-orange-color); /* Hover color for non-current page */
+}
+
+/* Mobile Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 60px; /* Adjust based on navbar height */
+  left: 0;
+  width: 100%;
+  background-color: #3a3e59;
+  padding: 1rem;
+}
+
+/* Media Query for Mobile View */
+@media screen and (max-width: 768px) {
+  .desktop-nav {
+    display: none; /* Hide desktop navigation on mobile */
+  }
+
+  .hamburger-menu {
+    display: block; /* Show hamburger button on mobile */
+  }
+
+  .mobile-nav {
+    display: none; /* Hide mobile navigation by default */
+  }
+
+  /* When hamburger is clicked */
+  .mobile-nav.open {
+    display: flex; /* Show mobile navigation */
+  }
+}
+
+.mobile-nav {
+  display: none; /* Initially hidden */
+}
