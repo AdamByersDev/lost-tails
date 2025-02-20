@@ -26,8 +26,8 @@
 
 .nav-item {
   text-decoration: none;
-  color: white;
-  font-size: 1.75rem; /* Increase font size */
+  color: var(--off-wwhite-background-color);
+  font-size: 1.75rem;
   transition:
     color 0.3s ease,
     transform 0.2s ease;
@@ -35,24 +35,26 @@
 
 .nav-item:hover {
   color: var(--light-orange-color); /* Change color on hover */
-  transform: scale(1.1); /* Slightly increase size on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
 }
 
-.nav-item.current-page {
+.nav-item.active {
   color: var(--primary-color); /* Highlight current page with primary color */
+  font-weight: bold;
 }
 
-.nav-item:hover:not(.current-page) {
+.nav-item:hover:not(.active) {
   color: var(--light-orange-color); /* Hover color for non-current page */
 }
 
 /* Mobile Hamburger Menu */
 .hamburger-menu {
   display: none;
-  font-size: 2rem;
+  font-size: 5rem;
+  font-weight: bold;
   background: none;
   border: none;
-  color: white;
+  color: var(--light-orange-color);
   cursor: pointer;
 }
 
@@ -62,30 +64,59 @@
   flex-direction: column;
   gap: 10px;
   position: absolute;
-  top: 60px; /* Adjust based on navbar height */
-  left: 0;
-  width: 100%;
-  background-color: #3a3e59;
+  top: 180px;
+  right: 0; /* Align to right side of screen */
+  width: 50%;
+  background-color: var(--secondary-color);
   padding: 1rem;
+}
+
+/* Media Query for Tablets & Small Laptops */
+@media screen and (max-width: 1024px) {
+  .desktop-nav {
+    display: none;
+  }
+  .hamburger-menu {
+    display: block;
+  }
+  .mobile-nav {
+    width: 30%;
+  }
+  .mobile-nav.open {
+    display: flex;
+  }
+  .nav-item {
+    font-size: 1.7rem;
+  }
+
+  .nav-item:hover {
+    transform: scale(1.01); /* Decrease scale size on smaller screen */
+  }
 }
 
 /* Media Query for Mobile View */
 @media screen and (max-width: 768px) {
-  .desktop-nav {
-    display: none; /* Hide desktop navigation on mobile */
-  }
-
-  .hamburger-menu {
-    display: block; /* Show hamburger button on mobile */
-  }
-
   .mobile-nav {
     display: none; /* Hide mobile navigation by default */
   }
 
-  /* When hamburger is clicked */
-  .mobile-nav.open {
-    display: flex; /* Show mobile navigation */
+  .mobile-nav {
+    display: none;
+    top: 100px;
+    width: 45%;
+  }
+
+  .hamburger-menu {
+    font-size: 3rem;
+    font-weight: 300;
+  }
+
+  .nav-item {
+    font-size: 1.5rem;
+  }
+
+  .logo img {
+    width: 175px; /* Set width */
   }
 }
 
