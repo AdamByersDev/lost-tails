@@ -8,9 +8,9 @@ const Navigation = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo">
+      {/* <div className="logo">
         <img src="/src/assets/images/logo.svg" alt="Logo" />
-      </div>
+      </div> */}
 
       {/* Desktop Navigation */}
       <div className="desktop-nav">
