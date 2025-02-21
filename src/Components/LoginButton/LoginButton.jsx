@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router';
 
 export default function LoginButton() {
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   // Function to handle the button click
   const handleLoginClick = () => {
-    navigate('/login'); // Navigate to /login page
+    navigate('/login');
   };
 
   return (
