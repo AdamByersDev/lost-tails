@@ -1,7 +1,11 @@
+// npm install @lottiefiles/dotlottie-react
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import './hero.css';
+
 export default function HeroComponent() {
   return (
     <div>
-      {/* TOPBAR */}
+      {/* TOPBAR START */}
       <section className="topbar">
         <section>
           <article>
@@ -84,18 +88,12 @@ export default function HeroComponent() {
           </div>
         </main>
         <section>
-          <script
-            src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
-            type="module"
-          ></script>
-          <dotlottie-player
-            className="animation"
+          <DotLottieReact
             src="https://lottie.host/4821f0e5-2898-424d-977f-1fdf9b096b95/FBIbcKlPTr.lottie"
-            background="transparent"
-            speed="1"
             loop
             autoplay
-          ></dotlottie-player>
+            style={{ width: '100%', height: 'auto' }}
+          />
         </section>
       </header>
       {/* HEADER END */}
