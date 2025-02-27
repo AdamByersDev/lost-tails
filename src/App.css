@@ -2,3 +2,12 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+/* Our color scheme.  We can rename these. */
+:root {
+  --primary-color: #ed6b5b;
+  --secondary-color: #3a3e59;
+  --light-orange-color: #f9ac68;
+  --off-white-background-color: #ece6ce;
+  --text-color: #333;
+}

@@ -1,0 +1,121 @@
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
+  background-color: var(--secondary-color);
+  color: white;
+  font-family: sans-serif;
+}
+
+/* Desktop navigation */
+.desktop-nav {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: var(--off-wwhite-background-color);
+  font-size: 1.5rem;
+  transition:
+    color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.nav-item:hover {
+  color: var(--light-orange-color); /* Change color on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.nav-item.active {
+  color: var(--primary-color); /* Highlight current page with primary color */
+  font-weight: bold;
+}
+
+.nav-item:hover:not(.active) {
+  color: var(--light-orange-color); /* Hover color for non-current page */
+}
+
+/* Mobile Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  font-size: 5rem;
+  font-weight: bold;
+  background: none;
+  border: none;
+  color: var(--light-orange-color);
+  cursor: pointer;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 180px;
+  right: 0; /* Align to right side of screen */
+  width: 50%;
+  background-color: var(--secondary-color);
+  padding: 1rem;
+}
+
+@media screen and (max-width: 1157px) {
+  .nav-item {
+    text-align: center;
+  }
+}
+
+/* Media Query for Tablets & Small Laptops */
+@media screen and (max-width: 1024px) {
+  .desktop-nav {
+    display: none;
+  }
+  .hamburger-menu {
+    display: block;
+  }
+  .mobile-nav {
+    width: 30%;
+  }
+  .mobile-nav.open {
+    display: flex;
+  }
+  .navbar {
+    padding-bottom: 0;
+  }
+  .nav-item {
+    font-size: 1.7rem;
+    text-align: left;
+  }
+
+  .nav-item:hover {
+    transform: scale(1.01); /* Decrease scale size on smaller screen */
+  }
+}
+
+/* Media Query for Mobile View */
+@media screen and (max-width: 768px) {
+  .mobile-nav {
+    display: none; /* Hide mobile navigation by default */
+  }
+
+  .mobile-nav {
+    display: none;
+    top: 120px;
+    width: 45%;
+  }
+
+  .hamburger-menu {
+    font-size: 3rem;
+    font-weight: 300;
+  }
+
+  .nav-item {
+    font-size: 1.5rem;
+  }
+}
+
+.mobile-nav {
+  display: none; /* Initially hidden */
+}
