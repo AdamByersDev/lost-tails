@@ -1,5 +1,4 @@
 import './AdoptionCard.css';
-import PropTypes from 'prop-types';
 
 export default function AdoptionCard({ animal }) {
   if (animal) {
@@ -18,20 +17,3 @@ export default function AdoptionCard({ animal }) {
     );
   }
 }
-
-AdoptionCard.propTypes = {
-  animal: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    primary_photo_cropped: PropTypes.shape({
-      small: PropTypes.string.isRequired,
-    }).isRequired,
-    contact: PropTypes.shape({
-      address: PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        state: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
-  }).isRequired,
-};
