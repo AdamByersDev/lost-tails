@@ -1,0 +1,32 @@
+.ad {
+  aspect-ratio: 1/1;
+  width: 250px;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: block;
+  && img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.ad-leaderboard {
+  aspect-ratio: auto;
+  width: 320px;
+  height: 50px;
+  && .desktop {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .ad-leaderboard{
+    width: 728px;
+    height: 90px;
+    && img {
+      display: none;
+    }
+    && .desktop {
+      display: block;
+    }
+  }
+}
