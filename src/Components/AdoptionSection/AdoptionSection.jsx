@@ -336,6 +336,7 @@ export default function AdoptionSection() {
       <p className="blurb">
         At Lostails, we work with shelters to help pets find loving homes. While reuniting lost pets with their families, we also introduce adorable adoptable animals—you might just find a new best friend! Together, we’re creating new beginnings, one wag, purr, and happy reunion at a time!
       </p>
+      <h3>Available pets</h3>
       <div className="exampleCards">
         {adoptionCards}
       </div>
