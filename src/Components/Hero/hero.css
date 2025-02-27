@@ -21,12 +21,12 @@ a {
 /* Mobile */
 @media (min-width: 300px) {    
       
-    header {
+    hero-header {
         display: flex;
         flex-direction: column-reverse;
     }
 
-    header .animation{
+    hero-header .animation{
         width: 100%;
     }
     
@@ -73,11 +73,11 @@ a {
 
 @media (min-width: 700px){
 
-    /* HEADER */
-    header h1 {
+    /* hero-header */
+    hero-header h1 {
     font-size: 55px;
     }
-    header a {
+    hero-header a {
         font-size: 20px;
         transition: 0.6s;
     }
@@ -88,7 +88,7 @@ a {
 /* Desktop */
 @media (min-width: 1000px){
     
-    header {
+    hero-header {
         display: flex;
         flex-direction: row;
         row-gap: 20px;

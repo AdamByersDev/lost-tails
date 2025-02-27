@@ -6,7 +6,7 @@ export default function HeroComponent() {
   return (
     <div>
       {/* HEADER START */}
-      <header>
+      <div className="hero-header">
         <main className="hero">
           <h1>Helping Tails Find Their Way Home.</h1>
           <div className="hero-buttons">
@@ -22,7 +22,7 @@ export default function HeroComponent() {
             style={{ width: '100%', height: 'auto' }}
           />
         </section>
-      </header>
+      </div>
       {/* HEADER END */}
     </div>
   );
