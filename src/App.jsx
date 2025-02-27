@@ -8,6 +8,7 @@ import LostFound from '@/pages/LostFound';
 import Signup from '@/pages/Signup';
 import SuccessfulCases from '@/pages/SuccessfulCases';
 import Donation from '@/pages/Donation';
+import Footer from '@/Components/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="successful-cases" element={<SuccessfulCases />} />
       </Routes>
+      <Footer />
     </>
   );
 }
