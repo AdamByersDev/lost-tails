@@ -1,6 +1,6 @@
 {
   "files.eol": "\n",
-  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "shortest",
   "javascript.preferences.quoteStyle": "single",
   "eslint.workingDirectories": [
     {

@@ -11,3 +11,35 @@
   --off-white-background-color: #ece6ce;
   --text-color: #333;
 }
+
+.container-responsive {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .container-responsive {
+    max-width: 720px;
+    padding: 0 1rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .container-responsive {
+    max-width: 960px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container-responsive {
+    max-width: 1140px;
+    padding: unset;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .container-responsive {
+    max-width: 1320px;
+  }
+}
