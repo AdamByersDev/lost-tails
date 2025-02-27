@@ -3,6 +3,8 @@
   overflow: hidden;
   border-radius: 1rem;
   background-color: var(--off-white-background-color);
+  display: flex;
+  flex-direction: column;
 
   && h4 {
     font-size: 1.4rem;
@@ -14,5 +16,29 @@
 
   && div {
     padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    && p:last-of-type {
+      flex-grow: 1;
+    }
+    && a {
+      background-color: var(--primary-color);
+      display: block;
+      padding: 0.8rem;
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 1rem;
+      width: 100%;
+      text-align: center;
+      &&:hover {
+        filter: brightness(110%);
+      }
+      &&:active {
+        filter: brightness(125%);
+      }
+    }
   }
 }

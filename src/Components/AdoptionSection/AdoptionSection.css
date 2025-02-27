@@ -26,24 +26,6 @@
     justify-content: center;
     gap: 0.5rem;
   }
-  && a {
-    background-color: var(--primary-color);
-    display: block;
-    padding: 0.8rem;
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 1rem;
-    width: 100%;
-    text-align: center;
-    &&:hover {
-      filter: brightness(110%);
-    }
-    &&:active {
-      filter: brightness(125%);
-    }
-  }
 }
 
 @media (min-width: 800px) {
