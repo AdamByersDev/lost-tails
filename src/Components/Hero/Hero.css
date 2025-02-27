@@ -1,133 +1,122 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #fff;
-    color: #3A3E59;
+  background-color: #fff;
+  color: #3a3e59;
 }
 
 html {
-    scroll-behavior: smooth;
-}
-  
-a {
-    text-decoration: none;
+  scroll-behavior: smooth;
 }
 
+a {
+  text-decoration: none;
+}
 
 /* Mobile */
-@media (min-width: 300px) {    
-      
-    hero-header {
-        display: flex;
-        flex-direction: column-reverse;
-    }
+@media (min-width: 300px) {
+  .hero-header {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
-    hero-header .animation{
-        width: 100%;
-    }
-    
-    .hero {
-        width: 90%;
-        text-align: center;
-        margin: 20px auto;
-        padding-bottom: 20%;
-    }
-    
-    .hero h1 {
-        font-size: 28px;
-        font-weight: 400;
-        color: #333;
-        margin-bottom: 20px;
-    }
-    
-    .hero-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-      
-    .btn {
-        padding: 12px 20px;
-        background-color: #e56776;
-        border: none;
-        border-radius: 25px;
-        font-size: 18px;
-        color: white;
-        font-weight: 500;
-        transition: background-color 0.3s ease;
-    }
-      
-    .btn:hover {
-        background-color: #F59245;
-    }
-   
+  .hero-header .animation {
+    width: 100%;
+  }
+
+  .hero {
+    width: 90%;
+    text-align: center;
+    margin: 20px auto;
+    padding-bottom: 20%;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    background-color: #e56776;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: #f59245;
+  }
 }
-
 
 /* IPad Air*/
 
-@media (min-width: 700px){
-
-    /* hero-header */
-    hero-header h1 {
+@media (min-width: 700px) {
+  /* hero-header */
+  .hero-header h1 {
     font-size: 55px;
-    }
-    hero-header a {
-        font-size: 20px;
-        transition: 0.6s;
-    }
-    
-    
+  }
+  .hero-header a {
+    font-size: 20px;
+    transition: 0.6s;
+  }
 }
 
 /* Desktop */
-@media (min-width: 1000px){
-    
-    hero-header {
-        display: flex;
-        flex-direction: row;
-        row-gap: 20px;
-        padding: 30px;
-    }
+@media (min-width: 1000px) {
+  .hero-header {
+    display: flex;
+    flex-direction: row;
+    row-gap: 20px;
+    padding: 30px;
+  }
 
+  .hero {
+    width: 40%;
+    margin: 60px auto;
+    padding-bottom: 25vh;
+  }
 
-    .hero {
-        width: 40%;
-        margin: 60px auto;
-        padding-bottom: 25vh;
-    }
-    
-    .hero h1 {
-        font-size: 40px;
-        font-weight: 400;
-        color: #333;
-        margin-bottom: 20px;
-    }
-    
-    .hero-buttons {
-        display: flex;
-        gap: 20px;
-    }
-    
-    .btn {
-        padding: 12px 24px;
-        background-color:#e56776;
-        border: none;
-        border-radius: 25px;
-        font-size: 24px;
-        color: white;
-        font-weight: 500;
-        cursor: pointer;
-    }
-    
-    .btn:hover {
-        background-color:  #F59245; 
-    }
+  .hero h1 {
+    font-size: 40px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 20px;
+  }
 
-        
+  .hero-buttons {
+    display: flex;
+    gap: 20px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    background-color: #e56776;
+    border: none;
+    border-radius: 25px;
+    font-size: 24px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #f59245;
+  }
 }
