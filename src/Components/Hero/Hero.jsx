@@ -1,29 +1,27 @@
 // npm install @lottiefiles/dotlottie-react
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import './hero.css';
+import './Hero.css';
 
-export default function HeroComponent() {
+export default function Hero() {
   return (
-    <div>
-      {/* HEADER START */}
+    <section>
       <div className="hero-header">
-        <main className="hero">
+        <article className="hero">
           <h1>Helping Tails Find Their Way Home.</h1>
           <div className="hero-buttons">
             <button className="btn">Lost Pet</button>
             <button className="btn">Found Pet</button>
           </div>
-        </main>
-        <section>
+        </article>
+        <article>
           <DotLottieReact
             src="https://lottie.host/4821f0e5-2898-424d-977f-1fdf9b096b95/FBIbcKlPTr.lottie"
             loop
             autoplay
             style={{ width: '100%', height: 'auto' }}
           />
-        </section>
+        </article>
       </div>
-      {/* HEADER END */}
-    </div>
+    </section>
   );
 }
