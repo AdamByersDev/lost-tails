@@ -27,7 +27,7 @@ export default [
       'import/resolver': {
         alias: {
           map: [['@', './src']],
-          extensions: ['.js', '.jsx', '.json'],
+          extensions: ['.js', '.jsx', '.json', '.css'],
         },
       },
     },
@@ -50,6 +50,7 @@ export default [
       ],
       'prettier/prettier': 'error',
       'import/no-unresolved': ['error', { commonjs: true, amd: true }],
+      'react/prop-types': 'off',
     },
   },
   prettier,
