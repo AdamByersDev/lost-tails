@@ -1,5 +1,5 @@
-// npm install @lottiefiles/dotlottie-react
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import heroAnimation from '@/assets/lottie/hero-animation.json';
 import './Hero.css';
 
 export default function Hero() {
@@ -13,7 +13,7 @@ export default function Hero() {
         </div>
       </article>
       <DotLottieReact
-        src="https://lottie.host/4821f0e5-2898-424d-977f-1fdf9b096b95/FBIbcKlPTr.lottie"
+        data={heroAnimation}
         loop
         autoplay
         style={{ width: '100%', height: 'fit-content' }}

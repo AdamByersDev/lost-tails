@@ -1,0 +1,43 @@
+.btn {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+  border-radius: 35px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 10px;
+  transition: box-shadow .2s ease-in-out;
+  width: 100%;
+  max-width: 18rem;
+  line-height: 2rem;
+
+  & svg {
+    display: inline-block;
+  }
+
+  &:hover {
+    filter: brightness(95%);
+  }
+
+  &:active {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+
+  &:focus-visible {
+    outline-color: #0078CD;
+  }
+}
+
+.primary {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--white-color);
+  font-weight: 700;
+}
+
+.outline {
+  background-color: var(--white-color);
+  border: 1px solid var(--grey-color);
+  color: var(--text-color);
+}
