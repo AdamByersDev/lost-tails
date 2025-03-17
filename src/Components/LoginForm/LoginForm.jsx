@@ -6,7 +6,7 @@ import styles from './LoginForm.module.css';
 import { login } from '@/services/firebase';
 
 export default function LoginForm() {
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ email: '', password: '', remember: false });
   const [formError, setFormError] = useState({ email: '', password: '' });
   const [hasSubmitError, setHasOnSubmitError] = useState(false);
 
@@ -17,6 +17,11 @@ export default function LoginForm() {
     const { value, name } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handleCheck = (e) => {
+    const { name, checked } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: checked }));
+  }
 
   const handleBlur = (e) => {
     const { value, name } = e.target;
@@ -56,11 +61,12 @@ export default function LoginForm() {
       });
     }
 
-    const { email, password } = formData;
+    const { email, password, remember } = formData;
 
     login(
       email,
       password,
+      remember,
       () => navigate('/'),
       () => setHasOnSubmitError(true),
     );
@@ -108,7 +114,7 @@ export default function LoginForm() {
         </div>
         <div className={styles.rememberControl}>
           <label>
-            <input type="checkbox" name="remember" />
+            <input type="checkbox" name="remember" onChange={handleCheck} />
             Remember me
           </label>
           <a href="javascript:void(0)">Forgot your password?</a>

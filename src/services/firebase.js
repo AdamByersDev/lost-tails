@@ -2,8 +2,11 @@ import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  initializeAuth,
+  getAuth,
   signOut,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
 } from 'firebase/auth';
 import {
   collection,
@@ -26,7 +29,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-export const auth = initializeAuth(app);
+export const auth = getAuth(app);
 
 const usersRef = collection(db, 'users');
 
@@ -50,8 +53,13 @@ export const registerUser = async ({
   }
 };
 
-export const login = async (email, password, onSuccess, onError) => {
+export const login = async (email, password, remember, onSuccess, onError) => {
   try {
+    const persistenceType = remember
+      ? browserLocalPersistence
+      : browserSessionPersistence;
+
+    await setPersistence(auth, persistenceType);
     await signInWithEmailAndPassword(auth, email, password);
     onSuccess();
   } catch (e) {
