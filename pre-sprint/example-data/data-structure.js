@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { GeoPoint } from 'firebase/firestore';
 
 export let lostPet = {

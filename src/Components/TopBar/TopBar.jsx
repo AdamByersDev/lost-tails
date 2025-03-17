@@ -1,6 +1,6 @@
 import './TopBar.css';
 
-export default function TopBarComponent() {
+export default function TopBar() {
   return (
     <div>
       <section className="topbar">
