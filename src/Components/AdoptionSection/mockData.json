@@ -32,14 +32,7 @@
       "dogs": true,
       "cats": null
     },
-    "tags": [
-      "Funny",
-      "Gentle",
-      "Loves",
-      "Loyal",
-      "Playful",
-      "Friendly"
-    ],
+    "tags": ["Funny", "Gentle", "Loves", "Loyal", "Playful", "Friendly"],
     "name": "Tate",
     "description": "Tate Available for Adoption \nFostered in London, Ontario\nBorn December 9th 2024\nAdoption fee $700\n\nHi there, I'm Tate –...",
     "organization_animal_id": null,
