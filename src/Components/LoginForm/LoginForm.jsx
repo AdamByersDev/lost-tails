@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { message } from 'antd';
-import { useNavigate } from 'react-router';
 import Button from '@/UI/Button';
 import styles from './LoginForm.module.css';
 import { login } from '@/services/firebase';
@@ -11,7 +10,6 @@ export default function LoginForm() {
   const [hasSubmitError, setHasOnSubmitError] = useState(false);
 
   const [messageApi, contextHolder] = message.useMessage();
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -67,7 +65,6 @@ export default function LoginForm() {
       email,
       password,
       remember,
-      () => navigate('/'),
       () => setHasOnSubmitError(true),
     );
   };

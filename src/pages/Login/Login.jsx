@@ -5,10 +5,13 @@ import styles from './Login.module.css';
 import GoogleIcon from '@/assets/images/google.svg';
 import LoginForm from '@/Components/LoginForm';
 import LoginAnimation from '@/assets/lottie/login-animation.json';
-import { auth } from '@/services/firebase';
+import { signInWithGoogle } from '@/services/firebase';
+import useUser from '@/hooks/useUser';
 
 export default function Login() {
-  if (auth?.currentUser) {
+  const { user } = useUser();
+  
+  if (user) {
     return <Navigate to="/" replace />;
   }
 
@@ -31,7 +34,7 @@ export default function Login() {
           </div>
           <LoginForm />
           <div className={styles.separator}>Or</div>
-          <Button variant="outline">
+          <Button variant="outline" onClick={signInWithGoogle}>
             <GoogleIcon />
             Continue with Google
           </Button>
