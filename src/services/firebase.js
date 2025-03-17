@@ -86,3 +86,6 @@ export const logout = async () => {
     console.log('Error', 'Error login out: ' + e);
   }
 };
+
+export const authObserver = (callback) =>
+  auth.onAuthStateChanged((user) => callback(user));
