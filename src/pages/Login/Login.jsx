@@ -1,11 +1,17 @@
+import { Navigate } from 'react-router';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Button from '@/UI/Button';
 import styles from './Login.module.css';
 import GoogleIcon from '@/assets/images/google.svg';
 import LoginForm from '@/Components/LoginForm';
 import LoginAnimation from '@/assets/lottie/login-animation.json';
+import { auth } from '@/services/firebase';
 
 export default function Login() {
+  if (auth?.currentUser) {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <section className={styles.section}>
       <div className={`${styles.container} container-responsive`}>

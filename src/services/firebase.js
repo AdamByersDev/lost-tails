@@ -14,12 +14,12 @@ import {
 } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDbtBgpTzZ_B8p8TPv8xRtTL-wqj-nDPs0',
-  authDomain: 'lost-tails.firebaseapp.com',
-  projectId: 'lost-tails',
-  storageBucket: 'lost-tails.firebasestorage.app',
-  messagingSenderId: '783979465678',
-  appId: '1:783979465678:web:4bc12c9b4e5afae4b1b99f',
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
