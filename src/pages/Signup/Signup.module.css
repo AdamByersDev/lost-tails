@@ -1,0 +1,93 @@
+.section {
+  background-color: #f4a261;
+  padding: 2.5rem 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  column-gap: 2rem;
+  align-items: flex-end;
+}
+
+.formContainer {
+  padding: 2rem 1rem;
+  border-radius: 20px;
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+  max-width: 48rem;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.486);
+}
+
+.formHeader {
+  text-align: center;
+}
+
+.formHeader h2 {
+  margin-bottom: 1rem;
+}
+
+.separator {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1rem;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  max-width: 9.5rem;
+  height: 1px;
+  background-color: var(--grey-color);
+  flex: 1;
+}
+
+.createAccount {
+  font-weight: 700;
+  text-align: center;
+}
+
+.createAccount span {
+  color: var(--primary-color);
+}
+
+.signupAnimation {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .formContainer {
+    padding: 4rem;
+  }
+
+  .formHeader {
+    text-align: start;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .signupAnimation {
+    display: block;
+    width: 18rem;
+    height: 18rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .signupAnimation {
+    display: block;
+    width: 28rem;
+    height: 28rem;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .signupAnimation {
+    width: 38rem;
+    height: 38rem;
+  }
+}
