@@ -61,7 +61,21 @@ export const registerUser = async ({
 
     console.log('Success', 'User registered successfully!');
   } catch (e) {
+    if (e.code === 'auth/email-already-in-use') {
+      console.log(
+        'Error',
+        'This email is already in use. Please try logging in.',
+      );
+      return {
+        success: false,
+        message: 'This email is already in use. Please try logging in.',
+      };
+    }
     console.log('Error', 'Error registering user: ' + e);
+    return {
+      success: false,
+      message: 'Error registering user. Please try again.',
+    };
   }
 };
 

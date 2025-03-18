@@ -45,6 +45,11 @@
   outline-color: var(--error-color);
 }
 
+.required {
+  color: red;
+  margin-left: 4px;
+}
+
 .errorMessage {
   color: var(--error-color);
   font-size: 0.75rem;
@@ -75,33 +80,18 @@
   margin-right: 0.5rem;
 }
 
+.formSubmit {
+  align-self: center;
+  width: 100%;
+  max-width: 18rem;
+}
+
 .buttonContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   gap: 1rem;
-}
-
-.socialButton {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #e7e7e7;
-  background-color: #f5f5f5;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.socialButton:hover {
-  background-color: #e7e7e7;
-}
-
-.socialButtonsContainer {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -113,14 +103,5 @@
   .row {
     flex-direction: row;
     gap: 1.5rem;
-  }
-
-  .socialButtonsContainer {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .socialButton {
-    width: 48%;
   }
 }

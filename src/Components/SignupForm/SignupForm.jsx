@@ -1,67 +1,26 @@
-import { useState } from 'react';
 import { message } from 'antd';
 import { useNavigate } from 'react-router';
+import useForm from '@/hooks/useForm';
 import Button from '@/UI/Button';
 import styles from './SignupForm.module.css';
 import { registerUser } from '@/services/firebase';
-import GoogleIcon from '@/assets/images/google.svg';
-import AppleIcon from '@/assets/images/apple-icon.svg';
 
 export default function SignupForm() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    termsAccepted: false,
-  });
-
-  const [formError, setFormError] = useState({});
-  const [hasSubmitError, setHasSubmitError] = useState(false);
+  const { formData, formError, handleChange, handleBlur, handleCheck } =
+    useForm({
+      defaultFormData: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        termsAccepted: false,
+      },
+      defaultFormError: {},
+    });
 
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
-
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
-    let error = '';
-
-    const resolve = () => setFormError((prev) => ({ ...prev, [name]: error }));
-
-    if (!value.trim()) {
-      error = `${name.replace(/([A-Z])/g, ' $1')} is required!`;
-      return resolve();
-    }
-
-    if (name === 'email') {
-      const emailValidator = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!emailValidator.test(value)) {
-        error = 'Invalid email format!';
-        return resolve();
-      }
-    }
-
-    if (name === 'password' && value.length < 8) {
-      error = 'Password must be at least 8 characters!';
-      return resolve();
-    }
-
-    if (name === 'confirmPassword' && value !== formData.password) {
-      error = 'Passwords do not match!';
-      return resolve();
-    }
-
-    return resolve();
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,13 +33,14 @@ export default function SignupForm() {
       return messageApi.error('This form has errors.');
     }
 
-    try {
-      await registerUser(formData);
-      messageApi.success('Registration successful!');
-      navigate('/');
-    } catch {
-      setHasSubmitError(true);
+    const response = await registerUser(formData);
+
+    if (!response.success) {
+      return messageApi.error(response.message);
     }
+
+    messageApi.success('Registration successful!');
+    navigate('/');
   };
 
   return (
@@ -89,7 +49,9 @@ export default function SignupForm() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.row}>
           <div className={styles.formControl}>
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName">
+              First Name <span className={styles.required}>*</span>
+            </label>
             <input
               type="text"
               name="firstName"
@@ -105,7 +67,9 @@ export default function SignupForm() {
             )}
           </div>
           <div className={styles.formControl}>
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName">
+              Last Name <span className={styles.required}>*</span>
+            </label>
             <input
               type="text"
               name="lastName"
@@ -122,7 +86,9 @@ export default function SignupForm() {
           </div>
         </div>
         <div className={styles.formControl}>
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email">
+            Email address <span className={styles.required}>*</span>
+          </label>
           <input
             type="email"
             name="email"
@@ -138,7 +104,9 @@ export default function SignupForm() {
           )}
         </div>
         <div className={styles.formControl}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">
+            Password <span className={styles.required}>*</span>
+          </label>
           <input
             type="password"
             name="password"
@@ -154,7 +122,9 @@ export default function SignupForm() {
           )}
         </div>
         <div className={styles.formControl}>
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label htmlFor="confirmPassword">
+            Confirm Password <span className={styles.required}>*</span>
+          </label>
           <input
             type="password"
             name="confirmPassword"
@@ -177,30 +147,15 @@ export default function SignupForm() {
               type="checkbox"
               name="termsAccepted"
               checked={formData.termsAccepted}
-              onChange={handleChange}
+              onChange={handleCheck}
             />
             I agree to the Terms & Privacy Policy
           </label>
         </div>
         <div className={styles.buttonContainer}>
-          <Button type="submit">Sign Up</Button>
-          {hasSubmitError && (
-            <span className={styles.errorSubmit}>
-              Error: Registration failed. Please try again.
-            </span>
-          )}
-          <p>Or</p>
-          <Button variant="outline">
-            <AppleIcon />
-            Sign up with Apple
+          <Button className={styles.formSubmit} type="submit">
+            Sign Up
           </Button>
-          <Button variant="outline">
-            <GoogleIcon />
-            Sign up with Google
-          </Button>
-          <p>
-            Already have an account? <a href="/login">Log In</a>
-          </p>
         </div>
       </form>
     </>

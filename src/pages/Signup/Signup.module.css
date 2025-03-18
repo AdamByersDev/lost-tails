@@ -59,37 +59,50 @@
   display: none;
 }
 
+.loginRedirect {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.loginLink {
+  color: #ff6600;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.loginLink:hover {
+  color: #cc5500;
+}
+
 @media only screen and (min-width: 768px) {
   .formContainer {
-    padding: 4rem;
+    padding: 5rem;
   }
 
   .formHeader {
     text-align: start;
-  }
-
-  .formHeader h2 {
-    text-align: center;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .signupAnimation {
     display: block;
-    width: 28rem;
-    height: auto;
+    width: 18rem;
+    height: 18rem;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .signupAnimation {
     display: block;
-    width: 36rem;
+    width: 28rem;
+    height: 28rem;
   }
 }
 
 @media only screen and (min-width: 1400px) {
   .signupAnimation {
-    width: 58rem;
+    width: 38rem;
+    height: 38rem;
   }
 }
