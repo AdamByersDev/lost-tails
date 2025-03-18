@@ -1,12 +1,13 @@
+import Hero from '@/Components/Hero';
 import DonationSection from '@/Components/DonationSection';
+import AdoptionSection from '@/Components/AdoptionSection';
 
 export default function Home() {
   return (
-    <>
-      <section>
-        <h1>Lost Tails Home Page</h1>
-      </section>
+    <main>
+      <Hero />
       <DonationSection />
-    </>
+      <AdoptionSection />
+    </main>
   );
 }

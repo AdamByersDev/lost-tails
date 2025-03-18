@@ -1,12 +1,9 @@
-import DetailsPetSection from '@/Components/DetailsPetSection';
+import PetList from '@/Components/PetsList';
 
 export default function LostFound() {
   return (
-    <>
-      <section>
-        <h1>Lost Tails Lost/Found Page</h1>
-      </section>
-      <DetailsPetSection />
-    </>
+    <main>
+      <PetList />
+    </main>
   );
 }
