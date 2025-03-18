@@ -16,12 +16,14 @@ export default function Signup() {
   return (
     <section className={styles.section}>
       <Container className={styles.container}>
-        <DotLottieReact
-          data={SignupAnimation}
-          loop
-          autoplay
-          className={styles.signupAnimation}
-        />
+        <div className={styles.animationContainer}>
+          <DotLottieReact
+            data={SignupAnimation}
+            loop
+            autoplay
+            className={styles.signupAnimation}
+          />
+        </div>
         <div className={styles.formContainer}>
           <div className={styles.formHeader}>
             <h2>Join the Community – Help Pets Find Their Way Home!</h2>
