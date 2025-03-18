@@ -1,0 +1,36 @@
+.formControl {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+
+  & label {
+    font-weight: 700;
+  }
+
+  & input {
+    border: 1px solid #e7e7e7;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 5px;
+
+    &:focus-visible {
+      outline-color: #0078cd;
+    }
+
+    &.errorInput {
+      border: 2px solid var(--error-color);
+
+      &:focus-visible {
+        outline-color: var(--error-color);
+      }
+    }
+  }
+}
+
+.errorMessage {
+  color: var(--error-color);
+  font-size: 0.75rem;
+  position: absolute;
+  bottom: -1.5rem;
+}

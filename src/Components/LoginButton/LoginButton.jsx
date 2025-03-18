@@ -1,16 +1,20 @@
+import useUser from '@/hooks/useUser';
+import { logout } from '@/services/firebase';
+import Button from '@/UI/Button';
 import { useNavigate } from 'react-router';
 
 export default function LoginButton() {
+  const { user } = useUser();
   const navigate = useNavigate();
 
   // Function to handle the button click
-  const handleLoginClick = () => {
+  const handleLogin = () => {
     navigate('/login');
   };
 
-  return (
-    <button className="login-button" onClick={handleLoginClick}>
-      Login
-    </button>
+  return !user ? (
+    <Button onClick={handleLogin}>Log In</Button>
+  ) : (
+    <Button onClick={logout}>Logout</Button>
   );
 }

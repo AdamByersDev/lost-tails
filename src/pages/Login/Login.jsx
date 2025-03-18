@@ -5,16 +5,20 @@ import styles from './Login.module.css';
 import GoogleIcon from '@/assets/images/google.svg';
 import LoginForm from '@/Components/LoginForm';
 import LoginAnimation from '@/assets/lottie/login-animation.json';
-import { auth } from '@/services/firebase';
+import { signInWithGoogle } from '@/services/firebase';
+import useUser from '@/hooks/useUser';
+import Container from '@/UI/Container';
 
 export default function Login() {
-  if (auth?.currentUser) {
+  const { user } = useUser();
+
+  if (user) {
     return <Navigate to="/" replace />;
   }
 
   return (
     <section className={styles.section}>
-      <div className={`${styles.container} container-responsive`}>
+      <Container className={styles.container}>
         <DotLottieReact
           data={LoginAnimation}
           loop
@@ -31,7 +35,11 @@ export default function Login() {
           </div>
           <LoginForm />
           <div className={styles.separator}>Or</div>
-          <Button variant="outline">
+          <Button
+            className={styles.googleButton}
+            variant="outline"
+            onClick={signInWithGoogle}
+          >
             <GoogleIcon />
             Continue with Google
           </Button>
@@ -39,7 +47,7 @@ export default function Login() {
             Not a member | <span>Create an account</span>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

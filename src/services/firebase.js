@@ -2,8 +2,14 @@ import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  initializeAuth,
+  getAuth,
   signOut,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import {
   collection,
@@ -26,7 +32,9 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-export const auth = initializeAuth(app);
+export const auth = getAuth(app);
+
+const googleProvider = new GoogleAuthProvider();
 
 const usersRef = collection(db, 'users');
 
@@ -57,10 +65,14 @@ export const registerUser = async ({
   }
 };
 
-export const login = async (email, password, onSuccess, onError) => {
+export const login = async (email, password, remember, onError) => {
   try {
+    const persistenceType = remember
+      ? browserLocalPersistence
+      : browserSessionPersistence;
+
+    await setPersistence(auth, persistenceType);
     await signInWithEmailAndPassword(auth, email, password);
-    onSuccess();
   } catch (e) {
     console.log('Error', 'Invalid credentials: ' + e);
     onError();
@@ -91,5 +103,25 @@ export const logout = async () => {
     console.log('Success', 'User logged out!');
   } catch (e) {
     console.log('Error', 'Error login out: ' + e);
+  }
+};
+
+export const authObserver = (callback) =>
+  auth.onAuthStateChanged((user) => callback(user));
+
+export const signInWithGoogle = async () => {
+  try {
+    await signInWithPopup(auth, googleProvider);
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+export const resetPassword = async (email, success) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    success('Password reset email sent!');
+  } catch (e) {
+    console.error(e.message);
   }
 };
