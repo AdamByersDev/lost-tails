@@ -67,27 +67,29 @@
   .formHeader {
     text-align: start;
   }
+
+  .formHeader h2 {
+    text-align: center;
+  }
 }
 
 @media only screen and (min-width: 992px) {
   .signupAnimation {
     display: block;
-    width: 18rem;
-    height: 18rem;
+    width: 28rem;
+    height: auto;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .signupAnimation {
     display: block;
-    width: 28rem;
-    height: 28rem;
+    width: 36rem;
   }
 }
 
 @media only screen and (min-width: 1400px) {
   .signupAnimation {
-    width: 38rem;
-    height: 38rem;
+    width: 58rem;
   }
 }

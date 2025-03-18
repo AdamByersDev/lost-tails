@@ -37,11 +37,18 @@ export const registerUser = async ({
   password,
 }) => {
   try {
-    await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
+    const user = userCredential.user;
 
-    await setDoc(doc(usersRef, email), {
+    await setDoc(doc(usersRef, user.uid), {
       firstName,
       lastName,
+      email,
+      createdAt: new Date(),
     });
 
     console.log('Success', 'User registered successfully!');

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router';
 import Button from '@/UI/Button';
 import styles from './SignupForm.module.css';
 import { registerUser } from '@/services/firebase';
+import GoogleIcon from '@/assets/images/google.svg';
+import AppleIcon from '@/assets/images/apple-icon.svg';
 
 export default function SignupForm() {
   const [formData, setFormData] = useState({
@@ -188,10 +190,12 @@ export default function SignupForm() {
             </span>
           )}
           <p>Or</p>
-          <Button type="button" className={styles.socialButton}>
+          <Button variant="outline">
+            <AppleIcon />
             Sign up with Apple
           </Button>
-          <Button type="button" className={styles.socialButton}>
+          <Button variant="outline">
+            <GoogleIcon />
             Sign up with Google
           </Button>
           <p>
