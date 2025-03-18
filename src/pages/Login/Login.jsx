@@ -10,7 +10,7 @@ import useUser from '@/hooks/useUser';
 
 export default function Login() {
   const { user } = useUser();
-  
+
   if (user) {
     return <Navigate to="/" replace />;
   }
@@ -34,7 +34,11 @@ export default function Login() {
           </div>
           <LoginForm />
           <div className={styles.separator}>Or</div>
-          <Button variant="outline" onClick={signInWithGoogle}>
+          <Button
+            className={styles.googleButton}
+            variant="outline"
+            onClick={signInWithGoogle}
+          >
             <GoogleIcon />
             Continue with Google
           </Button>

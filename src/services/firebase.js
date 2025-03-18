@@ -9,6 +9,7 @@ import {
   browserSessionPersistence,
   GoogleAuthProvider,
   signInWithPopup,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import {
   collection,
@@ -104,6 +105,15 @@ export const authObserver = (callback) =>
 export const signInWithGoogle = async () => {
   try {
     await signInWithPopup(auth, googleProvider);
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+export const resetPassword = async (email, success) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    success('Password reset email sent!');
   } catch (e) {
     console.error(e.message);
   }
