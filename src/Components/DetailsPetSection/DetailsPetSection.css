@@ -1,24 +1,25 @@
 .details-pet-container {
-    width: 584px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    justify-content: center;
     font-family: sans-serif;
 }
 
 .details-pet-section {
-    background: rgba(236, 230, 206, 0.7); 
-    color: var(--text-color);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    margin: 1rem auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: flex-start;
+  display: flex;
+  background: rgba(236, 230, 206, 0.7); 
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 1rem auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
+  justify-content: center;
+  align-items: center;
 }
   
 .details-pet-section img {
@@ -38,11 +39,12 @@
     font-size: 1.5rem;
 }
   
-.profile-pet-card, .section {
+.profile-pet-card, .details-pet-actions, .details-pet-about {
     background: white;
-    padding: 15px 21px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 5px;
 }
 
 .profile-pet-header {
@@ -71,18 +73,39 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 13px;
+    font-size: 14px;
     color: #585858;
+}
+
+.details-pet-about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px;
 }
 
 .details-pet-about h2 {
-    font-size: 24px;
+    font-size: 18px;
     color: #585858;
+    
 }
 
 .details-pet-about p {
-    font-size: 13px;
+    font-size: 14px;
     color: #585858;
+}
+
+
+.details-pet-about ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.details-pet-about li{
+  font-size: 14px;
+  
 }
 
 .details-pet-actions {
@@ -114,18 +137,18 @@
 .details-pet-btn-icon {
     width: 48px;
     height: 48px;
-    background: rgba(88, 88, 88, 0.6);
+    background: rgba(112, 102, 102, 0.6);
     border-radius: 8px;
-    font-size: 24px;
     color: white;
+    font-size: 24px;
+
 }
 
   
   
-  /* Tablet and Up (min-width: 768px)
+/*   
   @media screen and (min-width: 768px) {
     .details-pet-section {
-      flex-direction: row;
       text-align: left;
       padding: 3rem;
     }
@@ -144,14 +167,12 @@
       font-size: 2rem;
     }
   
-    .donate-btn {
-      width: auto;
-    }
-  }
+  }  */
   
-  /* Desktop and Large Screens (min-width: 1024px) */
-  /* @media screen and (min-width: 1024px) {
+/* 
+  @media screen and (min-width: 1024px) {
     .details-pet-section {
+      flex-direction: row;
       gap: 50px;
       font-size: 1.5rem;
       max-width: 1200px;
@@ -169,5 +190,5 @@
     .details-pet-text {
       max-width: 600px;
     }
-  } */
+  }  */
 
