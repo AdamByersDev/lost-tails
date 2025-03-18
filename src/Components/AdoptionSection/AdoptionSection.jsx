@@ -1,11 +1,11 @@
 /* import { Client } from "@petfinder/petfinder-js"; */
 import { useEffect, useState } from 'react';
-import AdoptionCard from '../AdoptionCard';
 import styles from './AdoptionSection.module.css';
 import mockData from './mockData.json';
 import Container from '@/UI/Container';
 import Button from '@/UI/Button';
 import { useNavigate } from 'react-router';
+import AdoptionPet from '../AdoptionPet';
 
 /* const client = new Client({
   apiKey: "AV1FVzdrEyl86i7G3SiXZXEIIqSYjYhbOMFNEqi2xK3D7SGfkM",
@@ -36,7 +36,14 @@ export default function AdoptionSection() {
   useEffect(() => {
     let tempAdoptionCards = [];
     adoptablePets.forEach((animal) => {
-      tempAdoptionCards.push(<AdoptionCard animal={animal} />);
+      tempAdoptionCards.push(
+        <AdoptionPet
+          picture={animal.primary_photo_cropped.small}
+          key={animal.id}
+          name={animal.name}
+          url={animal.url}
+        />,
+      );
     });
     setAdoptionCards(tempAdoptionCards);
   }, [adoptablePets]);
