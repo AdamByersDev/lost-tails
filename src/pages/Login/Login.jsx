@@ -7,6 +7,7 @@ import LoginForm from '@/Components/LoginForm';
 import LoginAnimation from '@/assets/lottie/login-animation.json';
 import { signInWithGoogle } from '@/services/firebase';
 import useUser from '@/hooks/useUser';
+import Container from '@/UI/Container';
 
 export default function Login() {
   const { user } = useUser();
@@ -17,7 +18,7 @@ export default function Login() {
 
   return (
     <section className={styles.section}>
-      <div className={`${styles.container} container-responsive`}>
+      <Container className={styles.container}>
         <DotLottieReact
           data={LoginAnimation}
           loop
@@ -46,7 +47,7 @@ export default function Login() {
             Not a member | <span>Create an account</span>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

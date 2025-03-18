@@ -1,34 +1,27 @@
-.pets-filter {
+.aside {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
 }
 
-.pets-filter-control {
+.control {
   display: flex;
   align-items: center;
   gap: 1rem;
   justify-content: space-between;
 }
 
-.pets-filter-label {
-  text-transform: capitalize;
-}
-
 @media only screen and (min-width: 768px) {
-  .pets-filter {
+  .aside {
     row-gap: 2rem;
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  .pets-filter-control {
+  .control {
     flex-direction: column;
     row-gap: 0.5rem;
     align-items: flex-start;
-  }
-
-  .pets-filter-clear {
     row-gap: 2rem;
   }
 }

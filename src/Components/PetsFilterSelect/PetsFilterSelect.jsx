@@ -1,5 +1,6 @@
 import { Select } from 'antd';
 import usePetsFilterSelect from './usePetsFilterSelect';
+import styles from './PetsFilterSelect.module.css';
 
 export default function PetsFilterSelect({
   data,
@@ -14,8 +15,8 @@ export default function PetsFilterSelect({
   );
 
   return (
-    <div className="pets-filter-control">
-      <label className="pets-filter-label" htmlFor={target}>
+    <div className={styles.control}>
+      <label className={styles.label} htmlFor={target}>
         {target}
       </label>
       <Select
