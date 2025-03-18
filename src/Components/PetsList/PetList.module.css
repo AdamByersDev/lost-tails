@@ -1,22 +1,22 @@
-.pets-list {
+.list {
   padding: 2rem 0;
 }
 
-.pets-list-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
 
-.pets-list-grid {
+.grid {
   display: grid;
   gap: 1rem;
   place-content: center;
 }
 
 @media only screen and (min-width: 768px) {
-  .pets-list-container {
+  .container {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
@@ -24,13 +24,13 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .pets-list-grid {
+  .grid {
     gap: 2rem;
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  .pets-list-grid {
+  .grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }

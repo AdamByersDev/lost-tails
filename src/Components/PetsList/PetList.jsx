@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Pet from '@/Components/Pet';
-import './PetList.css';
-import { dummyReports } from './mockData';
 import PetsFilter from '@/Components/PetsFilter';
+import { dummyReports } from './mockData';
+import styles from './PetList.module.css';
+import Container from '@/UI/Container';
 
 export default function PetList() {
   const [list, setList] = useState(dummyReports);
@@ -10,10 +11,10 @@ export default function PetList() {
   const resetData = () => setList(dummyReports);
 
   return (
-    <section className="pets-list">
-      <div className="container-responsive pets-list-container">
+    <section className={styles.list}>
+      <Container className={styles.container}>
         <PetsFilter data={list} setter={setList} resetData={resetData} />
-        <div className="pets-list-grid">
+        <div className={styles.grid}>
           {!!list.length &&
             list.map(({ id, picture, name, breed, gender, status }) => (
               <Pet
@@ -26,7 +27,7 @@ export default function PetList() {
               />
             ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
