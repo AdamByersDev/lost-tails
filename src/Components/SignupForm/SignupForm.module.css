@@ -94,6 +94,16 @@
   gap: 1rem;
 }
 
+.termsLink {
+  color: #ff6600;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.termsLink:hover {
+  text-decoration: underline;
+}
+
 @media only screen and (min-width: 768px) {
   .rememberControl {
     flex-direction: row;
