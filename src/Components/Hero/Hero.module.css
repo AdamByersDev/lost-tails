@@ -1,21 +1,31 @@
-.section {
-  padding: 2rem 0; 
+.heroSection {
+  padding: 4rem 0; 
+  background-color: var(--light-blue-color);
+  min-height: 80vh;
 }
 
 .container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
+  align-items: center;
 }
 
-.content {
+.heroImage {
+  border-radius: 40px;
+  background-color: #047EBA;
+  margin-bottom: 2rem;
+}
+
+.textContent {
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
   align-items: center;
 
   & h1 {
-    font-size: 1.75rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: bold;
     color: var(--text-color);
     text-align: center;
   }
@@ -27,23 +37,14 @@
 }
 
 @media only screen and (min-width: 992px)  {
-  .section {
-    padding: 4rem 0; 
-  }
 
-  .container {
-    grid-template-columns: 2fr 3fr;
-    place-items: center;
-  }
-
-  .content {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-
-    & h1 {
-      font-size: 2rem;
-      font-weight: 700;
-    }
+  .heroImage {
+    width: 45rem;
   }
 }
 
+@media only screen and (min-width: 1150px)  {
+  .heroImage {
+    width: 55rem;
+  }
+}
