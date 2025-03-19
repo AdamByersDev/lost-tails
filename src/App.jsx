@@ -20,6 +20,7 @@ function App() {
         <Route path="donation" element={<Donation />} />
         <Route path="login" element={<Login />} />
         <Route path="lost-found" element={<LostFound />} />
+        <Route path="/lost-found/:id" element={<LostFound />} /> 
         <Route path="signup" element={<Signup />} />
         <Route path="successful-cases" element={<SuccessfulCases />} />
       </Routes>

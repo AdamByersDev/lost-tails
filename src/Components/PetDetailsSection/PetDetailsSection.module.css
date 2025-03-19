@@ -1,0 +1,187 @@
+.container{
+  margin-bottom: 1rem;
+}
+
+.goBackBtn {
+  display: block;
+  padding: 1rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.detailsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: var(--secondary-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.486);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.header {
+  position: relative;
+  height: 70%;
+}
+
+.petImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 2px solid #42403d;
+}
+
+.tag {
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  padding: 0.5rem 0;
+  min-width: 5rem;
+  z-index: 100;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  border: none;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.complete {
+  background-color: var(--secondary-color);
+}
+
+.lost {
+  background-color: var(--primary-color);
+}
+
+.found {
+  background-color: var(--light-orange-color);
+  color: var(--text-color);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: 18px;
+  color: #333;
+  padding: 10px;
+}
+
+.details h2 {
+  font-size: 26px;
+  margin-bottom: 1rem;
+}
+
+.details p {
+  padding: 5px 5px 10px 5px;
+}
+
+.details p strong {
+  font-weight: 700;
+  color: #222;
+  padding-right: 0.8rem;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+  .detailsContainer{
+    width: 100%;
+    max-width: 40rem;
+    flex-direction: row;
+  }
+
+  .card{
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .header {
+    width: 50%;
+    max-width: 350px;
+  }
+
+  .tag {
+    top: 3%;
+    right: 5%;
+  }
+
+  .details h2 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .details p {
+    font-size: 16px;
+    text-align: left;
+  }
+
+}
+
+
+@media only screen and (min-width: 1200px) {
+  .goBackBtn:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+  }
+
+  .detailsContainer {
+    max-width: 900px;
+    padding: 2rem;
+  }
+
+  .card {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .header {
+    width: 40%;
+    max-width: 400px;
+  }
+
+  .tag {
+    font-size: 16px;
+    min-width: 6rem;
+  }
+
+  .details {
+    padding: 30px;
+    width: 55%;
+  }
+
+  .details h2 {
+    font-size: 32px;
+  }
+
+  .details p {
+    font-size: 18px;
+    padding: 10px 0;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
