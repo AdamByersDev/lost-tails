@@ -20,7 +20,7 @@ export default function usePetsFilter(data, setter, defaultValue) {
 
     return values.map((value) => ({
       value,
-      label: <span className="pets-filter-label">{value}</span>,
+      label: <span style={{ textTransform: 'capitalize' }}>{value}</span>,
       target,
     }));
   };
