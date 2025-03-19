@@ -38,6 +38,13 @@ export default function useForm({ defaultFormData, defaultFormError }) {
       return resolve();
     }
 
+    if (name === 'confirmPassword' && formData.confirmPassword !== undefined) {
+      if (value !== formData.password) {
+        error = 'Passwords do not match!';
+      }
+      return resolve();
+    }
+
     return resolve();
   };
 

@@ -11,6 +11,13 @@ export default function CustomInput({
   onBlur,
   error,
 }) {
+  const formatErrorMessage = (msg) => {
+    return msg
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/^./, (str) => str.toUpperCase())
+      .trim();
+  };
+
   return (
     <div className={styles.formControl}>
       <label htmlFor={id}>{label}</label>
@@ -24,7 +31,10 @@ export default function CustomInput({
         onBlur={onBlur}
         className={error ? styles.errorInput : ''}
       />
-      {!!error && <span className={styles.errorMessage}>Error: {error}</span>}
+      {/* {!!error && <span className={styles.errorMessage}>Error: {error}</span>} */}
+      {!!error && (
+        <span className={styles.errorMessage}>{formatErrorMessage(error)}</span>
+      )}
     </div>
   );
 }

@@ -45,16 +45,37 @@ export const registerUser = async ({
   password,
 }) => {
   try {
-    await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
+    const user = userCredential.user;
 
-    await setDoc(doc(usersRef, email), {
+    await setDoc(doc(usersRef, user.uid), {
       firstName,
       lastName,
+      email,
+      createdAt: new Date(),
     });
 
     console.log('Success', 'User registered successfully!');
   } catch (e) {
+    if (e.code === 'auth/email-already-in-use') {
+      console.log(
+        'Error',
+        'This email is already in use. Please try logging in.',
+      );
+      return {
+        success: false,
+        message: 'This email is already in use. Please try logging in.',
+      };
+    }
     console.log('Error', 'Error registering user: ' + e);
+    return {
+      success: false,
+      message: 'Error registering user. Please try again.',
+    };
   }
 };
 
