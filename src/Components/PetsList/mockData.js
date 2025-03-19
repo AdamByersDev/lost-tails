@@ -3,7 +3,7 @@ export const dummyReports = [
     id: 1,
     name: 'Bean',
     description: 'A timid black cat with a small white spot under her chin.',
-    specie: 'cat',
+    species: 'cat',
     color: 'Black',
     size: 'Medium',
     gender: 'Female',
@@ -18,7 +18,7 @@ export const dummyReports = [
     name: 'Max',
     description:
       'An energetic golden retriever that loves to play fetch in the park.',
-    specie: 'dog',
+    species: 'dog',
     color: 'Golden',
     size: 'Large',
     gender: 'Male',
@@ -33,7 +33,7 @@ export const dummyReports = [
     name: 'Bella',
     description:
       'A gentle dog with a mix of brown and black fur, found wandering near a busy street. Breed unknown.',
-    specie: 'dog',
+    species: 'dog',
     color: 'Brown',
     size: 'Medium',
     gender: 'Female',
@@ -48,7 +48,7 @@ export const dummyReports = [
     name: 'Luna',
     description:
       'A curious gray and white cat often seen near the neighborhood park.',
-    specie: 'cat',
+    species: 'cat',
     color: 'Gray',
     size: 'Small',
     gender: 'Female',
@@ -63,7 +63,7 @@ export const dummyReports = [
     name: 'Charlie',
     description:
       'A playful dog spotted near the downtown area with a striking black and brown coat.',
-    specie: 'dog',
+    species: 'dog',
     color: 'Black',
     size: 'Medium',
     gender: 'Male',
@@ -78,7 +78,7 @@ export const dummyReports = [
     name: 'Simba',
     description:
       'A regal-looking cat with a striking orange and white coat, found near a local market. Breed unknown.',
-    specie: 'cat',
+    species: 'cat',
     color: 'Orange',
     size: 'Large',
     gender: 'Male',
@@ -93,7 +93,7 @@ export const dummyReports = [
     name: 'Rocky',
     description:
       'A strong and brave dog with a rugged appearance, last seen near the river.',
-    specie: 'dog',
+    species: 'dog',
     color: 'Brown',
     size: 'Extra Large',
     gender: 'Male',
@@ -108,7 +108,7 @@ export const dummyReports = [
     name: 'Chloe',
     description:
       'A sweet cat with a distinctive gray and beige coat, known for her affectionate nature.',
-    specie: 'cat',
+    species: 'cat',
     color: 'Gray',
     size: 'Small',
     gender: 'Female',
@@ -123,7 +123,7 @@ export const dummyReports = [
     name: 'Daisy',
     description:
       'A friendly dog with a mix of black and brown patches, last seen near the suburban park.',
-    specie: 'dog',
+    species: 'dog',
     color: 'Black',
     size: 'Medium',
     gender: 'Female',
@@ -138,7 +138,7 @@ export const dummyReports = [
     name: 'Milo',
     description:
       'A playful cat found near the local grocery store. Breed unknown.',
-    specie: 'cat',
+    species: 'cat',
     color: 'White',
     size: 'Small',
     gender: 'Male',
@@ -153,7 +153,7 @@ export const dummyReports = [
     name: 'Sophie',
     description:
       'A calm and well-behaved dog, known for her gentle eyes and friendly demeanor.',
-    specie: 'dog',
+    species: 'dog',
     color: 'Beige',
     size: 'Medium',
     gender: 'Female',
@@ -168,7 +168,7 @@ export const dummyReports = [
     name: 'Duke',
     description:
       'A robust dog with a muscular build, last seen roaming near the industrial area.',
-    specie: 'dog',
+    species: 'dog',
     color: 'Black',
     size: 'Extra Large',
     gender: 'Male',

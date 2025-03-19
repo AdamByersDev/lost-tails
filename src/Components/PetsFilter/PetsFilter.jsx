@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PetsFilterSelect from '@/Components/PetsFilterSelect';
 import styles from './PetsFilter.module.css';
 
-const filtersList = ['status', 'breed', 'color', 'size', 'gender', 'specie'];
+const filtersList = ['status', 'breed', 'color', 'size', 'gender', 'species'];
 
 export default function PetsFilter({ data, setter, resetData }) {
   const [defaultValue, setDefaultValue] = useState([]);

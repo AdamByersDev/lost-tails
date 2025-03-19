@@ -1,5 +1,5 @@
 import { Select } from 'antd';
-import usePetsFilterSelect from './usePetsFilterSelect';
+import usePetsFilterSelect from '@/hooks/usePetsFilterSelect';
 import styles from './PetsFilterSelect.module.css';
 
 export default function PetsFilterSelect({
