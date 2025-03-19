@@ -5,10 +5,5 @@ import { useParams } from 'react-router';
 export default function LostFound() {
   const { id } = useParams();
 
-  return (
-    <main>
-      {!id ? <PetList /> : <PetDetailsSection />} 
-      
-    </main>
-  );
+  return <main>{!id ? <PetList /> : <PetDetailsSection />}</main>;
 }
