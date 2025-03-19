@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router';
+import { Link, Navigate } from 'react-router';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import styles from './Signup.module.css';
 import SignupForm from '@/Components/SignupForm';
@@ -35,9 +35,9 @@ export default function Signup() {
           <SignupForm />
           <p className={styles.loginRedirect}>
             Already have an account?{' '}
-            <a href="/login" className={styles.loginLink}>
+            <Link to="/login" className={styles.loginLink}>
               Log In
-            </a>
+            </Link>
           </p>
         </div>
       </Container>

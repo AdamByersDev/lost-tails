@@ -42,9 +42,6 @@ export default function SignupForm() {
     if (!response.success) {
       return messageApi.error(response.message);
     }
-
-    messageApi.success('Registration successful!');
-    navigate('/');
   };
 
   return (
