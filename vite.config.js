@@ -11,7 +11,4 @@ export default defineConfig({
     },
   },
   base: '/lost-tails/',
-  server: {
-    historyApiFallback: true,
-  },
 });
