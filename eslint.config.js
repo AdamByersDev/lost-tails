@@ -49,7 +49,10 @@ export default [
         { allowConstantExport: true },
       ],
       'prettier/prettier': 'error',
-      'import/no-unresolved': ['error', { commonjs: true, amd: true }],
+      'import/no-unresolved': [
+        'error',
+        { commonjs: true, amd: true, ignore: ['\\?url$'], }
+      ],
       'react/prop-types': 'off',
     },
   },
