@@ -1,5 +1,7 @@
 .container{
   margin-bottom: 1rem;
+  background: #fdfaf6;
+
 }
 
 .goBackBtn {
@@ -18,11 +20,8 @@
   width: 100%;
   max-width: 45rem;
   padding: 2rem;
-  background: #fdfaf6;
   color: var(--secondary-color);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.486);
+  /* overflow: hidden; */
 }
 
 .card {
@@ -31,6 +30,10 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.486);
+  
 }
 
 .header {
@@ -133,6 +136,7 @@
     width: 100%;
     max-width: 60rem;
     flex-direction: row;
+    gap: 3rem;
     align-items: flex-start;
   }
 

@@ -78,14 +78,13 @@ export default function PetDetailsSection() {
         &larr; Go Back
       </Link>
       <Container className={styles.detailsContainer}>
+        <div className={styles.header}>
+          <img src={pet.picture} alt={pet.name} className={styles.petImage} />
+          <span className={`${styles.tag} ${styles[pet.status]}`}>
+            {pet.status}
+          </span>
+        </div>
         <div className={styles.card}>
-          <div className={styles.header}>
-            <img src={pet.picture} alt={pet.name} className={styles.petImage} />
-            <span className={`${styles.tag} ${styles[pet.status]}`}>
-              {pet.status}
-            </span>
-          </div>
-
           <div className={styles.details}>
             <h2>{pet.name || 'Unknown'}</h2>
             <p>
