@@ -18,11 +18,10 @@ export default function PetList() {
         <div className={styles.grid}>
           {!!list.length &&
             list.map(({ id, picture, name, breed, gender, status }) => (
-              <Link 
-                key={id} 
+              <Link
+                key={id}
                 to={`/lost-found/${id}`}
-                className={styles.cardLink} 
-                style={{ textDecoration: 'none', color: 'inherit' }}
+                className={styles.cardLink}
               >
                 <Pet
                   key={id}
