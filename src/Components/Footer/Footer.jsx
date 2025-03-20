@@ -1,5 +1,10 @@
 import { NavLink } from 'react-router';
 import './Footer.css';
+import icon from '@/assets/images/icon.svg?url';
+import instagramIcon from '@/assets/images/instagram-icon.svg?url';
+import facebookIcon from '@/assets/images/facebook-icon.svg?url';
+import linkedinIcon from '@/assets/images/linkedin-icon.svg?url';
+import emailIcon from '@/assets/images/email-icon.svg?url';
 
 export default function Footer() {
   return (
@@ -8,7 +13,7 @@ export default function Footer() {
         {/* Left Section - Logo & About Us */}
         <div className="footer-left">
           <div className="footer-icon">
-            <img src="/src/assets/images/icon.svg" alt="Icon" />
+            <img src={icon} alt="Icon" />
           </div>
           <div className="footer-about-container">
             <h3 className="footer-header">Who We Are</h3>
@@ -29,31 +34,28 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
-                src="/src/assets/images/instagram-icon.svg"
-                alt="Instagram"
-              />
+              <img src={instagramIcon} alt="Instagram" />
             </a>
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="/src/assets/images/facebook-icon.svg" alt="Facebook" />
+              <img src={facebookIcon} alt="Facebook" />
             </a>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="/src/assets/images/linkedin-icon.svg" alt="LinkedIn" />
+              <img src={linkedinIcon} alt="LinkedIn" />
             </a>
           </div>
 
           {/* Email - Centered Below Social Icons */}
           <div className="footer-email">
             <a href="mailto:info@lostails.com">
-              <img src="/src/assets/images/email-icon.svg" alt="Email" />
+              <img src={emailIcon} alt="Email" />
               info@lostails.com
             </a>
           </div>
@@ -80,11 +82,7 @@ export default function Footer() {
             </NavLink>
           </nav>
         </div>
-        <img
-          src="/src/assets/images/icon.svg"
-          alt="Small Icon"
-          className="footer-icon-small"
-        />
+        <img src={icon} alt="Small Icon" className="footer-icon-small" />
       </div>
 
       {/* Footer Bottom */}
