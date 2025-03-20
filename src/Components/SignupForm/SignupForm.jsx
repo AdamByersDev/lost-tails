@@ -1,5 +1,4 @@
 import { message } from 'antd';
-import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import useForm from '@/hooks/useForm';
 import Button from '@/UI/Button';
@@ -23,7 +22,6 @@ export default function SignupForm() {
     });
 
   const [messageApi, contextHolder] = message.useMessage();
-  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmit = async (e) => {
