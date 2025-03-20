@@ -1,14 +1,11 @@
 import './DonationSection.css';
 import { Link } from 'react-router';
+import catRescue from '@/assets/images/cat-rescue.jpg';
 
 const DonationSection = () => {
   return (
     <section className="donations-section">
-      <img
-        src="src\assets\images\cat-rescue.jpg"
-        alt="Rescue pet"
-        className="donation-image"
-      />
+      <img src={catRescue} alt="Rescue pet" className="donation-image" />
       <div className="donation-text">
         <h2 className="donation-section-header">Support Our Cause</h2>
         <p>
