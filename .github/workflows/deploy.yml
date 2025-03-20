@@ -86,6 +86,7 @@ jobs:
           fi
 
       - name: Delete previous GitHub Pages artifact
+        continue-on-error: true
         uses: geekyeggo/delete-artifact@v2
         with:
           name: github-pages
