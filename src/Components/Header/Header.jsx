@@ -1,6 +1,7 @@
 import Navigation from '@/Components/Navigation/Navigation';
 import LoginButton from '@/Components/LoginButton/LoginButton';
 import './Header.css';
+import logo from '@/assets/images/logo.svg?url';
 
 export default function Header() {
   return (
@@ -11,7 +12,7 @@ export default function Header() {
       <div className="nav-container">
         <div className="logo-and-nav">
           <div className="logo">
-            <img src="/src/assets/images/logo.svg" alt="Logo" />
+            <img src={logo} alt="Logo" />
           </div>
           <Navigation />
         </div>
