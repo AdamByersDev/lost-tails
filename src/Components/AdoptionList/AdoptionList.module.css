@@ -1,0 +1,42 @@
+.adoptionList {
+  padding: 2rem 0;
+}
+
+.adoptionTitle {
+  padding-bottom: 1rem;
+}
+
+.adoptionListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  flex-grow: 1;
+}
+
+.adoptionListGrid {
+  display: grid;
+  gap: 1rem;
+  place-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .adoptionListContainer {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .adoptionListGrid {
+    gap: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .adoptionListGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
