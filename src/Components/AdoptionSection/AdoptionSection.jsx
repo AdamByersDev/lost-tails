@@ -43,8 +43,8 @@ export default function AdoptionSection() {
   return (
     <section className={styles.adoptionSection}>
       <Container>
-        <h2>Adoption</h2>
-        <div className={styles.textInfo}>
+        <div className={styles.adoptionText}>
+          <h2>Adoption</h2>
           <p>
             At Lostails,<strong>we connect you</strong> with shelters to help
             find loving homes.

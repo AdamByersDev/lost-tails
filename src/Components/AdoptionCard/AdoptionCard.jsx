@@ -13,7 +13,9 @@ export default function AdoptionCard({ animal }) {
         </div>
         <img src={animal.primary_photo_cropped.small} />
         <div className={styles.cardLink}>
-          <a href={animal.url}>More details</a>
+          <a href={animal.url} target="_blank" rel="noopener noreferrer">
+            More details
+          </a>
           <RedirectIcon />
         </div>
       </div>
