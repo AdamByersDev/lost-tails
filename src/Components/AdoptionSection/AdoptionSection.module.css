@@ -1,6 +1,5 @@
 .adoptionSection {
   background-color: var(--light-orange-color2);
-  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
