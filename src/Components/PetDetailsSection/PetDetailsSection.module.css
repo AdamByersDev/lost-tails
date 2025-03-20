@@ -15,9 +15,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 20rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  width: 100%;
+  max-width: 45rem;
+  padding: 2rem;
+  background: #fdfaf6;
   color: var(--secondary-color);
   border-radius: 10px;
   overflow: hidden;
@@ -35,26 +36,31 @@
 .header {
   position: relative;
   height: 70%;
+  width: 100%;
+  max-width: 320px;
 }
 
 .petImage {
   width: 100%;
-  height: auto;
+  height: 320px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 2px solid #42403d;
 }
 
 .tag {
-  border-radius: 10px;
+  border-radius: 20px;
   color: white;
   text-align: center;
   padding: 0.5rem 0;
   min-width: 5rem;
   z-index: 100;
   position: absolute;
-  top: 5%;
-  right: 5%;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border: none;
   text-transform: capitalize;
   font-weight: 700;
@@ -79,7 +85,8 @@
   flex: 1;
   font-size: 18px;
   color: #333;
-  padding: 10px;
+  padding: 20px;
+  width: 100%;
 }
 
 .details h2 {
@@ -124,8 +131,9 @@
 
   .detailsContainer{
     width: 100%;
-    max-width: 40rem;
+    max-width: 60rem;
     flex-direction: row;
+    align-items: flex-start;
   }
 
   .card{
@@ -134,23 +142,30 @@
   }
   
   .header {
-    width: 50%;
+    width: 40%;
     max-width: 350px;
   }
 
+  .petImage {
+    height: 350px;
+  }
+
   .tag {
-    top: 3%;
-    right: 5%;
+    font-size: 16px;
+    bottom: -12px;
+  }
+
+  .details {
+    padding: 30px;
+    width: 60%;
   }
 
   .details h2 {
     font-size: 28px;
-    text-align: center;
   }
 
   .details p {
     font-size: 16px;
-    text-align: left;
   }
 
   .notFoundContainer{
@@ -172,7 +187,7 @@
 
   .detailsContainer {
     max-width: 900px;
-    padding: 2rem;
+    padding: 2.5rem;
   }
 
   .card {
@@ -185,13 +200,18 @@
     max-width: 400px;
   }
 
+  .petImage {
+    height: 380px;
+  }
+
   .tag {
     font-size: 16px;
     min-width: 6rem;
+    padding: 10px 14px;
   }
 
   .details {
-    padding: 30px;
+    padding: 40px;
     width: 55%;
   }
 
@@ -201,7 +221,6 @@
 
   .details p {
     font-size: 18px;
-    padding: 10px 0;
   }
 
   .notFoundContainer{
