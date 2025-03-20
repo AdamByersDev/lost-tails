@@ -1,17 +1,20 @@
-import './AdoptionCard.css';
+import styles from './AdoptionCard.module.css';
+import RedirectIcon from '@/assets/images/redirectArrow.svg';
 
 export default function AdoptionCard({ animal }) {
   if (animal) {
     return (
-      <div className="adoptionCard">
-        <img src={animal.primary_photo_cropped.small} />
-        <div>
+      <div className={styles.adoptionCard}>
+        <div className={styles.cardTitle}>
           <h4>{animal.name}</h4>
           <p>
             {animal.contact.address.city}, {animal.contact.address.state}
           </p>
-          <p>{animal.description}</p>
-          <a href={animal.url}>More Information</a>
+        </div>
+        <img src={animal.primary_photo_cropped.small} />
+        <div className={styles.cardLink}>
+          <a href={animal.url}>More details</a>
+          <RedirectIcon />
         </div>
       </div>
     );
