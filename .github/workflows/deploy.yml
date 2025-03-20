@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-      - '*'  # Runs on all branches but only deploys on main
+      - '*'
   pull_request:
     branches:
       - main
@@ -32,7 +32,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'  # 🚀 Deploys only on main
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout repository
