@@ -1,23 +1,37 @@
-import './DonationSection.css';
-import { Link } from 'react-router';
-import catRescue from '@/assets/images/cat-rescue.jpg';
+import Container from '@/UI/Container';
+import styles from './DonationSection.module.css';
+import Button from '@/UI/Button';
+import { useNavigate } from 'react-router';
+import DonationIcon from '@/assets/images/donationIcon.svg';
 
 const DonationSection = () => {
+  const navigate = useNavigate();
+
+  // redirect page when click button on donation home section
+  const handleRedirect = () => navigate('/donation');
+
   return (
-    <section className="donations-section">
-      <img src={catRescue} alt="Rescue pet" className="donation-image" />
-      <div className="donation-text">
-        <h2 className="donation-section-header">Support Our Cause</h2>
-        <p>
-          By donating to our cause, you&apos;re supporting local animal rescues
-          and shelters, helping animals in need, and giving back to the
-          community. A small portion also helps keep our platform running, so we
-          can continue making a difference together!
-        </p>
-        <Link to={'donation'}>
-          <button className="donate-btn">Donate Now</button>
-        </Link>
-      </div>
+    <section className={styles.donationSection}>
+      <Container>
+        <div className={styles.donationMainContent}>
+          <div className={styles.donationText}>
+            <h2>Support Our Cause</h2>
+            <p>
+              By donating to our cause, you are supporting animal rescues and
+              shelters,{' '}
+              <strong>
+                helping animals in need, and giving back to the community.{' '}
+              </strong>
+              A small portion also helps keep our platform running, so we can
+              continue making a difference together!
+            </p>
+          </div>
+          <DonationIcon className={styles.donationIcon} />
+        </div>
+        <Button className={styles.btn} onClick={handleRedirect}>
+          Donate Now
+        </Button>
+      </Container>
     </section>
   );
 };

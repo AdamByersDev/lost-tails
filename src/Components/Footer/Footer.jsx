@@ -54,9 +54,9 @@ export default function Footer() {
 
           {/* Email - Centered Below Social Icons */}
           <div className="footer-email">
-            <a href="mailto:info@lostails.com">
+            <a href="mailto:losttailsapp@gmail.com">
               <img src={emailIcon} alt="Email" />
-              info@lostails.com
+              losttailsapp@gmail.com
             </a>
           </div>
         </div>

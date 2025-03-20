@@ -1,8 +1,11 @@
 /* import { Client } from "@petfinder/petfinder-js"; */
 import { useEffect, useState } from 'react';
 import AdoptionCard from '../AdoptionCard';
-import './AdoptionSection.css';
+import styles from './AdoptionSection.module.css';
 import mockData from './mockData.json';
+import Container from '@/UI/Container';
+import Button from '@/UI/Button';
+import { useNavigate } from 'react-router';
 
 /* const client = new Client({
   apiKey: "AV1FVzdrEyl86i7G3SiXZXEIIqSYjYhbOMFNEqi2xK3D7SGfkM",
@@ -12,6 +15,11 @@ import mockData from './mockData.json';
 export default function AdoptionSection() {
   const [adoptablePets /* , setAdoptablePets */] = useState(mockData);
   const [adoptionCards, setAdoptionCards] = useState([]);
+  const navigate = useNavigate();
+
+  // redirect page when click button on adoption home section
+  const handleRedirect = () => navigate('/adoption');
+
   /* Pull the data from the API */
   /* client.animal.search({
     location: 'London, ON',
@@ -33,16 +41,23 @@ export default function AdoptionSection() {
     setAdoptionCards(tempAdoptionCards);
   }, [adoptablePets]);
   return (
-    <section className="adoptionSection">
-      <h2>Helping Pets Find Their Forever Home</h2>
-      <p className="blurb">
-        At Lostails, we work with shelters to help pets find loving homes. While
-        reuniting lost pets with their families, we also introduce adorable
-        adoptable animals—you might just find a new best friend! Together, we’re
-        creating new beginnings, one wag, purr, and happy reunion at a time!
-      </p>
-      <h3>Available pets</h3>
-      <div className="exampleCards">{adoptionCards}</div>
+    <section className={styles.adoptionSection}>
+      <Container>
+        <div className={styles.adoptionText}>
+          <h2>Adoption</h2>
+          <p>
+            At Lostails,<strong>we connect you</strong> with shelters to help
+            find loving homes.
+          </p>
+          <p>
+            <strong>Check some available:</strong>
+          </p>
+        </div>
+        <div className={styles.exampleCards}>{adoptionCards}</div>
+        <Button className={styles.btn} onClick={handleRedirect}>
+          See All
+        </Button>
+      </Container>
     </section>
   );
 }

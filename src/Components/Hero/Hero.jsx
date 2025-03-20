@@ -6,15 +6,15 @@ import Button from '@/UI/Button';
 
 export default function Hero() {
   return (
-    <section className={styles.section}>
+    <section className={styles.heroSection}>
       <Container className={styles.container}>
         <DotLottieReact
           data={heroAnimation}
           loop
           autoplay
-          style={{ aspectRatio: '3/2' }}
+          className={styles.heroImage}
         />
-        <article className={styles.content}>
+        <article className={styles.textContent}>
           <h1>Helping Tails Find Their Way Home.</h1>
           <div className={styles.heroButtons}>
             <Button>Lost Pet</Button>
