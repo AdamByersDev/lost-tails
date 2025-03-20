@@ -1,9 +1,9 @@
-import PetList from '@/Components/PetsList';
+import { Outlet } from 'react-router';
 
 export default function LostFound() {
   return (
     <main>
-      <PetList />
+      <Outlet />
     </main>
   );
 }

@@ -9,6 +9,8 @@ import Signup from '@/pages/Signup';
 import SuccessfulCases from '@/pages/SuccessfulCases';
 import Donation from '@/pages/Donation';
 import Footer from '@/Components/Footer';
+import PetDetailsSection from './Components/PetDetailsSection';
+import PetList from './Components/PetsList';
 
 function App() {
   return (
@@ -19,7 +21,10 @@ function App() {
         <Route path="adoption" element={<Adoption />} />
         <Route path="donation" element={<Donation />} />
         <Route path="login" element={<Login />} />
-        <Route path="lost-found" element={<LostFound />} />
+        <Route path="lost-found" element={<LostFound />}>
+          <Route index element={<PetList />} />
+          <Route path=":id" element={<PetDetailsSection />} />
+        </Route>
         <Route path="signup" element={<Signup />} />
         <Route path="successful-cases" element={<SuccessfulCases />} />
       </Routes>

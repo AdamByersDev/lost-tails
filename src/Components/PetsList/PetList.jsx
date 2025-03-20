@@ -4,6 +4,7 @@ import PetsFilter from '@/Components/PetsFilter';
 import { dummyReports } from './mockData';
 import styles from './PetList.module.css';
 import Container from '@/UI/Container';
+import { Link } from 'react-router';
 
 export default function PetList() {
   const [list, setList] = useState(dummyReports);
@@ -17,14 +18,20 @@ export default function PetList() {
         <div className={styles.grid}>
           {!!list.length &&
             list.map(({ id, picture, name, breed, gender, status }) => (
-              <Pet
+              <Link
                 key={id}
-                picture={picture}
-                name={name}
-                breed={breed}
-                gender={gender}
-                status={status}
-              />
+                to={`/lost-found/${id}`}
+                className={styles.cardLink}
+              >
+                <Pet
+                  key={id}
+                  picture={picture}
+                  name={name}
+                  breed={breed}
+                  gender={gender}
+                  status={status}
+                />
+              </Link>
             ))}
         </div>
       </Container>
