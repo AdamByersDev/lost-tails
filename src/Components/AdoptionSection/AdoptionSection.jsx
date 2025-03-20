@@ -46,7 +46,7 @@ export default function AdoptionSection() {
         <div className={styles.adoptionText}>
           <h2>Adoption</h2>
           <p>
-            At Lostails,<strong>we connect you</strong> with shelters to help
+            At Lostails, <strong>we connect you</strong> with shelters to help
             find loving homes.
           </p>
           <p>

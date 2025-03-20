@@ -44,7 +44,8 @@ export default function Login() {
             Continue with Google
           </Button>
           <div className={styles.createAccount}>
-            Not a member | <span>Create an account</span>
+            <span>Not a member ?</span>
+            <span> Create an account</span>
           </div>
         </div>
       </Container>

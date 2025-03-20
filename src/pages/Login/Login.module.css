@@ -50,7 +50,7 @@
   font-weight: 700;
   text-align: center;
 
-  & span {
+  & span:nth-child(2){
     color: var(--primary-color);
   }
 }
@@ -72,6 +72,10 @@
 
   .formHeader {
     text-align: start;
+  }
+
+  .googleButton {
+    max-width: 20rem;
   }
 }
 
