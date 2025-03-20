@@ -20,11 +20,14 @@ export default function PetList() {
     <section className={styles.adoptionList}>
       <Container className={styles.adoptionListContainer}>
         <PetsFilter data={list} setter={setList} resetData={resetData} />
-        <div className={styles.adoptionListGrid}>
-          {!!list.length &&
-            list.map(({ id, picture, name, url }) => (
-              <AdoptionPet key={id} picture={picture} name={name} url={url} />
-            ))}
+        <div>
+          <h2 className={styles.adoptionTitle}>Adoption</h2>
+          <div className={styles.adoptionListGrid}>
+            {!!list.length &&
+              list.map(({ id, picture, name, url }) => (
+                <AdoptionPet key={id} picture={picture} name={name} url={url} />
+              ))}
+          </div>
         </div>
       </Container>
     </section>
