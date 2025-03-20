@@ -85,6 +85,12 @@ jobs:
             npm run build
           fi
 
+      - name: Delete previous GitHub Pages artifact
+        uses: geekyeggo/delete-artifact@v2
+        with:
+          name: github-pages
+
+      
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
