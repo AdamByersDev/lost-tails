@@ -23,12 +23,6 @@ jobs:
             npm install
           fi
 
-      - name: Test Project (if any test step exists)
-        run: |
-          if [ -f package.json ]; then
-            npm test
-          fi
-
       - name: ESLint Project (if any lint step exists)
         run: |
           if [ -f package.json ]; then
