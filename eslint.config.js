@@ -51,7 +51,7 @@ export default [
       'prettier/prettier': 'error',
       'import/no-unresolved': [
         'error',
-        { commonjs: true, amd: true, ignore: ['\\?url$'], }
+        { commonjs: true, amd: true, ignore: ['\\?url$'] },
       ],
       'react/prop-types': 'off',
     },
