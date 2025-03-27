@@ -2,7 +2,7 @@ import { Client } from '@petfinder/petfinder-js';
 
 const getLocation = async () => {
   try {
-    const response = await fetch('https://ipapi.co/json/', { mode: 'no-cors' });
+    const response = await fetch('https://ipapi.co/json/');
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
@@ -21,6 +21,12 @@ const client = new Client({
 });
 
 export const getAdoptionPets = async (limit = 50) => {
+  const cachedData = sessionStorage.getItem('petfinder');
+
+  if (cachedData) {
+    return JSON.parse(cachedData).slice(0, limit);
+  }
+
   const location = await getLocation();
 
   const {
@@ -31,7 +37,7 @@ export const getAdoptionPets = async (limit = 50) => {
     distance: 50,
   })) || { data: { animals: [] } };
 
-  return animals.map(
+  const adoptionPets = animals.map(
     ({
       id,
       name,
@@ -58,4 +64,8 @@ export const getAdoptionPets = async (limit = 50) => {
       url,
     }),
   );
+
+  sessionStorage.setItem('petfinder', JSON.stringify(adoptionPets));
+
+  return adoptionPets;
 };

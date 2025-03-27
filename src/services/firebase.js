@@ -12,11 +12,14 @@ import {
   sendPasswordResetEmail,
 } from 'firebase/auth';
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
   getFirestore,
+  onSnapshot,
   setDoc,
+  Timestamp,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -37,6 +40,7 @@ export const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const usersRef = collection(db, 'users');
+const reportsRef = collection(db, 'reports');
 
 export const registerUser = async ({
   firstName,
@@ -138,4 +142,76 @@ export const resetPassword = async (email, success) => {
   } catch (e) {
     console.error(e.message);
   }
+};
+
+export const createReport = async ({
+  name,
+  species,
+  color,
+  size,
+  gender,
+  breed,
+  picture,
+  lostLocation,
+  foundLocation,
+  status,
+  email,
+}) => {
+  const user = auth.currentUser;
+
+  if (!user) return;
+
+  try {
+    await addDoc(reportsRef, {
+      name,
+      species,
+      color,
+      size,
+      gender,
+      breed,
+      picture,
+      lostLocation,
+      foundLocation,
+      status,
+      email,
+      date: Timestamp.now().toMillis(),
+    });
+  } catch (e) {
+    console.error('Error', 'Error creating report: ' + e);
+  }
+};
+
+export const getReport = async (id) => {
+  const docRef = doc(db, 'reports', id);
+
+  try {
+    const reportSnapshot = await getDoc(docRef);
+    if (reportSnapshot.exists()) {
+      const formatDate = (stamp) =>
+        new Intl.DateTimeFormat('en-CA', {
+          weekday: 'long',
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        }).format(stamp);
+
+      const data = reportSnapshot.data();
+
+      return { ...data, date: formatDate(data.date) };
+    }
+    console.log('Error', 'No report found!');
+    return null;
+  } catch (e) {
+    console.log('Error', 'Error retrieving report: ' + e);
+  }
+};
+
+export const reportsObserver = (callback) => {
+  return onSnapshot(reportsRef, (snapshot) => {
+    const reports = [];
+    snapshot.forEach((doc) => {
+      reports.push({ ...doc.data(), id: doc.id });
+    });
+    callback(reports);
+  });
 };
