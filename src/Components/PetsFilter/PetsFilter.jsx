@@ -1,32 +1,33 @@
 import { Button, Checkbox } from 'antd';
-import { useState } from 'react';
 import PetsFilterSelect from '@/Components/PetsFilterSelect';
 import styles from './PetsFilter.module.css';
+import usePetsFilter from '@/hooks/usePetsFilterSelect';
 
-const filtersList = ['status', 'breed', 'color', 'size', 'gender', 'species'];
-
-export default function PetsFilter({ data, setter, resetData }) {
-  const [defaultValue, setDefaultValue] = useState([]);
-
-  const onClear = () => {
-    resetData();
-    setDefaultValue([]);
-  };
+export default function PetsFilter({ data, setter }) {
+  const {
+    handleChangeFilter,
+    handleClearFilter,
+    getOptions,
+    clearFilter,
+    filter,
+    filtersList,
+  } = usePetsFilter({ data, setter });
 
   return (
     <aside className={styles.aside}>
-      {filtersList.map((target) => (
+      {filtersList.map((key) => (
         <PetsFilterSelect
-          key={target}
-          data={data}
-          setter={setter}
-          target={target}
-          defaultValue={defaultValue}
+          key={key}
+          target={key}
+          value={filter[key] || []}
+          handleChangeFilter={handleChangeFilter}
+          handleClearFilter={handleClearFilter}
+          options={getOptions(key)}
         />
       ))}
       <div className={styles.control}>
         <Checkbox>Sort by date</Checkbox>
-        <Button color="danger" variant="solid" onClick={onClear}>
+        <Button color="danger" variant="solid" onClick={clearFilter}>
           Clear Filter
         </Button>
       </div>

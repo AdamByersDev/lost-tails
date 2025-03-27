@@ -1,33 +1,29 @@
 import { Select } from 'antd';
-import usePetsFilterSelect from '@/hooks/usePetsFilterSelect';
 import styles from './PetsFilterSelect.module.css';
 
 export default function PetsFilterSelect({
-  data,
-  setter,
-  defaultValue,
+  value,
   target,
+  handleChangeFilter,
+  handleClearFilter,
+  options,
 }) {
-  const { handleChange, getOptions, selectValue } = usePetsFilterSelect(
-    data,
-    setter,
-    defaultValue,
-  );
-
   return (
     <div className={styles.control}>
       <label className={styles.label} htmlFor={target}>
         {target}
       </label>
       <Select
-        value={selectValue}
+        value={value}
         id={target}
         style={{
           width: 200,
         }}
-        onChange={handleChange}
-        options={getOptions(target)}
+        onChange={handleChangeFilter}
+        options={options}
         placeholder={`Filter by ${target}`}
+        allowClear
+        onClear={() => handleClearFilter(target)}
       />
     </div>
   );
