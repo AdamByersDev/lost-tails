@@ -14,6 +14,10 @@ export default function useForm({ defaultFormData, defaultFormError }) {
     setFormData((prev) => ({ ...prev, [name]: checked }));
   };
 
+  const handleSelect = (value, name) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleBlur = (e) => {
     const { value, name } = e.target;
 
@@ -54,5 +58,6 @@ export default function useForm({ defaultFormData, defaultFormError }) {
     handleChange,
     handleCheck,
     handleBlur,
+    handleSelect,
   };
 }

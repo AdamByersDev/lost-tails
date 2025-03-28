@@ -1,27 +1,30 @@
 import useForm from '@/hooks/useForm';
 import Container from '@/UI/Container';
 import CustomInput from '@/UI/CustomInput';
-import { Radio, Select } from 'antd';
+import { Radio } from 'antd';
 import styles from './NewReport.module.css';
 import Button from '@/UI/Button';
 import LocationSelect from '../LocationSelect';
+import { NEW_REPORT, COMPONENTS } from './data';
+import CustomSelect from '@/UI/CustomSelect';
 
 export default function NewReport() {
-  const { formData, formError, handleChange, handleBlur } = useForm({
-    defaultFormData: {
-      name: '',
-      location: [],
-      email: '',
-      specie: '',
-      gender: '',
-      breed: '',
-      color: '',
-      size: '',
-      picture: '',
-      status: '',
-    },
-    defaultFormError: { email: '' },
-  });
+  const { formData, formError, handleChange, handleBlur, handleSelect } =
+    useForm({
+      defaultFormData: {
+        name: '',
+        location: [],
+        email: '',
+        specie: '',
+        gender: '',
+        breed: '',
+        color: '',
+        size: '',
+        picture: '',
+        status: 'lost',
+      },
+      defaultFormError: { email: '' },
+    });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,90 +35,63 @@ export default function NewReport() {
       <Container>
         <h1>Report a Pet</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <Radio.Group
-            name="status"
-            options={[
-              { label: 'Lost', value: 'lost' },
-              { label: 'Found', value: 'found' },
-            ]}
-          />
-          <LocationSelect
-            label="Nearest Address Last Seen"
-            target="location"
-            value={formData.location}
-            handleSelect={handleChange}
-          />
-          <CustomInput
-            label="Email address"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter email"
-            value={formData.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={formError.email}
-          />
-          <CustomInput
-            label="Pet Name"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter pet name"
-            value={formData.name}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={formError.name}
-          />
-          <CustomInput
-            label="Pet Breed"
-            type="text"
-            name="breed"
-            id="breed"
-            placeholder="Enter pet breed"
-            value={formData.breed}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={formError.breed}
-          />
-          <CustomInput
-            label="Pet Colour"
-            type="text"
-            name="color"
-            id="color"
-            placeholder="Enter pet colour"
-            value={formData.color}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={formError.color}
-          />
-          <Select
-            value={formData.size}
-            options={[
-              { value: 'small', label: 'Small' },
-              { value: 'medium', label: 'Medium' },
-              { value: 'large', label: 'Large' },
-              { value: 'extra large', label: 'Extra Large' },
-            ]}
-            onChange={handleChange}
-          />
-          <Select
-            value={formData.gender}
-            options={[
-              { value: 'female', label: 'Female' },
-              { value: 'male', label: 'Male' },
-            ]}
-            onChange={handleChange}
-          />
-          <Select
-            value={formData.specie}
-            options={[
-              { value: 'cat', label: 'Cat' },
-              { value: 'dog', label: 'Dog' },
-              { value: 'other', label: 'Other' },
-            ]}
-            onChange={handleChange}
-          />
+          {NEW_REPORT.map(
+            ({ component, name, label, type, placeholder, options }) => {
+              switch (component) {
+                case COMPONENTS.input:
+                  return (
+                    <CustomInput
+                      key={name}
+                      label={label}
+                      type={type}
+                      name={name}
+                      id={name}
+                      placeholder={placeholder}
+                      value={formData[name]}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={formError[name]}
+                    />
+                  );
+                case COMPONENTS.select:
+                  return (
+                    <CustomSelect
+                      key={name}
+                      name={name}
+                      label={label}
+                      value={formData[name] || []}
+                      handleChange={(val) => handleSelect(val, name)}
+                      placeholder={placeholder}
+                      options={options}
+                      className={styles.select}
+                    />
+                  );
+                case COMPONENTS.locationSelect:
+                  return (
+                    <LocationSelect
+                      key={name}
+                      name={name}
+                      label={label}
+                      placeholder={placeholder}
+                      value={formData[name]}
+                      handleChange={(val) => handleSelect(val, name)}
+                    />
+                  );
+                case COMPONENTS.radioGroup:
+                  return (
+                    <Radio.Group
+                      key={name}
+                      name={name}
+                      options={options}
+                      value={formData[name]}
+                      onChange={handleChange}
+                    />
+                  );
+                default:
+                  return null;
+              }
+            },
+          )}
           <Button className={styles.submit} type="submit">
             Create
           </Button>

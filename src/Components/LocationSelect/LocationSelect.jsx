@@ -4,11 +4,15 @@ import debounce from 'debounce';
 import { getCoordinatesFromAddress } from '@/services/nominatim';
 import styles from './LocationSelect.module.css';
 
-export default function LocationSelect({ label, target }) {
+export default function LocationSelect({
+  label,
+  name,
+  placeholder,
+  value,
+  handleChange,
+}) {
   const [options, setOptions] = useState([]);
   const [fetching, setFetching] = useState(false);
-
-  const [value, setValue] = useState([]);
 
   const fetchOptions = async (value) => {
     if (value && value.length > 4) {
@@ -21,25 +25,23 @@ export default function LocationSelect({ label, target }) {
 
   return (
     <div className={styles.control}>
-      <label className={styles.label} htmlFor={target}>
+      <label className={styles.label} htmlFor={name}>
         {label}
       </label>
       <Select
         value={value}
         filterOption={false}
-        id={target}
+        id={name}
+        title={name}
         className={styles.select}
-        onChange={(newValue) => {
-          console.log(newValue);
-          setValue(newValue);
-        }}
+        onChange={handleChange}
         options={options}
-        placeholder={`Enter ${target}`}
+        placeholder={placeholder}
         notFoundContent={fetching ? <Spin size="small" /> : null}
         onSearch={debounce(fetchOptions, 500)}
         showSearch
-        labelInValue
         allowClear
+        onClear={() => setOptions([])}
       />
     </div>
   );

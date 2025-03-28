@@ -1,0 +1,30 @@
+import { Select } from 'antd';
+import styles from './CustomSelect.module.css';
+
+export default function CustomSelect({
+  value,
+  name,
+  label,
+  handleChange,
+  handleClear,
+  options,
+  className = '',
+  placeholder,
+}) {
+  return (
+    <div className={`${styles.control} ${className}`.trim()}>
+      <label className={styles.label} htmlFor={name}>
+        {label}
+      </label>
+      <Select
+        value={value}
+        id={name}
+        onChange={handleChange}
+        options={options}
+        placeholder={placeholder}
+        allowClear
+        onClear={() => handleClear && handleClear()}
+      />
+    </div>
+  );
+}

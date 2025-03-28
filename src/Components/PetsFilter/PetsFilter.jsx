@@ -1,7 +1,7 @@
 import { Button, Checkbox } from 'antd';
-import PetsFilterSelect from '@/Components/PetsFilterSelect';
 import styles from './PetsFilter.module.css';
 import usePetsFilter from '@/hooks/usePetsFilterSelect';
+import CustomSelect from '@/UI/CustomSelect';
 
 export default function PetsFilter({ data, setter }) {
   const {
@@ -16,13 +16,16 @@ export default function PetsFilter({ data, setter }) {
   return (
     <aside className={styles.aside}>
       {filtersList.map((key) => (
-        <PetsFilterSelect
+        <CustomSelect
           key={key}
-          target={key}
+          name={key}
+          label={key}
           value={filter[key] || []}
-          handleChangeFilter={handleChangeFilter}
-          handleClearFilter={handleClearFilter}
+          handleChange={handleChangeFilter}
+          handleClear={() => handleClearFilter(key)}
           options={getOptions(key)}
+          placeholder={`Filter by ${key}`}
+          className={styles.select}
         />
       ))}
       <div className={styles.control}>
