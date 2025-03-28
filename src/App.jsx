@@ -9,8 +9,9 @@ import Signup from '@/pages/Signup';
 import SuccessfulCases from '@/pages/SuccessfulCases';
 import Donation from '@/pages/Donation';
 import Footer from '@/Components/Footer';
-import PetDetailsSection from './Components/PetDetailsSection';
-import PetList from './Components/PetsList';
+import PetDetailsSection from '@/Components/PetDetailsSection';
+import PetList from '@/Components/PetsList';
+import NewReport from '@/Components/NewReport';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="lost-found" element={<LostFound />}>
           <Route index element={<PetList />} />
+          <Route path="new-report" element={<NewReport />} />
           <Route path=":id" element={<PetDetailsSection />} />
         </Route>
         <Route path="signup" element={<Signup />} />

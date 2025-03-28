@@ -42,7 +42,7 @@ export default function LoginForm() {
           label={'Email address'}
           type="email"
           name="email"
-          id="name"
+          id="email"
           placeholder="Enter email"
           value={formData.email}
           onChange={handleChange}

@@ -1,0 +1,20 @@
+.section {
+  padding: 4rem 0;
+  background-color: var(--light-orange-color2);
+}
+
+.form {
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  max-width: 48rem;
+  background-color: var(--white-color);
+  border-radius: 20px;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.486);
+}
+
+.submit {
+  max-width: 10rem;
+  align-self: center;
+}

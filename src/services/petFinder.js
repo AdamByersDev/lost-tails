@@ -24,7 +24,11 @@ export const getAdoptionPets = async (limit = 50) => {
   const cachedData = sessionStorage.getItem('petfinder');
 
   if (cachedData) {
-    return JSON.parse(cachedData).slice(0, limit);
+    const data = JSON.parse(cachedData);
+
+    if (limit <= data.length) {
+      return data.slice(0, limit);
+    }
   }
 
   const location = await getLocation();

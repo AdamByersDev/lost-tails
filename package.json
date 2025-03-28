@@ -16,6 +16,7 @@
     "@petfinder/petfinder-js": "^1.0.6",
     "@react-google-maps/api": "^2.20.6",
     "antd": "^5.24.2",
+    "debounce": "^2.2.0",
     "firebase": "^11.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
