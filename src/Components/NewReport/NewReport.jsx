@@ -1,12 +1,14 @@
 import useForm from '@/hooks/useForm';
 import Container from '@/UI/Container';
 import CustomInput from '@/UI/CustomInput';
-import { Radio } from 'antd';
+import { message, Radio } from 'antd';
 import styles from './NewReport.module.css';
 import Button from '@/UI/Button';
 import LocationSelect from '../LocationSelect';
 import { NEW_REPORT, COMPONENTS } from './data';
 import CustomSelect from '@/UI/CustomSelect';
+import UploadImage from '@/UI/UploadImage';
+import { uploadImage } from '@/services/imgbb';
 
 export default function NewReport() {
   const { formData, formError, handleChange, handleBlur, handleSelect } =
@@ -20,19 +22,36 @@ export default function NewReport() {
         breed: '',
         color: '',
         size: '',
-        picture: '',
+        picture: null,
         status: 'lost',
       },
       defaultFormError: { email: '', specie: '', location: '' },
     });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const hasError = Object.values(formError).some((e) => e);
+
+    if (hasError) {
+      return message.error('This form has errors');
+    }
+
+    const pureBase64 = formData.picture && formData.picture.split(',')[1];
+
+    const picture =
+      pureBase64 &&
+      (await uploadImage(pureBase64, formData.name || formData.specie));
+
+    console.log({
+      ...formData,
+      location: formData.location.split(','),
+      picture,
+    });
   };
 
   return (
     <section className={styles.section}>
-      <Container>
+      <Container className={styles.container}>
         <h1>Report a Pet</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
           {NEW_REPORT.map(
@@ -103,11 +122,22 @@ export default function NewReport() {
                 case COMPONENTS.radioGroup:
                   return (
                     <Radio.Group
+                      block
                       key={name}
                       name={name}
                       options={options}
                       value={formData[name]}
                       onChange={handleChange}
+                    />
+                  );
+                case COMPONENTS.uploadImage:
+                  return (
+                    <UploadImage
+                      key={name}
+                      name={name}
+                      label={label}
+                      imageUrl={formData[name]}
+                      onChange={(val) => handleSelect(val, name)}
                     />
                   );
                 default:

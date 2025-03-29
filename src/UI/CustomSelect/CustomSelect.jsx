@@ -19,17 +19,20 @@ export default function CustomSelect({
       <label aria-required={required} className={styles.label} htmlFor={name}>
         {label}
       </label>
-      <Select
-        value={value}
-        id={name}
-        onChange={handleChange}
-        options={options}
-        placeholder={placeholder}
-        allowClear
-        onClear={() => handleClear && handleClear()}
-        onBlur={onBlur}
-        status={error && 'error'}
-      />
+      <div className={styles.validationWrapper}>
+        <Select
+          value={value}
+          id={name}
+          onChange={handleChange}
+          options={options}
+          placeholder={placeholder}
+          allowClear
+          onClear={() => handleClear && handleClear()}
+          onBlur={onBlur}
+          status={error && 'error'}
+        />
+        {!!error && <span className={styles.errorMessage}>{error}</span>}
+      </div>
     </div>
   );
 }

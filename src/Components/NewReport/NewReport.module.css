@@ -3,8 +3,16 @@
   background-color: var(--light-orange-color2);
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+}
+
 .form {
-  padding: 2rem 4rem;
+  width: 100%;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   row-gap: 2rem;
@@ -34,6 +42,10 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .form {
+    padding: 2rem 4rem;
+  }
+  
   .select {
     grid-template-columns: 6.5rem 1fr;
   }

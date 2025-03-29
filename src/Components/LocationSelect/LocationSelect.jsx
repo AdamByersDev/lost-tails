@@ -48,6 +48,7 @@ export default function LocationSelect({
         onClear={() => setOptions([])}
         status={error && 'error'}
       />
+      {!!error && <span className={styles.errorMessage}>{error}</span>}
     </div>
   );
 }

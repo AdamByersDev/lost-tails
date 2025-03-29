@@ -3,6 +3,7 @@ export const COMPONENTS = {
   input: 'input',
   locationSelect: 'location-select',
   select: 'select',
+  uploadImage: 'upload-image',
 };
 
 export const NEW_REPORT = [
@@ -76,5 +77,10 @@ export const NEW_REPORT = [
       { value: 'dog', label: 'Dog' },
       { value: 'other', label: 'Other' },
     ],
+  },
+  {
+    component: COMPONENTS.uploadImage,
+    name: 'picture',
+    label: 'Pet picture',
   },
 ];
