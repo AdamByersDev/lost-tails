@@ -19,6 +19,7 @@ export const NEW_REPORT = [
     name: 'location',
     label: 'Nearest Address Last Seen',
     placeholder: 'Search location',
+    required: true,
   },
   {
     component: COMPONENTS.input,
@@ -26,6 +27,7 @@ export const NEW_REPORT = [
     name: 'email',
     label: 'Email address',
     placeholder: 'Enter email',
+    required: true,
   },
   {
     component: COMPONENTS.input,
@@ -68,6 +70,7 @@ export const NEW_REPORT = [
     name: 'specie',
     label: 'Pet specie',
     placeholder: 'Select pet specie',
+    required: true,
     options: [
       { value: 'cat', label: 'Cat' },
       { value: 'dog', label: 'Dog' },

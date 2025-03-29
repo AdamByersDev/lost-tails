@@ -10,6 +10,9 @@ export default function LocationSelect({
   placeholder,
   value,
   handleChange,
+  onBlur,
+  error,
+  required,
 }) {
   const [options, setOptions] = useState([]);
   const [fetching, setFetching] = useState(false);
@@ -25,7 +28,7 @@ export default function LocationSelect({
 
   return (
     <div className={styles.control}>
-      <label className={styles.label} htmlFor={name}>
+      <label aria-required={required} className={styles.label} htmlFor={name}>
         {label}
       </label>
       <Select
@@ -39,9 +42,11 @@ export default function LocationSelect({
         placeholder={placeholder}
         notFoundContent={fetching ? <Spin size="small" /> : null}
         onSearch={debounce(fetchOptions, 500)}
+        onBlur={onBlur}
         showSearch
         allowClear
         onClear={() => setOptions([])}
+        status={error && 'error'}
       />
     </div>
   );

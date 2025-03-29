@@ -23,7 +23,7 @@ export default function NewReport() {
         picture: '',
         status: 'lost',
       },
-      defaultFormError: { email: '' },
+      defaultFormError: { email: '', specie: '', location: '' },
     });
 
   const handleSubmit = (e) => {
@@ -36,7 +36,15 @@ export default function NewReport() {
         <h1>Report a Pet</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
           {NEW_REPORT.map(
-            ({ component, name, label, type, placeholder, options }) => {
+            ({
+              component,
+              name,
+              label,
+              type,
+              placeholder,
+              options,
+              required,
+            }) => {
               switch (component) {
                 case COMPONENTS.input:
                   return (
@@ -51,6 +59,7 @@ export default function NewReport() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       error={formError[name]}
+                      required={required}
                     />
                   );
                 case COMPONENTS.select:
@@ -64,6 +73,13 @@ export default function NewReport() {
                       placeholder={placeholder}
                       options={options}
                       className={styles.select}
+                      required={required}
+                      onBlur={() =>
+                        handleBlur({
+                          target: { value: formData[name], name },
+                        })
+                      }
+                      error={formError[name]}
                     />
                   );
                 case COMPONENTS.locationSelect:
@@ -75,6 +91,13 @@ export default function NewReport() {
                       placeholder={placeholder}
                       value={formData[name]}
                       handleChange={(val) => handleSelect(val, name)}
+                      required={required}
+                      onBlur={() =>
+                        handleBlur({
+                          target: { value: formData[name], name },
+                        })
+                      }
+                      error={formError[name]}
                     />
                   );
                 case COMPONENTS.radioGroup:

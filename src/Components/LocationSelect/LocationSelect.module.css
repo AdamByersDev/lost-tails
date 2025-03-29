@@ -1,6 +1,14 @@
 .label {
   text-transform: capitalize;
   font-weight: 700;
+
+  &[aria-required=true] {
+    &::after {
+      content: '*';
+      color: var(--error-color);
+      margin-left: 0.25rem;
+    }
+  }
 }
 
 .control {

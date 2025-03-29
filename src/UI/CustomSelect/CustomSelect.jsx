@@ -6,14 +6,17 @@ export default function CustomSelect({
   name,
   label,
   handleChange,
+  onBlur,
   handleClear,
   options,
   className = '',
   placeholder,
+  error,
+  required,
 }) {
   return (
     <div className={`${styles.control} ${className}`.trim()}>
-      <label className={styles.label} htmlFor={name}>
+      <label aria-required={required} className={styles.label} htmlFor={name}>
         {label}
       </label>
       <Select
@@ -24,6 +27,8 @@ export default function CustomSelect({
         placeholder={placeholder}
         allowClear
         onClear={() => handleClear && handleClear()}
+        onBlur={onBlur}
+        status={error && 'error'}
       />
     </div>
   );

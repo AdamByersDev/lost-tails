@@ -6,25 +6,18 @@
 
   & label {
     font-weight: 700;
+
+    &[aria-required=true] {
+      &::after {
+        content: '*';
+        color: var(--error-color);
+        margin-left: 0.25rem;
+      }
+    }
   }
 
   & input {
-    border: 1px solid #e7e7e7;
-    padding: 1rem;
-    width: 100%;
-    border-radius: 5px;
-
-    &:focus-visible {
-      outline-color: #0078cd;
-    }
-
-    &.errorInput {
-      border: 2px solid var(--error-color);
-
-      &:focus-visible {
-        outline-color: var(--error-color);
-      }
-    }
+    height: 3rem;
   }
 }
 
@@ -33,4 +26,9 @@
   font-size: 0.75rem;
   position: absolute;
   bottom: -1.5rem;
+  word-spacing: 1px;
+}
+
+.errorMessage::first-letter {
+  text-transform: capitalize;
 }

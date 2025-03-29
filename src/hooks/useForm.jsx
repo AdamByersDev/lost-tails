@@ -21,11 +21,18 @@ export default function useForm({ defaultFormData, defaultFormError }) {
   const handleBlur = (e) => {
     const { value, name } = e.target;
 
+    if (!(name in formError)) return;
+
     let error = '';
 
     const resolve = () => setFormError((prev) => ({ ...prev, [name]: error }));
 
-    if (!value && !value.trim()) {
+    if (Array.isArray(value) && !value.length) {
+      error = name + ' is required!';
+      return resolve();
+    }
+
+    if (!value || !value?.trim()) {
       error = name + ' is required!';
       return resolve();
     }

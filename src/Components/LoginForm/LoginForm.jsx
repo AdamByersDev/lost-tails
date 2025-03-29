@@ -48,6 +48,7 @@ export default function LoginForm() {
           onChange={handleChange}
           onBlur={handleBlur}
           error={formError.email}
+          required
         />
         <CustomInput
           label={'Password'}
@@ -59,6 +60,7 @@ export default function LoginForm() {
           onChange={handleChange}
           onBlur={handleBlur}
           error={formError.password}
+          required
         />
         <div className={styles.rememberControl}>
           <label>

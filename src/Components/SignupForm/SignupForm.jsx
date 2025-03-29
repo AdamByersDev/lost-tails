@@ -18,7 +18,13 @@ export default function SignupForm() {
         confirmPassword: '',
         termsAccepted: false,
       },
-      defaultFormError: {},
+      defaultFormError: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      },
     });
 
   const [messageApi, contextHolder] = message.useMessage();
@@ -48,11 +54,7 @@ export default function SignupForm() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.row}>
           <CustomInput
-            label={
-              <>
-                First Name <span className={styles.required}>*</span>
-              </>
-            }
+            label="First Name"
             type="text"
             name="firstName"
             id="firstName"
@@ -61,13 +63,10 @@ export default function SignupForm() {
             onChange={handleChange}
             onBlur={handleBlur}
             error={formError.firstName}
+            required
           />
           <CustomInput
-            label={
-              <>
-                Last Name <span className={styles.required}>*</span>
-              </>
-            }
+            label="Last Name"
             type="text"
             name="lastName"
             id="lastName"
@@ -76,14 +75,11 @@ export default function SignupForm() {
             onChange={handleChange}
             onBlur={handleBlur}
             error={formError.lastName}
+            required
           />
         </div>
         <CustomInput
-          label={
-            <>
-              Email address <span className={styles.required}>*</span>
-            </>
-          }
+          label="Email address"
           type="email"
           name="email"
           id="email"
@@ -92,13 +88,10 @@ export default function SignupForm() {
           onChange={handleChange}
           onBlur={handleBlur}
           error={formError.email}
+          required
         />
         <CustomInput
-          label={
-            <>
-              Password <span className={styles.required}>*</span>
-            </>
-          }
+          label="Password"
           type="password"
           name="password"
           id="password"
@@ -107,13 +100,10 @@ export default function SignupForm() {
           onChange={handleChange}
           onBlur={handleBlur}
           error={formError.password}
+          required
         />
         <CustomInput
-          label={
-            <>
-              Confirm Password <span className={styles.required}>*</span>
-            </>
-          }
+          label="Confirm Password"
           type="password"
           name="confirmPassword"
           id="confirmPassword"
@@ -122,6 +112,7 @@ export default function SignupForm() {
           onChange={handleChange}
           onBlur={handleBlur}
           error={formError.confirmPassword}
+          required
         />
 
         <div className={styles.rememberControl}>

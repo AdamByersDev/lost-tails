@@ -1,3 +1,4 @@
+import { Input } from 'antd';
 import styles from './CustomInput.module.css';
 
 export default function CustomInput({
@@ -10,18 +11,14 @@ export default function CustomInput({
   onChange,
   onBlur,
   error,
+  required,
 }) {
-  const formatErrorMessage = (msg) => {
-    return msg
-      .replace(/([A-Z])/g, ' $1')
-      .replace(/^./, (str) => str.toUpperCase())
-      .trim();
-  };
-
   return (
     <div className={styles.formControl}>
-      <label htmlFor={id}>{label}</label>
-      <input
+      <label aria-required={required} htmlFor={id}>
+        {label}
+      </label>
+      <Input
         type={type}
         name={name}
         id={id}
@@ -29,12 +26,9 @@ export default function CustomInput({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        className={error ? styles.errorInput : ''}
+        status={error && 'error'}
       />
-      {/* {!!error && <span className={styles.errorMessage}>Error: {error}</span>} */}
-      {!!error && (
-        <span className={styles.errorMessage}>{formatErrorMessage(error)}</span>
-      )}
+      {!!error && <span className={styles.errorMessage}>{error}</span>}
     </div>
   );
 }
