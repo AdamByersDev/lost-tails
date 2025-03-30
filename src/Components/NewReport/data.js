@@ -45,6 +45,13 @@ export const NEW_REPORT = [
     placeholder: 'Enter pet breed',
   },
   {
+    component: COMPONENTS.input,
+    type: 'text',
+    name: 'color',
+    label: 'Pet Colour',
+    placeholder: 'Enter pet colour',
+  },
+  {
     component: COMPONENTS.select,
     name: 'size',
     label: 'Pet size',
@@ -68,9 +75,9 @@ export const NEW_REPORT = [
   },
   {
     component: COMPONENTS.select,
-    name: 'specie',
-    label: 'Pet specie',
-    placeholder: 'Select pet specie',
+    name: 'species',
+    label: 'Pet species',
+    placeholder: 'Select pet species',
     required: true,
     options: [
       { value: 'cat', label: 'Cat' },

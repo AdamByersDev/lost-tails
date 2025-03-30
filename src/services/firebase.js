@@ -176,8 +176,11 @@ export const createReport = async ({
       email,
       date: Timestamp.now().toMillis(),
     });
+
+    return true;
   } catch (e) {
     console.error('Error', 'Error creating report: ' + e);
+    return null;
   }
 };
 

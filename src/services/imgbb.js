@@ -22,5 +22,6 @@ export const uploadImage = async (imageBase64, name) => {
     return data.url;
   } catch (e) {
     message.error('Error on saving image! ' + e);
+    return null;
   }
 };

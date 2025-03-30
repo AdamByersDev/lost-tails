@@ -9,24 +9,31 @@ import { NEW_REPORT, COMPONENTS } from './data';
 import CustomSelect from '@/UI/CustomSelect';
 import UploadImage from '@/UI/UploadImage';
 import { uploadImage } from '@/services/imgbb';
+import { createReport } from '@/services/firebase';
 
 export default function NewReport() {
-  const { formData, formError, handleChange, handleBlur, handleSelect } =
-    useForm({
-      defaultFormData: {
-        name: '',
-        location: [],
-        email: '',
-        specie: '',
-        gender: '',
-        breed: '',
-        color: '',
-        size: '',
-        picture: null,
-        status: 'lost',
-      },
-      defaultFormError: { email: '', specie: '', location: '' },
-    });
+  const {
+    formData,
+    formError,
+    handleChange,
+    handleBlur,
+    handleSelect,
+    clearForm,
+  } = useForm({
+    defaultFormData: {
+      name: '',
+      location: [],
+      email: '',
+      species: '',
+      gender: '',
+      breed: '',
+      color: '',
+      size: '',
+      picture: null,
+      status: 'lost',
+    },
+    defaultFormError: { email: '', species: '', location: '' },
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,17 +43,47 @@ export default function NewReport() {
       return message.error('This form has errors');
     }
 
-    const pureBase64 = formData.picture && formData.picture.split(',')[1];
-
-    const picture =
-      pureBase64 &&
-      (await uploadImage(pureBase64, formData.name || formData.specie));
-
-    console.log({
-      ...formData,
-      location: formData.location.split(','),
+    const {
+      name,
+      location,
+      email,
+      species,
+      gender,
+      breed,
+      color,
+      size,
       picture,
+      status,
+    } = formData;
+
+    const pureBase64 = picture && picture.split(',')[1];
+
+    const imageUrl =
+      pureBase64 && (await uploadImage(pureBase64, name || species));
+
+    const lostLocation = status === 'lost' ? location.split(',') : [];
+    const foundLocation = status === 'found' ? location.split(',') : [];
+
+    const res = await createReport({
+      name,
+      species,
+      color,
+      size,
+      gender,
+      breed,
+      picture: imageUrl,
+      lostLocation,
+      foundLocation,
+      status,
+      email,
     });
+
+    if (res) {
+      clearForm();
+      return message.success('Report created successfully');
+    }
+
+    return message.error('Error creating report');
   };
 
   return (

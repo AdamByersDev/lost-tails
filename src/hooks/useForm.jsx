@@ -59,6 +59,8 @@ export default function useForm({ defaultFormData, defaultFormError }) {
     return resolve();
   };
 
+  const clearForm = () => setFormData(defaultFormData);
+
   return {
     formData,
     formError,
@@ -66,5 +68,6 @@ export default function useForm({ defaultFormData, defaultFormError }) {
     handleCheck,
     handleBlur,
     handleSelect,
+    clearForm,
   };
 }
