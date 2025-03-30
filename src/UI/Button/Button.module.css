@@ -26,6 +26,17 @@
   &:focus-visible {
     outline-color: #0078cd;
   }
+
+  &:disabled {
+    background-color: var(--grey-color);
+    color: var(--text-color);
+    border-color: var(--grey-color);
+    cursor:not-allowed;
+
+    &:active {
+      box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 10px;
+    }
+  }
 }
 
 .primary {

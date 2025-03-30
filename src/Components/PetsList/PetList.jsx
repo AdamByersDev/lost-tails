@@ -2,20 +2,30 @@ import Pet from '@/Components/Pet';
 import PetsFilter from '@/Components/PetsFilter';
 import styles from './PetList.module.css';
 import Container from '@/UI/Container';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import useReports from '@/hooks/useReports';
+import useUser from '@/hooks/useUser';
+import Button from '@/UI/Button';
 
 export default function PetList() {
   const { reports, list, setList } = useReports();
+
+  const { user } = useUser();
+
+  const navigate = useNavigate();
 
   return (
     <section className={styles.list}>
       <Container className={styles.container}>
         <div className={styles.header}>
           <h1>Lost & Found</h1>
-          <Link to="new-report" className={styles.link}>
+          <Button
+            disabled={!user}
+            onClick={() => navigate('new-report')}
+            tooltip="Please Login"
+          >
             + Report a new pet
-          </Link>
+          </Button>
         </div>
         <div className={styles.content}>
           <PetsFilter data={reports} setter={setList} />

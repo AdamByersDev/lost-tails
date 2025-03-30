@@ -9,7 +9,9 @@ import { NEW_REPORT, COMPONENTS } from './data';
 import CustomSelect from '@/UI/CustomSelect';
 import UploadImage from '@/UI/UploadImage';
 import { uploadImage } from '@/services/imgbb';
-import { createReport } from '@/services/firebase';
+import { auth, createReport } from '@/services/firebase';
+import { Navigate } from 'react-router';
+import useUser from '@/hooks/useUser';
 
 export default function NewReport() {
   const {
@@ -35,6 +37,12 @@ export default function NewReport() {
     defaultFormError: { email: '', species: '', location: '' },
   });
 
+  const { user } = useUser();
+
+  if (!auth.currentUser) {
+    return <Navigate to="/lost-found" replace />;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const hasError = Object.values(formError).some((e) => e);
@@ -54,7 +62,11 @@ export default function NewReport() {
       size,
       picture,
       status,
-    } = formData;
+    } = Object.keys(formData).reduce((acc, cur) => {
+      return cur === 'picture' || cur === 'location'
+        ? { ...acc, [cur]: formData[cur] }
+        : { ...acc, [cur]: formData[cur] || 'Unknown' };
+    }, {});
 
     const pureBase64 = picture && picture.split(',')[1];
 
@@ -76,6 +88,7 @@ export default function NewReport() {
       foundLocation,
       status,
       email,
+      userUID: user.uid,
     });
 
     if (res) {

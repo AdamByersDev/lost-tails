@@ -29,7 +29,7 @@ export default function PetDetailsSection() {
     date,
     email,
     breed,
-    specie,
+    species,
     gender,
     color,
     size,
@@ -66,9 +66,9 @@ export default function PetDetailsSection() {
               {breed || 'Unknown'}
             </p>
             <p>
-              <strong>Specie:</strong>
+              <strong>Species:</strong>
               <br />
-              {specie}
+              {species}
             </p>
             <p>
               <strong>Gender:</strong>
