@@ -3,10 +3,12 @@
 
 <svg
    width="224"
-   height="253"
-   viewBox="0 0 59.266665 66.939583"
+   height="231"
+   viewBox="0 0 59.266665 61.11875"
    version="1.1"
    id="svg1973"
+   sodipodi:docname="placeholder-cat.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +23,16 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     showgrid="false" />
+     showgrid="false"
+     inkscape:zoom="2.7116173"
+     inkscape:cx="134.9748"
+     inkscape:cy="92.933467"
+     inkscape:window-width="1860"
+     inkscape:window-height="1055"
+     inkscape:window-x="60"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
   <defs
      id="defs1970" />
   <g
@@ -30,19 +41,18 @@
      id="layer1"
      transform="translate(-51.489093,29.665901)">
     <rect
-       style="display:block;fill:#3a3e59;fill-opacity:1;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       style="display:block;fill:#3a3e59;fill-opacity:1;stroke-width:0.955532;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
        id="rect3417"
        width="59.266666"
-       height="66.939583"
+       height="61.118752"
        x="51.489094"
        y="-29.665901"
-       ry="0.26674709"
-       transform="translate(-1.0625e-6)"
+       ry="0.24355169"
        inkscape:label="rect3417" />
     <g
        id="9xTyjNXTif"
        style="display:block"
-       transform="matrix(0.23542217,0,0,0.23542217,94.51968,-87.500431)"
+       transform="matrix(0.21495068,0,0,0.21495068,93.354702,-82.471342)"
        opacity="1">
       <g
          id="Mb9gzYQY3A"

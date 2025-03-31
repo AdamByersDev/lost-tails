@@ -3,11 +3,11 @@
 
 <svg
    width="224"
-   height="253"
-   viewBox="0 0 59.266665 66.939583"
+   height="231"
+   viewBox="0 0 59.266665 61.11875"
    version="1.1"
    id="svg1973"
-   sodipodi:docname="dog.svg"
+   sodipodi:docname="placeholder-dog.svg"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -23,29 +23,28 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      showgrid="false"
-     inkscape:zoom="3.4426877"
-     inkscape:cx="86.560276"
-     inkscape:cy="126.64524"
+     inkscape:zoom="0.97456102"
+     inkscape:cx="55.409563"
+     inkscape:cy="183.67244"
      inkscape:window-width="1860"
      inkscape:window-height="1055"
      inkscape:window-x="60"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg1973" />
+     inkscape:current-layer="layer1" />
   <defs
      id="defs1970" />
   <g
      id="layer1"
-     transform="translate(-51.489093,29.665901)">
+     transform="matrix(0.91304348,0,0,0.91304348,-44.434969,27.086257)">
     <rect
-       style="display:block;fill:#f9ac68;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;fill-opacity:1"
+       style="display:block;fill:#f9ac68;fill-opacity:1;stroke-width:1.04654;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
        id="rect3417"
-       width="59.266666"
+       width="64.911118"
        height="66.939583"
-       x="51.489094"
+       x="48.66687"
        y="-29.665901"
-       ry="0.26674709"
-       transform="translate(-1.0625e-6)" />
+       ry="0.26674709" />
     <g
        id="TH9jdR5nFG"
        style="display:block"

@@ -6,7 +6,6 @@ import Container from '@/UI/Container';
 
 export default function PetList() {
   const { adoptionPets, list, setList } = useAdoptionPet();
-
   return (
     <section className={styles.adoptionList}>
       <Container className={styles.adoptionListContainer}>
@@ -15,8 +14,16 @@ export default function PetList() {
           <h2 className={styles.adoptionTitle}>Adoption</h2>
           <div className={styles.adoptionListGrid}>
             {!!list.length &&
-              list.map(({ id, picture, name, url }) => (
-                <AdoptionPet key={id} picture={picture} name={name} url={url} />
+              list.map(({ id, picture, name, url, species, city, state }) => (
+                <AdoptionPet
+                  key={id}
+                  picture={picture}
+                  name={name}
+                  url={url}
+                  species={species}
+                  city={city}
+                  state={state}
+                />
               ))}
           </div>
         </div>
