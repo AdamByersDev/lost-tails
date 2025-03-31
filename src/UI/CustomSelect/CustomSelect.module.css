@@ -1,7 +1,7 @@
 .label {
   text-transform: capitalize;
 
-  &[aria-required=true] {
+  &[aria-required='true'] {
     &::after {
       content: '*';
       color: var(--error-color);

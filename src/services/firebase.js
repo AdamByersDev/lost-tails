@@ -20,6 +20,8 @@ import {
   onSnapshot,
   setDoc,
   Timestamp,
+  query,
+  orderBy,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -212,7 +214,8 @@ export const getReport = async (id) => {
 };
 
 export const reportsObserver = (callback) => {
-  return onSnapshot(reportsRef, (snapshot) => {
+  const q = query(collection(db, 'reports'), orderBy('date', 'desc'));
+  return onSnapshot(q, (snapshot) => {
     const reports = [];
     snapshot.forEach((doc) => {
       reports.push({ ...doc.data(), id: doc.id });

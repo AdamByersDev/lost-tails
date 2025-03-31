@@ -7,12 +7,20 @@
 }
 
 /* font setup */
-h1, h2, h3, h4, button, label{
-  font-family: "Poppins", sans-serif;
+h1,
+h2,
+h3,
+h4,
+button,
+label {
+  font-family: 'Poppins', sans-serif;
 }
 
-p, a, input, span {
-  font-family: "Open Sans", sans-serif;
+p,
+a,
+input,
+span {
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* Our color scheme.  We can rename these. */
@@ -20,12 +28,12 @@ p, a, input, span {
   --primary-color: #ed6b5b;
   --secondary-color: #3a3e59;
   --light-orange-color: #f9ac68;
-  --light-orange-color2:#FCEED5;
-  --light-orange-color3: #FFFAF1;
+  --light-orange-color2: #fceed5;
+  --light-orange-color3: #fffaf1;
   --off-white-background-color: #ece6ce;
   --text-color: #333;
   --white-color: #ffffff;
   --grey-color: #c4c4c4;
   --error-color: #ff4d4f;
-  --light-blue-color: #DFEFFF;
+  --light-blue-color: #dfefff;
 }

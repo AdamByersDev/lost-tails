@@ -56,20 +56,17 @@
   .donationMainContent {
     display: flex;
     flex-direction: row;
-    justify-content: center;    
+    justify-content: center;
     align-items: flex-start;
     padding-bottom: 2.5rem;
   }
 }
 
 @media (min-width: 820px) {
-
   .donationMainContent {
     gap: 2rem;
   }
-
 }
-
 
 @media (min-width: 1000px) {
   .donationSection {
@@ -81,7 +78,7 @@
     line-height: 25px;
   }
 
-  .donationText p{
+  .donationText p {
     font-size: 1.2rem;
   }
 
@@ -93,5 +90,4 @@
   .donationMainContent {
     gap: 8rem;
   }
-
 }

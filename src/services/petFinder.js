@@ -54,6 +54,7 @@ export const getAdoptionPets = async (limit = 50) => {
       primary_photo_cropped: photo,
       status,
       url,
+      published_at,
     }) => ({
       id,
       name,
@@ -66,6 +67,7 @@ export const getAdoptionPets = async (limit = 50) => {
       picture: photo?.small || 'None',
       status,
       url,
+      date: new Date(published_at).getTime(),
     }),
   );
 

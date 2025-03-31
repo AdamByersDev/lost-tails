@@ -7,7 +7,7 @@
   & label {
     font-weight: 700;
 
-    &[aria-required=true] {
+    &[aria-required='true'] {
       &::after {
         content: '*';
         color: var(--error-color);
