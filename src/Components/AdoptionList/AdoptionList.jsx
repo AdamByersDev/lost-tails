@@ -14,7 +14,7 @@ export default function PetList() {
         <div>
           <h2 className={styles.adoptionTitle}>Adoption</h2>
           <div className={styles.adoptionListGrid}>
-            {true
+            {loading
               ? Array(6).fill(<AdoptionPetLoading />)
               : !!list.length &&
                 list.map(({ id, picture, name, url, species, city, state }) => (
