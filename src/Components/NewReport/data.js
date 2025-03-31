@@ -53,6 +53,18 @@ export const NEW_REPORT = [
   },
   {
     component: COMPONENTS.select,
+    name: 'species',
+    label: 'Pet species',
+    placeholder: 'Select pet species',
+    required: true,
+    options: [
+      { value: 'cat', label: 'Cat' },
+      { value: 'dog', label: 'Dog' },
+      { value: 'other', label: 'Other' },
+    ],
+  },
+  {
+    component: COMPONENTS.select,
     name: 'size',
     label: 'Pet size',
     placeholder: 'Select pet size',
@@ -71,18 +83,6 @@ export const NEW_REPORT = [
     options: [
       { value: 'female', label: 'Female' },
       { value: 'male', label: 'Male' },
-    ],
-  },
-  {
-    component: COMPONENTS.select,
-    name: 'species',
-    label: 'Pet species',
-    placeholder: 'Select pet species',
-    required: true,
-    options: [
-      { value: 'cat', label: 'Cat' },
-      { value: 'dog', label: 'Dog' },
-      { value: 'other', label: 'Other' },
     ],
   },
   {
