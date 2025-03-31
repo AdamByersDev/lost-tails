@@ -35,7 +35,7 @@ jobs:
           if [ -f package.json ]; then
             npm install
           fi
-      
+
       - name: Lint Project
         run: |
           if [ -f package.json ]; then
@@ -47,7 +47,6 @@ jobs:
           if [ -f package.json ]; then
             npm run build
           fi
-
 
   build-and-deploy:
     needs: lint-and-build
@@ -91,7 +90,6 @@ jobs:
         with:
           name: github-pages
 
-      
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:

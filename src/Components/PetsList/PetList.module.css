@@ -40,14 +40,14 @@
   grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
 }
 
-.cardLink{
+.cardLink {
   text-decoration: none;
 }
 
 .cardLink img {
   height: 100%;
   width: 100%;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 @media only screen and (min-width: 768px) {
@@ -55,7 +55,7 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  
+
   .content {
     flex-direction: row;
     justify-content: space-between;
@@ -64,7 +64,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-.grid {
-  grid-template-columns: 1fr 1fr 1fr;
-}
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

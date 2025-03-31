@@ -1,7 +1,6 @@
-.container{
+.container {
   margin-bottom: 1rem;
   background: #fdfaf6;
-
 }
 
 .goBackBtn {
@@ -12,7 +11,7 @@
   font-weight: bold;
 }
 
-.detailsContainer{
+.detailsContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +32,6 @@
   background: white;
   border-radius: 10px;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.486);
-  
 }
 
 .header {
@@ -107,7 +105,7 @@
   padding-right: 0.8rem;
 }
 
-.notFoundContainer{
+.notFoundContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,22 +115,20 @@
   width: 100%;
   background-color: var(--light-orange-color);
 
-  && h2{
+  && h2 {
     font-size: 18px;
     text-align: center;
     margin-top: 2rem;
   }
 }
 
-.PetNotFoundAnimation{
+.PetNotFoundAnimation {
   width: 100%;
   height: 100%;
 }
 
-
 @media only screen and (min-width: 768px) {
-
-  .detailsContainer{
+  .detailsContainer {
     width: 100%;
     max-width: 60rem;
     flex-direction: row;
@@ -140,11 +136,11 @@
     align-items: flex-start;
   }
 
-  .card{
+  .card {
     flex-direction: row;
     align-items: flex-start;
   }
-  
+
   .header {
     width: 40%;
     max-width: 350px;
@@ -172,16 +168,15 @@
     font-size: 16px;
   }
 
-  .notFoundContainer{
+  .notFoundContainer {
     max-width: 75rem;
-  
-    && h2{
+
+    && h2 {
       font-size: 24px;
       font-weight: 700;
     }
   }
 }
-
 
 @media only screen and (min-width: 1200px) {
   .goBackBtn:hover {
@@ -227,29 +222,18 @@
     font-size: 18px;
   }
 
-  .notFoundContainer{
+  .notFoundContainer {
     max-width: 100rem;
     height: 50%;
-  
-    && h2{
+
+    && h2 {
       font-size: 28px;
       margin-top: 4rem;
     }
   }
 
-  .PetNotFoundAnimation{
+  .PetNotFoundAnimation {
     width: 80%;
     height: fit-content;
   }
-
 }
-
-
-
-
-
-
-
-
-
-
