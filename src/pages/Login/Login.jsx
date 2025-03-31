@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Button from '@/UI/Button';
 import styles from './Login.module.css';
@@ -11,9 +11,10 @@ import Container from '@/UI/Container';
 
 export default function Login() {
   const { user } = useUser();
+  const navigate = useNavigate();
 
   if (user) {
-    return <Navigate to="/" replace />;
+    return navigate(-1);
   }
 
   return (
@@ -44,8 +45,10 @@ export default function Login() {
             Continue with Google
           </Button>
           <div className={styles.createAccount}>
-            <span>Not a member ?</span>
-            <span> Create an account</span>
+            <span>Not a member ? </span>
+            <Link to="/signup">
+              <span>Create an account</span>
+            </Link>
           </div>
         </div>
       </Container>

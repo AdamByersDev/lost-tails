@@ -1,3 +1,4 @@
+import { Tooltip } from 'antd';
 import styles from './Button.module.css';
 
 export default function Button({
@@ -6,14 +7,19 @@ export default function Button({
   className = '',
   onClick = () => {},
   children,
+  disabled,
+  tooltip = null,
 }) {
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={`${styles.btn} ${styles[variant] ?? styles.primary} ${className}`}
-    >
-      {children}
-    </button>
+    <Tooltip title={disabled ? tooltip : null}>
+      <button
+        type={type}
+        onClick={onClick}
+        className={`${styles.btn} ${styles[variant] ?? styles.primary} ${className}`}
+        disabled={disabled}
+      >
+        {children}
+      </button>
+    </Tooltip>
   );
 }

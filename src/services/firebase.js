@@ -156,6 +156,7 @@ export const createReport = async ({
   foundLocation,
   status,
   email,
+  userUID,
 }) => {
   const user = auth.currentUser;
 
@@ -175,9 +176,13 @@ export const createReport = async ({
       status,
       email,
       date: Timestamp.now().toMillis(),
+      userUID,
     });
+
+    return true;
   } catch (e) {
     console.error('Error', 'Error creating report: ' + e);
+    return null;
   }
 };
 

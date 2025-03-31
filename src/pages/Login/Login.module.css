@@ -50,8 +50,13 @@
   font-weight: 700;
   text-align: center;
 
-  & span:nth-child(2){
+  & a {
     color: var(--primary-color);
+    text-decoration: none;
+
+    &:hover {
+      filter: brightness(85%);
+    }
   }
 }
 
