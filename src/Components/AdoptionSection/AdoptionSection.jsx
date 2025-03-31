@@ -34,8 +34,15 @@ export default function AdoptionSection() {
           </p>
         </div>
         <div className={styles.exampleCards}>
-          {petList.map(({ id, picture, name, url }) => (
-            <AdoptionPet key={id} picture={picture} name={name} url={url} />
+          {petList.map(({ id, picture, name, url, city, state }) => (
+            <AdoptionPet
+              key={id}
+              picture={picture}
+              name={name}
+              url={url}
+              city={city}
+              state={state}
+            />
           ))}
         </div>
         <Button className={styles.btn} onClick={handleRedirect}>
