@@ -29,8 +29,8 @@
 }
 
 .primary {
-  background-color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  background-color: #d73520;
+  border: 1px solid #d73520;
   color: var(--white-color);
   font-weight: 700;
 }
