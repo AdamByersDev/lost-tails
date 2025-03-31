@@ -26,6 +26,11 @@ export default function usePetsFilter({ data, setter }) {
     return newFilter;
   };
 
+  const sortByDate = (checked) =>
+    setter((prev) =>
+      [...prev].sort((a, b) => (checked ? a.date - b.date : b.date - a.date)),
+    );
+
   const clearFilter = () => setFilter(() => applyFilter(defaultFilter));
 
   const getOptions = (target) => {
@@ -50,9 +55,12 @@ export default function usePetsFilter({ data, setter }) {
     setFilter((prev) => applyFilter({ ...prev, [target]: '' }));
   };
 
+  const handleSortByDate = (e) => sortByDate(e.target.checked);
+
   return {
     handleChangeFilter,
     handleClearFilter,
+    handleSortByDate,
     getOptions,
     clearFilter,
     filter,

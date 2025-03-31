@@ -7,6 +7,7 @@ export default function PetsFilter({ data, setter }) {
   const {
     handleChangeFilter,
     handleClearFilter,
+    handleSortByDate,
     getOptions,
     clearFilter,
     filter,
@@ -29,7 +30,7 @@ export default function PetsFilter({ data, setter }) {
         />
       ))}
       <div className={styles.control}>
-        <Checkbox>Sort by date</Checkbox>
+        <Checkbox onChange={handleSortByDate}>Sort by date</Checkbox>
         <Button color="danger" variant="solid" onClick={clearFilter}>
           Clear Filter
         </Button>

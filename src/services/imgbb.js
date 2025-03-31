@@ -10,7 +10,7 @@ export const uploadImage = async (imageBase64, name) => {
 
   try {
     const response = await fetch(
-      apiURL + '?expiration=600&key=' + import.meta.env.VITE_IMGBB_API_KEY,
+      apiURL + '?expiration=2592000&key=' + import.meta.env.VITE_IMGBB_API_KEY,
       {
         method: 'POST',
         body: formData,
