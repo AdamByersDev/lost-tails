@@ -7,14 +7,52 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 2rem;
+    justify-content: center;
+    gap: 2rem;
 }
 
-.container p {
+.sectionInfo {
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .banner {
     width: 100%;
+    max-width: 45rem;
     height: fit-content;
+}
+
+.sectionMainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.sectionLastDonations {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media only screen and (min-width: 1025px) {
+    .container {
+        gap: 4rem;
+    }
+
+    .sectionMainContent {
+        flex-direction: row;
+        gap: 1rem;
+        align-items: flex-start;
+        margin-bottom: 4rem;
+    }
 }

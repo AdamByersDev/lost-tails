@@ -26,10 +26,12 @@ export default function DonationForm() {
 
   const handleAmountChange = (e) => {
     handleChange(e);
+    handleChange({ target: { name: 'customAmount', value: '' } });
   };
 
   const handleCustomAmountChange = (e) => {
     handleChange(e);
+    handleChange({ target: { name: 'selectedAmount', value: '' } });
   };
 
   const handleSubmit = (e) => {
