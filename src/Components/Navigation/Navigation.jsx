@@ -9,19 +9,19 @@ const Navigation = () => {
     <nav className="navbar">
       {/* Desktop Navigation */}
       <div className="desktop-nav">
-        <NavLink to="/" className="nav-item" activeClassName="active">
+        <NavLink to="/" className="nav-item">
           Home
         </NavLink>
-        <NavLink to="/lost-found" className="nav-item" activeClassName="active">
+        <NavLink to="/lost-found" className="nav-item">
           Lost & Found
         </NavLink>
-        <NavLink to="/adoption" className="nav-item" activeClassName="active">
+        <NavLink to="/adoption" className="nav-item">
           Adoptions
         </NavLink>
-        <NavLink to="/donation" className="nav-item" activeClassName="active">
+        <NavLink to="/donation" className="nav-item">
           Donation
         </NavLink>
-        <NavLink to="/my-reports" className="nav-item" activeClassName="active">
+        <NavLink to="/my-reports" className="nav-item">
           My Reports
         </NavLink>
       </div>
@@ -33,18 +33,12 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       <div className={`mobile-nav ${isOpen ? 'open' : ''}`}>
-        <NavLink
-          to="/"
-          className="nav-item"
-          activeClassName="active"
-          onClick={() => setIsOpen(false)}
-        >
+        <NavLink to="/" className="nav-item" onClick={() => setIsOpen(false)}>
           Home
         </NavLink>
         <NavLink
           to="/lost-found"
           className="nav-item"
-          activeClassName="active"
           onClick={() => setIsOpen(false)}
         >
           Lost & Found
@@ -52,7 +46,6 @@ const Navigation = () => {
         <NavLink
           to="/adoption"
           className="nav-item"
-          activeClassName="active"
           onClick={() => setIsOpen(false)}
         >
           Adoptions
@@ -60,7 +53,6 @@ const Navigation = () => {
         <NavLink
           to="/donation"
           className="nav-item"
-          activeClassName="active"
           onClick={() => setIsOpen(false)}
         >
           Donation
@@ -68,7 +60,6 @@ const Navigation = () => {
         <NavLink
           to="/my-reports"
           className="nav-item"
-          activeClassName="active"
           onClick={() => setIsOpen(false)}
         >
           My Reports
