@@ -4,10 +4,15 @@ import styles from './PetDetailsSection.module.css';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import PetNotFoundAnimation from '@/assets/lottie/petnotfound-animation.json';
 import useReport from '@/hooks/useReport';
+import PetMap from '../PetMap/PetMap';
+import { useState } from 'react';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 export default function PetDetailsSection() {
   const { report } = useReport();
-
+  const [isMapOpen, setIsMapOpen] = useState(false);
   if (!report) {
     return (
       <Container className={styles.notFoundContainer}>
@@ -44,8 +49,20 @@ export default function PetDetailsSection() {
       </Link>
       <Container className={styles.detailsContainer}>
         <div className={styles.header}>
-          <img src={picture} alt={name} className={styles.petImage} />
-          <span className={`${styles.tag} ${styles[status]}`}>{status}</span>
+          <div className={styles.imageWrapper}>
+            <img src={picture} alt={name} className={styles.petImage} />
+            <span className={`${styles.tag} ${styles[status]}`}>{status}</span>
+          </div>
+          {report.coordinates?.length === 2 && (
+            <div className={styles.map}>
+              <PetMap
+                lat={report.coordinates[0]}
+                lng={report.coordinates[1]}
+                petName={report.name}
+                onPopupClick={() => setIsMapOpen(true)}
+              />
+            </div>
+          )}
         </div>
         <div className={styles.card}>
           <div className={styles.details}>
@@ -95,6 +112,28 @@ export default function PetDetailsSection() {
           </div>
         </div>
       </Container>
+      {report?.coordinates?.length === 2 && (
+        <Modal
+          isOpen={isMapOpen}
+          onRequestClose={() => setIsMapOpen(false)}
+          className={styles.modal}
+          overlayClassName={styles.overlay}
+        >
+          <button
+            onClick={() => setIsMapOpen(false)}
+            className={styles.closeBtn}
+            aria-label="Close Map"
+          >
+            ×
+          </button>
+
+          <PetMap
+            lat={report.coordinates[0]}
+            lng={report.coordinates[1]}
+            petName={report.name}
+          />
+        </Modal>
+      )}
     </div>
   );
 }

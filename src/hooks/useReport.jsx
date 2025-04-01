@@ -16,11 +16,13 @@ const useReport = () => {
 
     if (data?.lostLocation) {
       const [lat, lng] = data.lostLocation;
+      data.coordinates = [lat, lng];
       data.lostLocation = await getAddressFromCoordinates(lat, lng);
     }
 
     if (data?.foundLocation) {
       const [lat, lng] = data.foundLocation;
+      data.coordinates = [lat, lng];
       data.foundLocation = await getAddressFromCoordinates(lat, lng);
     }
 
