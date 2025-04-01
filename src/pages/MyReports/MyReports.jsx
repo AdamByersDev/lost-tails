@@ -36,8 +36,8 @@ export default function MyReports() {
         <div className={styles.reportHeader}>
           <h1>My Reports</h1>
           <p className={styles.reportIntro}>
-            This page displays all the reports you've submitted about lost or
-            found pets. Click on a report to edit the details or update its
+            This page displays all the reports you&apos;ve submitted about lost
+            or found pets. Click on a report to edit the details or update its
             status.
           </p>
         </div>
