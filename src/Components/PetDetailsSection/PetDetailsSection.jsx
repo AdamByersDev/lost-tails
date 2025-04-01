@@ -6,9 +6,7 @@ import PetNotFoundAnimation from '@/assets/lottie/petnotfound-animation.json';
 import useReport from '@/hooks/useReport';
 import PetMap from '../PetMap/PetMap';
 import { useState } from 'react';
-import Modal from 'react-modal';
-
-Modal.setAppElement('#root');
+import { Modal } from 'antd';
 
 export default function PetDetailsSection() {
   const { report } = useReport();
@@ -114,19 +112,13 @@ export default function PetDetailsSection() {
       </Container>
       {report?.coordinates?.length === 2 && (
         <Modal
-          isOpen={isMapOpen}
-          onRequestClose={() => setIsMapOpen(false)}
-          className={styles.modal}
-          overlayClassName={styles.overlay}
+          open={isMapOpen}
+          onCancel={() => setIsMapOpen(false)}
+          footer={null}
+          centered
+          width="80%"
+          className={styles.antModal}
         >
-          <button
-            onClick={() => setIsMapOpen(false)}
-            className={styles.closeBtn}
-            aria-label="Close Map"
-          >
-            ×
-          </button>
-
           <PetMap
             lat={report.coordinates[0]}
             lng={report.coordinates[1]}

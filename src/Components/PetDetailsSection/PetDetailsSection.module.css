@@ -91,28 +91,15 @@
   align-items: center;
 }
 
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); 
-  width: 50vw;
-  height: 50vh;
-  background: white;
-  z-index: 1100;
-  display: flex;
-  flex-direction: column;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+.antModal .ant-modal-content {
+  padding: 0;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
 }
 
-.modal .leaflet-container {
-  flex: 1; 
+.antModal .leaflet-container {
   width: 100%;
-  height: 100%; 
-  border-radius: 0;
+  height: 60vh;
 }
 
 .closeBtn {
