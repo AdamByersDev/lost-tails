@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router';
+import { auth } from '@/services/firebase';
 import './Footer.css';
 import icon from '@/assets/images/icon.svg?url';
 import instagramIcon from '@/assets/images/instagram-icon.svg?url';
@@ -7,6 +9,15 @@ import linkedinIcon from '@/assets/images/linkedin-icon.svg?url';
 import emailIcon from '@/assets/images/email-icon.svg?url';
 
 export default function Footer() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -77,9 +88,11 @@ export default function Footer() {
             <NavLink to="/donation" className="footer-link">
               Donate
             </NavLink>
-            <NavLink to="/my-reports" className="footer-link">
-              My Reports
-            </NavLink>
+            {user && (
+              <NavLink to="/my-reports" className="footer-link">
+                My Reports
+              </NavLink>
+            )}
           </nav>
         </div>
         <img src={icon} alt="Small Icon" className="footer-icon-small" />

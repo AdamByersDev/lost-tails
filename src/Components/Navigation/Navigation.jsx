@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router';
+import { auth } from '@/services/firebase';
 import './Navigation.css';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <nav className="navbar">
@@ -21,9 +30,11 @@ const Navigation = () => {
         <NavLink to="/donation" className="nav-item">
           Donation
         </NavLink>
-        <NavLink to="/my-reports" className="nav-item">
-          My Reports
-        </NavLink>
+        {user && (
+          <NavLink to="/my-reports" className="nav-item">
+            My Reports
+          </NavLink>
+        )}
       </div>
 
       {/* Hamburger Menu Button */}
@@ -57,13 +68,15 @@ const Navigation = () => {
         >
           Donation
         </NavLink>
-        <NavLink
-          to="/my-reports"
-          className="nav-item"
-          onClick={() => setIsOpen(false)}
-        >
-          My Reports
-        </NavLink>
+        {user && (
+          <NavLink
+            to="/my-reports"
+            className="nav-item"
+            onClick={() => setIsOpen(false)}
+          >
+            My Reports
+          </NavLink>
+        )}
       </div>
     </nav>
   );
