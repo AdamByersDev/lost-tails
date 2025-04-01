@@ -6,6 +6,8 @@ import styles from './MyReports.module.css';
 import Container from '@/UI/Container';
 import EditReport from '@/Components/EditReport';
 import { Modal } from 'antd';
+import { useNavigate } from 'react-router';
+import { auth } from '@/services/firebase';
 
 export default function MyReports() {
   const { user } = useUser();
@@ -13,6 +15,18 @@ export default function MyReports() {
   const [userReports, setUserReports] = useState([]);
   const [selectedReport, setSelectedReport] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (!user) {
+        navigate('/');
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate]);
 
   useEffect(() => {
     if (user && reports) {
