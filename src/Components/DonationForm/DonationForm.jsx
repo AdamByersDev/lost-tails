@@ -3,9 +3,17 @@ import styles from './DonationForm.module.css';
 import Button from '@/UI/Button';
 import CustomInput from '@/UI/CustomInput';
 import useForm from '@/hooks/useForm';
+import { addDonation } from '@/services/firebase';
 
 export default function DonationForm() {
-  const { formData, formError, handleChange, handleBlur, clearForm } = useForm({
+  const {
+    formData,
+    // setFormData,
+    formError,
+    handleChange,
+    handleBlur,
+    clearForm,
+  } = useForm({
     defaultFormData: {
       email: '',
       name: '',
@@ -34,6 +42,14 @@ export default function DonationForm() {
     handleChange({ target: { name: 'selectedAmount', value: '' } });
   };
 
+  const handleAddDonation = async (newDonation) => {
+    try {
+      await addDonation(newDonation);
+    } catch (error) {
+      console.error('Error adding new donation:', error);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -43,12 +59,26 @@ export default function DonationForm() {
       return;
     }
 
-    // Proceed with the donation process
     setError('');
-    console.log('Donation Data:', formData);
-    // alert(
-    //   `You have donated $${formData.selectedAmount || formData.customAmount}`,
-    // );
+
+    let amountSubmitted = 0;
+
+    // get only 1 type of amount submitted by user
+    if (formData.customAmount === '') {
+      amountSubmitted = formData.selectedAmount;
+    } else {
+      amountSubmitted = formData.customAmount;
+    }
+
+    // Prepare the data to add
+    const donationData = {
+      name: formData.name,
+      email: formData.email,
+      amount: Number(amountSubmitted),
+    };
+
+    handleAddDonation(donationData);
+
     clearForm();
   };
 
