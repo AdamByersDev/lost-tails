@@ -77,8 +77,8 @@ export default function Footer() {
             <NavLink to="/donation" className="footer-link">
               Donate
             </NavLink>
-            <NavLink to="/successful-cases" className="footer-link">
-              Success Stories
+            <NavLink to="/my-reports" className="footer-link">
+              My Reports
             </NavLink>
           </nav>
         </div>
