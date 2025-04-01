@@ -66,7 +66,7 @@
 }
 
 .lost {
-  background-color: #d73520;
+  background-color: var(--dark-orange-button);
 }
 
 .found {
