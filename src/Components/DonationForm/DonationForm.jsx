@@ -4,16 +4,10 @@ import Button from '@/UI/Button';
 import CustomInput from '@/UI/CustomInput';
 import useForm from '@/hooks/useForm';
 import { addDonation } from '@/services/firebase';
+import { Modal } from 'antd';
 
 export default function DonationForm() {
-  const {
-    formData,
-    // setFormData,
-    formError,
-    handleChange,
-    handleBlur,
-    clearForm,
-  } = useForm({
+  const { formData, formError, handleChange, handleBlur, clearForm } = useForm({
     defaultFormData: {
       email: '',
       name: '',
@@ -27,6 +21,16 @@ export default function DonationForm() {
       customAmount: '',
     },
   });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const [error, setError] = useState('');
 
@@ -45,6 +49,7 @@ export default function DonationForm() {
   const handleAddDonation = async (newDonation) => {
     try {
       await addDonation(newDonation);
+      showModal();
     } catch (error) {
       console.error('Error adding new donation:', error);
     }
@@ -83,67 +88,86 @@ export default function DonationForm() {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <CustomInput
-        label={'Name'}
-        type="text"
-        name="name"
-        id="name"
-        placeholder="Enter your name"
-        value={formData.name}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={formError.name}
-        required
-      />
-      <CustomInput
-        label={'Email address'}
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Enter email"
-        value={formData.email}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={formError.email}
-        required
-      />
+    <>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <CustomInput
+          label={'Name'}
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter your name"
+          value={formData.name}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={formError.name}
+          required
+        />
+        <CustomInput
+          label={'Email address'}
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter email"
+          value={formData.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={formError.email}
+          required
+        />
 
-      <h3>Select an Amount:</h3>
-      <div className={styles.amountContainer}>
-        <div className={styles.amountOptions}>
-          {donationAmounts.map((amount) => (
-            <div key={amount} className={styles.radioOption}>
-              <input
-                type="radio"
-                id={`donation${amount}`}
-                name="selectedAmount"
-                value={amount}
-                checked={formData.selectedAmount === String(amount)}
-                onChange={handleAmountChange}
-              />
-              <label htmlFor={`donation${amount}`}>${amount}</label>
-            </div>
-          ))}
+        <h3>Select an Amount:</h3>
+        <div className={styles.amountContainer}>
+          <div className={styles.amountOptions}>
+            {donationAmounts.map((amount) => (
+              <div key={amount} className={styles.radioOption}>
+                <input
+                  type="radio"
+                  id={`donation${amount}`}
+                  name="selectedAmount"
+                  value={amount}
+                  checked={formData.selectedAmount === String(amount)}
+                  onChange={handleAmountChange}
+                />
+                <label htmlFor={`donation${amount}`}>${amount}</label>
+              </div>
+            ))}
+          </div>
+
+          <CustomInput
+            type="text"
+            name="customAmount"
+            id="customAmount"
+            placeholder="Custom Amount $"
+            value={formData.customAmount}
+            onChange={handleCustomAmountChange}
+            error={formError.customAmount}
+          />
         </div>
 
-        <CustomInput
-          type="text"
-          name="customAmount"
-          id="customAmount"
-          placeholder="Custom Amount $"
-          value={formData.customAmount}
-          onChange={handleCustomAmountChange}
-          error={formError.customAmount}
-        />
-      </div>
+        {/* Error message */}
+        {error && <p className={styles.errorMessage}>{error}</p>}
 
-      {/* Error message */}
-      {error && <p className={styles.errorMessage}>{error}</p>}
-
-      <Button className={styles.formSubmit} type="submit">
-        Donate
-      </Button>
-    </form>
+        <Button className={styles.formSubmit} type="submit">
+          Donate
+        </Button>
+      </form>
+      {isModalOpen ? (
+        <Modal
+          className={styles.modal}
+          title="✅ TRANSACTION SUCCESS"
+          open={isModalOpen}
+          onCancel={closeModal}
+          footer={[
+            <Button key="ok" onClick={closeModal}>
+              Ok
+            </Button>,
+          ]}
+        >
+          <p>Thank you for your contribution!</p>
+        </Modal>
+      ) : (
+        ''
+      )}
+    </>
   );
 }
