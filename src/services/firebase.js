@@ -223,3 +223,15 @@ export const reportsObserver = (callback) => {
     callback(reports);
   });
 };
+
+export const updateReport = async (id, updatedData) => {
+  const docRef = doc(db, 'reports', id);
+  try {
+    await setDoc(docRef, updatedData, { merge: true });
+    console.log('Success', 'Report updated successfully!');
+    return true;
+  } catch (e) {
+    console.error('Error', 'Error updating report: ' + e);
+    return null;
+  }
+};

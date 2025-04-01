@@ -12,6 +12,7 @@ import Footer from '@/Components/Footer';
 import PetDetailsSection from '@/Components/PetDetailsSection';
 import PetList from '@/Components/PetsList';
 import NewReport from '@/Components/NewReport';
+import MyReports from './pages/MyReports';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         </Route>
         <Route path="signup" element={<Signup />} />
         <Route path="successful-cases" element={<SuccessfulCases />} />
+        <Route path="my-reports" element={<MyReports />} />
       </Routes>
       <Footer />
     </>

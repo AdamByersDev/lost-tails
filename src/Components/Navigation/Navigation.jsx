@@ -1,17 +1,12 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router';
 import './Navigation.css';
-// import logo from '@assets/images/logo.svg';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="navbar">
-      {/* <div className="logo">
-        <img src="/src/assets/images/logo.svg" alt="Logo" />
-      </div> */}
-
       {/* Desktop Navigation */}
       <div className="desktop-nav">
         <NavLink to="/" className="nav-item" activeClassName="active">
@@ -26,12 +21,8 @@ const Navigation = () => {
         <NavLink to="/donation" className="nav-item" activeClassName="active">
           Donation
         </NavLink>
-        <NavLink
-          to="/successful-cases"
-          className="nav-item"
-          activeClassName="active"
-        >
-          Success Stories
+        <NavLink to="/my-reports" className="nav-item" activeClassName="active">
+          My Reports
         </NavLink>
       </div>
 
@@ -75,12 +66,12 @@ const Navigation = () => {
           Donation
         </NavLink>
         <NavLink
-          to="/successful-cases"
+          to="/my-reports"
           className="nav-item"
           activeClassName="active"
           onClick={() => setIsOpen(false)}
         >
-          Success Stories
+          My Reports
         </NavLink>
       </div>
     </nav>
