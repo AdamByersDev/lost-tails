@@ -56,7 +56,7 @@
 
 .tag {
   position: absolute;
-  bottom: 12px; 
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--primary-color);
@@ -215,7 +215,6 @@
   line-height: unset;
   padding: 0.5rem 1rem;
 }
-
 
 @media only screen and (min-width: 768px) {
   .detailsContainer {
