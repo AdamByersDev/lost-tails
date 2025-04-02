@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Footer.module.css';
 import icon from '@/assets/images/icon.svg?url';
 import instagramIcon from '@/assets/images/instagram-icon.svg?url';
@@ -7,8 +8,30 @@ import linkedinIcon from '@/assets/images/linkedin-icon.svg?url';
 import emailIcon from '@/assets/images/email-icon.svg?url';
 
 export default function Footer() {
+  const footerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!footerRef.current) return;
+      const footerTop = footerRef.current.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (footerTop < windowHeight - 125) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} ref={footerRef}>
       <div className={styles.footerContent}>
         {/* Left Section - Logo & About Us */}
         <div className={styles.footerLeft}>
@@ -82,7 +105,11 @@ export default function Footer() {
             </NavLink>
           </nav>
         </div>
-        <img src={icon} alt="Small Icon" className={styles.footerIconSmall} />
+
+        {/* Small Icon - Shows Only in Footer */}
+        {isVisible && (
+          <img src={icon} alt="Small Icon" className={styles.footerIconSmall} />
+        )}
       </div>
 
       {/* Footer Bottom */}

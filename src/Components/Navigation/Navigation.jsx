@@ -8,10 +8,6 @@ const Navigation = () => {
 
   return (
     <nav className="navbar">
-      {/* <div className="logo">
-        <img src="/src/assets/images/logo.svg" alt="Logo" />
-      </div> */}
-
       {/* Desktop Navigation */}
       <div className="desktop-nav">
         <NavLink to="/" className="nav-item" activeClassName="active">

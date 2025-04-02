@@ -45,11 +45,11 @@
 /* Small icon hidden by default */
 .footerIconSmall {
   display: none;
+  width: 70px;
+  height: auto;
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 70px;
-  height: auto;
 }
 
 .footerAboutContainer {
