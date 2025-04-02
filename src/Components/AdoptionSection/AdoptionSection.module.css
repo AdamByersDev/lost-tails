@@ -36,7 +36,6 @@
 }
 
 @media (min-width: 1000px) {
-
   .adoptionSection {
     height: 85vh;
     padding-bottom: 5rem;
@@ -53,7 +52,6 @@
 }
 
 @media (min-width: 1200px) {
-
   .exampleCards {
     gap: 4rem;
   }
@@ -62,4 +60,3 @@
     height: 90vh;
   }
 }
-

@@ -42,12 +42,13 @@ export default function LoginForm() {
           label={'Email address'}
           type="email"
           name="email"
-          id="name"
+          id="email"
           placeholder="Enter email"
           value={formData.email}
           onChange={handleChange}
           onBlur={handleBlur}
           error={formError.email}
+          required
         />
         <CustomInput
           label={'Password'}
@@ -59,6 +60,7 @@ export default function LoginForm() {
           onChange={handleChange}
           onBlur={handleBlur}
           error={formError.password}
+          required
         />
         <div className={styles.rememberControl}>
           <label>

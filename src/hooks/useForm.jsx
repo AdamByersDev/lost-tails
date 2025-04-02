@@ -14,14 +14,25 @@ export default function useForm({ defaultFormData, defaultFormError }) {
     setFormData((prev) => ({ ...prev, [name]: checked }));
   };
 
+  const handleSelect = (value, name) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleBlur = (e) => {
     const { value, name } = e.target;
+
+    if (!(name in formError)) return;
 
     let error = '';
 
     const resolve = () => setFormError((prev) => ({ ...prev, [name]: error }));
 
-    if (!value && !value.trim()) {
+    if (Array.isArray(value) && !value.length) {
+      error = name + ' is required!';
+      return resolve();
+    }
+
+    if (!value || !value?.trim()) {
       error = name + ' is required!';
       return resolve();
     }
@@ -48,11 +59,15 @@ export default function useForm({ defaultFormData, defaultFormError }) {
     return resolve();
   };
 
+  const clearForm = () => setFormData(defaultFormData);
+
   return {
     formData,
     formError,
     handleChange,
     handleCheck,
     handleBlur,
+    handleSelect,
+    clearForm,
   };
 }

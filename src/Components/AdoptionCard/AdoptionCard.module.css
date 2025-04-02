@@ -38,11 +38,11 @@
   cursor: pointer;
 }
 
-.cardLink:hover{
+.cardLink:hover {
   opacity: 80%;
 }
 
-.cardLink a{
+.cardLink a {
   text-decoration: none;
   color: var(--text-color);
   font-size: 1.1rem;

@@ -8,8 +8,8 @@
   margin-top: -30px;
 }
 
-/* Login Button Section */
-.header-top {
+/* Top section: Logo on the left, Login button on the right */
+.headerTop {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -19,16 +19,16 @@
   top: 30px;
 }
 
-/* Navigation Container */
-.nav-container {
+/* Container for logo and navigation side by side */
+.navContainer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
 }
 
-/* Logo and Navigation */
-.logo-and-nav {
+/* Logo and navigation in the same container */
+.logoAndNav {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -50,8 +50,8 @@ nav {
   margin-left: auto;
 }
 
-/* Login Button */
-.login-button {
+/* Style the login button */
+.loginButton {
   background-color: var(--primary-color);
   color: white;
   font-size: 1rem;
@@ -62,17 +62,18 @@ nav {
   transition: background 0.3s ease;
 }
 
-.login-button:hover {
+.loginButton:hover {
   background-color: var(--light-orange-color);
 }
 
 /* Tablet Screens (768px and above) */
 @media screen and (min-width: 768px) {
   .logo img {
-    width: 250px;
+    /* width: 250px; */
+    width: 200px;
   }
 
-  .login-button {
+  .loginButton {
     font-size: 1.2rem;
   }
 }
@@ -84,15 +85,17 @@ nav {
     margin-top: -40px;
   }
 
-  .header-top {
-    top: 50px;
+  .headerTop {
+    /* top: 50px; */
+    margin-bottom: -1.2rem;
   }
 
   .logo img {
     width: 300px;
   }
 
-  .login-button {
-    font-size: 1.5rem;
+  .loginButton {
+    /* font-size: 1.5rem; */
+    font-size: 1rem;
   }
 }

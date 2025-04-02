@@ -1,3 +1,5 @@
+// ========================== IMPORTS ========================== //
+
 import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
@@ -20,7 +22,12 @@ import {
   onSnapshot,
   setDoc,
   Timestamp,
+  query,
+  orderBy,
+  getDocs,
 } from 'firebase/firestore';
+
+// ========================== CONFIGURATION ========================== //
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -39,8 +46,13 @@ export const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
 
+// ========================== REFERENCES ========================== //
+
 const usersRef = collection(db, 'users');
 const reportsRef = collection(db, 'reports');
+const donationsRef = collection(db, 'donations');
+
+// ========================== LOGIN/LOGOUT ========================== //
 
 export const registerUser = async ({
   firstName,
@@ -144,6 +156,8 @@ export const resetPassword = async (email, success) => {
   }
 };
 
+// ========================== REPORT ========================== //
+
 export const createReport = async ({
   name,
   species,
@@ -156,6 +170,7 @@ export const createReport = async ({
   foundLocation,
   status,
   email,
+  userUID,
 }) => {
   const user = auth.currentUser;
 
@@ -175,9 +190,13 @@ export const createReport = async ({
       status,
       email,
       date: Timestamp.now().toMillis(),
+      userUID,
     });
+
+    return true;
   } catch (e) {
     console.error('Error', 'Error creating report: ' + e);
+    return null;
   }
 };
 
@@ -207,11 +226,38 @@ export const getReport = async (id) => {
 };
 
 export const reportsObserver = (callback) => {
-  return onSnapshot(reportsRef, (snapshot) => {
+  const q = query(collection(db, 'reports'), orderBy('date', 'desc'));
+  return onSnapshot(q, (snapshot) => {
     const reports = [];
     snapshot.forEach((doc) => {
       reports.push({ ...doc.data(), id: doc.id });
     });
     callback(reports);
+  });
+};
+
+// ========================== DONATIONS ========================== //
+
+export const addDonation = async (newDonation) => {
+  addDoc(donationsRef, newDonation);
+  return true;
+};
+
+export const getAllDonations = async () => {
+  const donationsSnapshot = await getDocs(donationsRef);
+  return donationsSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+};
+
+export const listenToDonations = (callback) => {
+  return onSnapshot(donationsRef, (snapshot) => {
+    const donationsList = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    callback(donationsList);
   });
 };
