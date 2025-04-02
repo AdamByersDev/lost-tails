@@ -1,24 +1,26 @@
+/* Base Styles (Mobile First) */
 .header {
   display: flex;
   flex-direction: column;
   background-color: var(--secondary-color);
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 0.75rem;
+  margin-top: -30px;
 }
 
 /* Top section: Logo on the left, Login button on the right */
-.header-top {
+.headerTop {
   display: flex;
   justify-content: flex-end;
-  right: 0;
-  align-items: flex-start;
-  padding-top: 1rem;
-  padding-right: 1rem;
+  align-items: center;
+  padding: 0.5rem;
   width: 100%;
+  position: relative;
+  top: 30px;
 }
 
 /* Container for logo and navigation side by side */
-.nav-container {
+.navContainer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -26,21 +28,21 @@
 }
 
 /* Logo and navigation in the same container */
-.logo-and-nav {
+.logoAndNav {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   width: 100%;
 }
 
-/* Style the logo */
+/* Logo */
 .logo img {
-  width: 300px; /* Adjust the size of the logo */
+  width: 200px;
   height: auto;
-  margin-right: 2rem; /* Space between logo and navigation */
+  margin-right: 1rem;
 }
 
-/* Style the navigation */
+/* Navigation */
 nav {
   display: flex;
   justify-content: space-between;
@@ -49,37 +51,49 @@ nav {
 }
 
 /* Style the login button */
-.login-button {
+.loginButton {
   background-color: var(--primary-color);
   color: white;
-  font-size: 1.5rem;
-  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s ease;
 }
 
-.login-button:hover {
+.loginButton:hover {
   background-color: var(--light-orange-color);
 }
 
-@media screen and (max-width: 1024px) {
-  .header {
-    padding: 0 0.75rem;
+/* Tablet Screens (768px and above) */
+@media screen and (min-width: 768px) {
+  .logo img {
+    width: 250px;
+  }
+
+  .loginButton {
+    font-size: 1.2rem;
   }
 }
 
-@media screen and (max-width: 768px) {
+/* Desktop Screens (1024px and above) */
+@media screen and (min-width: 1024px) {
+  .header {
+    padding: 0 2rem;
+    margin-top: -40px;
+  }
+
+  .headerTop {
+    top: 50px;
+    margin-bottom: -0.5rem;
+  }
+
   .logo img {
-    width: 200px;
+    width: 300px;
   }
 
-  .header-top {
-    margin-bottom: -1.2rem;
-  }
-
-  .login-button {
+  .loginButton {
     font-size: 1rem;
   }
 }

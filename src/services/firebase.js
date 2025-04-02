@@ -1,3 +1,5 @@
+// ========================== IMPORTS ========================== //
+
 import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
@@ -22,7 +24,10 @@ import {
   Timestamp,
   query,
   orderBy,
+  getDocs,
 } from 'firebase/firestore';
+
+// ========================== CONFIGURATION ========================== //
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -41,8 +46,13 @@ export const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
 
+// ========================== REFERENCES ========================== //
+
 const usersRef = collection(db, 'users');
 const reportsRef = collection(db, 'reports');
+const donationsRef = collection(db, 'donations');
+
+// ========================== LOGIN/LOGOUT ========================== //
 
 export const registerUser = async ({
   firstName,
@@ -146,6 +156,8 @@ export const resetPassword = async (email, success) => {
   }
 };
 
+// ========================== REPORT ========================== //
+
 export const createReport = async ({
   name,
   species,
@@ -233,5 +245,29 @@ export const updateReport = async (id, updatedData) => {
   } catch (e) {
     console.error('Error', 'Error updating report: ' + e);
     return null;
-  }
+  }};
+  
+// ========================== DONATIONS ========================== //
+
+export const addDonation = async (newDonation) => {
+  addDoc(donationsRef, newDonation);
+  return true;
 };
+
+export const getAllDonations = async () => {
+  const donationsSnapshot = await getDocs(donationsRef);
+  return donationsSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+};
+
+export const listenToDonations = (callback) => {
+  return onSnapshot(donationsRef, (snapshot) => {
+    const donationsList = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    callback(donationsList);
+  });
