@@ -18,13 +18,9 @@
   display: inline-block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg,  
-    rgba(51, 51, 51, 0.4) 0%,  
-    rgba(51, 51, 51, 0.2) 50%,  
-    rgba(51, 51, 51, 0.4) 100%  
-  );
-  background-size: 200% 100%;
-  animation: shimmer 4s infinite linear;
+  background: var(--loading-bg-color);
+  background-size: var(--loading-bg-size);
+  animation: var(--loading-animation);
 }
 
 .content {
@@ -44,13 +40,9 @@
   height: 32px;
   border-radius: 10px;
   display: inline-block;
-  background: linear-gradient(90deg,  
-    rgba(51, 51, 51, 0.4) 0%,  
-    rgba(51, 51, 51, 0.2) 50%,  
-    rgba(51, 51, 51, 0.4) 100%  
-  );
-  background-size: 200% 100%;
-  animation: shimmer 4s infinite linear;
+  background: var(--loading-bg-color);
+  background-size: var(--loading-bg-size);
+  animation: var(--loading-animation);
 }
 
 .info .p {
@@ -59,32 +51,15 @@
   height: 14px;
   border-radius: 10px;
   margin: 4px 0;
-  background: linear-gradient(90deg,  
-    rgba(51, 51, 51, 0.4) 0%,  
-    rgba(51, 51, 51, 0.2) 50%,  
-    rgba(51, 51, 51, 0.4) 100%  
-  );
-  background-size: 200% 100%;
-  animation: shimmer 4s infinite linear;
+  background: var(--loading-bg-color);
+  background-size: var(--loading-bg-size);
+  animation: var(--loading-animation);
 }
 .gender {
   width: 48px;
   height: 48px;
   border-radius: 10px;
-  background: linear-gradient(90deg,  
-    rgba(51, 51, 51, 0.4) 0%,  
-    rgba(51, 51, 51, 0.2) 50%,  
-    rgba(51, 51, 51, 0.4) 100%  
-  );
-  background-size: 200% 100%;
-  animation: shimmer 4s infinite linear;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: -100% 0;
-  }
+  background: var(--loading-bg-color);
+  background-size: var(--loading-bg-size);
+  animation: var(--loading-animation);
 }
