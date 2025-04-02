@@ -205,10 +205,15 @@
   overflow-y: auto;
 }
 
-.sendBtn {
-  background-color: var(--error-color); 
-  color: var(--white-color);
-  font-weight: 600;
+.modalFooter {
+  display: flex;
+  column-gap: 1rem;
+  justify-content: flex-end;
+}
+
+.modalBtn {
+  line-height: unset;
+  padding: 0.5rem 1rem;
 }
 
 

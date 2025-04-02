@@ -6,8 +6,9 @@ import PetNotFoundAnimation from '@/assets/lottie/petnotfound-animation.json';
 import useReport from '@/hooks/useReport';
 import PetMap from '../PetMap/PetMap';
 import { useState } from 'react';
-import { Modal } from 'antd';
+import { Input, Modal } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
+import Button from '@/UI/Button';
 
 export default function PetDetailsSection() {
   const { report } = useReport();
@@ -44,6 +45,18 @@ export default function PetDetailsSection() {
     lostLocation,
     foundLocation,
   } = report;
+
+  const subject = encodeURIComponent(`Regarding your ${status} pet "${name}"`);
+  const body = encodeURIComponent(`
+    Hi there,\n
+    I came across your ${status} pet report for "${name}" on Lost Tails. Date Report on ${date}\n
+    Last known location: ${lostLocation || 'Not specified'}
+    ${customMessage}\n
+    Best Regards,\n
+    ${senderName}
+  `);
+
+  const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
 
   return (
     <div className={styles.container}>
@@ -124,46 +137,39 @@ export default function PetDetailsSection() {
             <Modal
               open={isContactOpen}
               onCancel={() => setIsContactOpen(false)}
-              onOk={() => {
-                const subject = `Regarding your ${status} pet "${name}"`;
-                const body = `Hi there,
-                \nI came across your ${status} pet report for "${name}" on Lost Tails. Date Report on ${date}
-                \nLast known location: ${lostLocation || 'Not specified'}
-                \n${customMessage}
-                \nBest Regards,
-                \n${senderName}`;
-
-                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(
-                  subject,
-                )}&body=${encodeURIComponent(body)}`;
-
-                window.open(gmailUrl, '_blank');
-                setIsContactOpen(false);
-              }}
               title={`Contact owner of "${name}"`}
-              okText="Send Email"
-              okButtonProps={{
-                className: styles.sendBtn,
-                icon: <MailOutlined />,
-              }}
               className={styles.contactModal}
+              footer={() => (
+                <div className={styles.modalFooter}>
+                  <Button
+                    onClick={() => setIsContactOpen(false)}
+                    variant="outline"
+                    className={styles.modalBtn}
+                  >
+                    Cancel
+                  </Button>
+                  <a href={mailtoLink}>
+                    <Button className={styles.modalBtn}>
+                      <MailOutlined /> Send Email
+                    </Button>
+                  </a>
+                </div>
+              )}
             >
-              <form className={styles.emailForm}>
-                <input
+              <div className={styles.emailForm}>
+                <Input
                   type="text"
                   placeholder="Your name"
                   value={senderName}
                   onChange={(e) => setSenderName(e.target.value)}
-                  required
                 />
-                <textarea
+                <Input.TextArea
                   placeholder="Write your message..."
                   value={customMessage}
                   onChange={(e) => setCustomMessage(e.target.value)}
                   rows="4"
-                  required
                 />
-              </form>
+              </div>
             </Modal>
           </div>
         </div>
