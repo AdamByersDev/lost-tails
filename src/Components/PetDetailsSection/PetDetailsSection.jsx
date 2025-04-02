@@ -7,10 +7,15 @@ import useReport from '@/hooks/useReport';
 import PetMap from '../PetMap/PetMap';
 import { useState } from 'react';
 import { Modal } from 'antd';
+import { MailOutlined } from '@ant-design/icons';
 
 export default function PetDetailsSection() {
   const { report } = useReport();
   const [isMapOpen, setIsMapOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [senderName, setSenderName] = useState('');
+  const [customMessage, setCustomMessage] = useState('');
+
   if (!report) {
     return (
       <Container className={styles.notFoundContainer}>
@@ -71,9 +76,15 @@ export default function PetDetailsSection() {
               {date || 'Unknown'}
             </p>
             <p>
-              <strong>Email Contact</strong>
+              <strong>Email Contact:</strong>
               <br />
-              {email || 'Unknown'}
+              {email ? (
+                <button onClick={() => setIsContactOpen(true)} className={styles.emailBtn}>
+                  Contact Owner
+                </button>
+              ) : (
+                'Unknown'
+              )}
             </p>
             <p>
               <strong>Breed:</strong>
@@ -107,6 +118,50 @@ export default function PetDetailsSection() {
               <strong>Found Location:</strong>
               <br /> {foundLocation}
             </p>
+            <Modal
+              open={isContactOpen}
+              onCancel={() => setIsContactOpen(false)}
+              onOk={() => {
+                const subject = `Regarding your ${status} pet "${name}"`;
+                const body = `Hi there,
+                \nI came across your ${status} pet report for "${name}" on Lost Tails. Date Report on ${date}
+                \nLast known location: ${lostLocation || 'Not specified'}
+                \n${customMessage}
+                \nBest Regards,
+                \n${senderName}`;
+
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(
+                  subject
+                )}&body=${encodeURIComponent(body)}`;
+
+                window.open(gmailUrl, '_blank');
+                setIsContactOpen(false);
+              }}
+              title={`Contact owner of "${name}"`}
+              okText="Send Email"
+              okButtonProps={{
+                className: styles.sendBtn,
+                icon: <MailOutlined />, 
+              }}
+              className={styles.contactModal}
+            >
+              <form className={styles.emailForm}>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  value={senderName}
+                  onChange={(e) => setSenderName(e.target.value)}
+                  required
+                />
+                <textarea
+                  placeholder="Write your message..."
+                  value={customMessage}
+                  onChange={(e) => setCustomMessage(e.target.value)}
+                  rows="4"
+                  required
+                />
+              </form>
+            </Modal>
           </div>
         </div>
       </Container>
