@@ -245,8 +245,9 @@ export const updateReport = async (id, updatedData) => {
   } catch (e) {
     console.error('Error', 'Error updating report: ' + e);
     return null;
-  }};
-  
+  }
+};
+
 // ========================== DONATIONS ========================== //
 
 export const addDonation = async (newDonation) => {
@@ -271,3 +272,4 @@ export const listenToDonations = (callback) => {
 
     callback(donationsList);
   });
+};

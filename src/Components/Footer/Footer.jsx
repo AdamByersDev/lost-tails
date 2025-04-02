@@ -10,15 +10,6 @@ import linkedinIcon from '@/assets/images/linkedin-icon.svg?url';
 import emailIcon from '@/assets/images/email-icon.svg?url';
 
 export default function Footer() {
-  // <<<<<<< HEAD
-  //   const [user, setUser] = useState(null);
-
-  //   useEffect(() => {
-  //     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
-  //       setUser(currentUser);
-  //     });
-  //     return () => unsubscribe();}, []);
-  // =======
   const footerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -109,21 +100,46 @@ export default function Footer() {
         <div className={styles.footerNavContainer}>
           <h3 className={styles.footerHeader}>Quick Links</h3>
           <nav className={styles.footerNav}>
-            <NavLink to="/" className={styles.footerLink}>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `${styles.footerLink} ${isActive ? styles.active : ''}`
+              }
+            >
               Home
             </NavLink>
-            <NavLink to="/lost-found" className={styles.footerLink}>
+            <NavLink
+              to="/lost-found"
+              className={({ isActive }) =>
+                `${styles.footerLink} ${isActive ? styles.active : ''}`
+              }
+            >
               Lost & Found
             </NavLink>
-            <NavLink to="/adoption" className={styles.footerLink}>
+            <NavLink
+              to="/adoption"
+              className={({ isActive }) =>
+                `${styles.footerLink} ${isActive ? styles.active : ''}`
+              }
+            >
               Adoptions
             </NavLink>
-            <NavLink to="/donation" className={styles.footerLink}>
+            <NavLink
+              to="/donation"
+              className={({ isActive }) =>
+                `${styles.footerLink} ${isActive ? styles.active : ''}`
+              }
+            >
               Donate
             </NavLink>
 
             {user && (
-              <NavLink to="/my-reports" className={styles.footerLink}>
+              <NavLink
+                to="/my-reports"
+                className={({ isActive }) =>
+                  `${styles.footerLink} ${isActive ? styles.active : ''}`
+                }
+              >
                 My Reports
               </NavLink>
             )}
