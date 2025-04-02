@@ -24,13 +24,9 @@ export default function DonationForm() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  const showModal = () => setIsModalOpen(true);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const closeModal = () => setIsModalOpen(false);
 
   const [error, setError] = useState('');
 
