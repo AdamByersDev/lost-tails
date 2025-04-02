@@ -69,8 +69,7 @@ nav {
 /* Tablet Screens (768px and above) */
 @media screen and (min-width: 768px) {
   .logo img {
-    /* width: 250px; */
-    width: 200px;
+    width: 250px;
   }
 
   .loginButton {
@@ -86,8 +85,8 @@ nav {
   }
 
   .headerTop {
-    /* top: 50px; */
-    margin-bottom: -1.2rem;
+    top: 50px;
+    margin-bottom: -0.5rem;
   }
 
   .logo img {
@@ -95,7 +94,6 @@ nav {
   }
 
   .loginButton {
-    /* font-size: 1.5rem; */
     font-size: 1rem;
   }
 }
