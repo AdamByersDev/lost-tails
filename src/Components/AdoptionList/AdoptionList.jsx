@@ -1,12 +1,12 @@
 import styles from './AdoptionList.module.css';
 import PetsFilter from '@/Components/PetsFilter';
 import AdoptionPet from '@/Components/AdoptionPet';
+import AdoptionPetLoading from '@/Components/AdoptionPetLoading';
 import useAdoptionPet from '@/hooks/useAdoptionPet';
 import Container from '@/UI/Container';
 
 export default function PetList() {
-  const { adoptionPets, list, setList } = useAdoptionPet();
-
+  const { adoptionPets, list, setList, loading } = useAdoptionPet();
   return (
     <section className={styles.adoptionList}>
       <Container className={styles.adoptionListContainer}>
@@ -14,10 +14,20 @@ export default function PetList() {
         <div>
           <h2 className={styles.adoptionTitle}>Adoption</h2>
           <div className={styles.adoptionListGrid}>
-            {!!list.length &&
-              list.map(({ id, picture, name, url }) => (
-                <AdoptionPet key={id} picture={picture} name={name} url={url} />
-              ))}
+            {loading
+              ? Array(6).fill(<AdoptionPetLoading />)
+              : !!list.length &&
+                list.map(({ id, picture, name, url, species, city, state }) => (
+                  <AdoptionPet
+                    key={id}
+                    picture={picture}
+                    name={name}
+                    url={url}
+                    species={species}
+                    city={city}
+                    state={state}
+                  />
+                ))}
           </div>
         </div>
       </Container>

@@ -1,0 +1,18 @@
+import styles from './PetLoading.module.css';
+
+export default function PetLoading() {
+  return (
+    <article className={styles.container}>
+      <div className={styles.header}>
+        <span className={styles.img}></span>
+      </div>
+      <div className={styles.content}>
+        <div className={styles.info}>
+          <span className={styles.h3}></span>
+          <span className={styles.p}></span>
+        </div>
+        <span className={styles.gender}></span>
+      </div>
+    </article>
+  );
+}
