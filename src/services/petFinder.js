@@ -55,6 +55,7 @@ export const getAdoptionPets = async (limit = 50) => {
       status,
       url,
       published_at,
+      contact,
     }) => ({
       id,
       name,
@@ -68,6 +69,8 @@ export const getAdoptionPets = async (limit = 50) => {
       status,
       url,
       date: new Date(published_at).getTime(),
+      city: contact.address.city,
+      state: contact.address.state,
     }),
   );
 
