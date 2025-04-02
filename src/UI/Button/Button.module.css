@@ -40,10 +40,10 @@
 }
 
 .primary {
-  background-color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  background-color: var(--dark-orange-button);
+  border: 1px solid var(--dark-orange-button);
   color: var(--white-color);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .outline {

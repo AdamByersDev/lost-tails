@@ -1,11 +1,12 @@
 import styles from './AdoptionList.module.css';
 import PetsFilter from '@/Components/PetsFilter';
 import AdoptionPet from '@/Components/AdoptionPet';
+import AdoptionPetLoading from '@/Components/AdoptionPetLoading';
 import useAdoptionPet from '@/hooks/useAdoptionPet';
 import Container from '@/UI/Container';
 
 export default function PetList() {
-  const { adoptionPets, list, setList } = useAdoptionPet();
+  const { adoptionPets, list, setList, loading } = useAdoptionPet();
   return (
     <section className={styles.adoptionList}>
       <Container className={styles.adoptionListContainer}>
@@ -24,7 +25,7 @@ export default function PetList() {
                   city={city}
                   state={state}
                 />
-              ))}
+              ))})}
           </div>
         </div>
       </Container>

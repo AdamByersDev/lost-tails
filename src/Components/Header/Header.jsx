@@ -1,17 +1,17 @@
 import Navigation from '@/Components/Navigation/Navigation';
 import LoginButton from '@/Components/LoginButton/LoginButton';
-import './Header.css';
+import styles from './Header.module.css';
 import logo from '@/assets/images/logo.svg?url';
 
 export default function Header() {
   return (
-    <header className="header">
-      <div className="header-top">
+    <header className={styles.header}>
+      <div className={styles.headerTop}>
         <LoginButton />
       </div>
-      <div className="nav-container">
-        <div className="logo-and-nav">
-          <div className="logo">
+      <div className={styles.navContainer}>
+        <div className={styles.logoAndNav}>
+          <div className={styles.logo}>
             <img src={logo} alt="Logo" />
           </div>
           <Navigation />

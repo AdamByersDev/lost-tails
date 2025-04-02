@@ -6,9 +6,10 @@ import { Link, useNavigate } from 'react-router';
 import useReports from '@/hooks/useReports';
 import useUser from '@/hooks/useUser';
 import Button from '@/UI/Button';
+import PetLoading from '../PetLoading';
 
 export default function PetList() {
-  const { reports, list, setList } = useReports();
+  const { reports, list, setList, loading } = useReports();
 
   const { user } = useUser();
 
@@ -30,23 +31,25 @@ export default function PetList() {
         <div className={styles.content}>
           <PetsFilter data={reports} setter={setList} />
           <div className={styles.grid}>
-            {!!list.length &&
-              list.map(({ id, picture, name, breed, gender, status }) => (
-                <Link
-                  key={id}
-                  to={`/lost-found/${id}`}
-                  className={styles.cardLink}
-                >
-                  <Pet
+            {loading
+              ? Array(6).fill(<PetLoading />)
+              : !!list.length &&
+                list.map(({ id, picture, name, breed, gender, status }) => (
+                  <Link
                     key={id}
-                    picture={picture}
-                    name={name}
-                    breed={breed}
-                    gender={gender}
-                    status={status}
-                  />
-                </Link>
-              ))}
+                    to={`/lost-found/${id}`}
+                    className={styles.cardLink}
+                  >
+                    <Pet
+                      key={id}
+                      picture={picture}
+                      name={name}
+                      breed={breed}
+                      gender={gender}
+                      status={status}
+                    />
+                  </Link>
+                ))}
           </div>
         </div>
       </Container>
