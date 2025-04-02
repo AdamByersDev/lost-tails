@@ -79,6 +79,9 @@ export default function PetDetailsSection() {
               />
             </div>
           )}
+          <Button className={styles.flyerBtn} onClick={() => {}}>
+            Print Flyer
+          </Button>
         </div>
         <div className={styles.card}>
           <div className={styles.details}>
