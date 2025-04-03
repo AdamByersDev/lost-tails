@@ -2,6 +2,7 @@ import styles from './AdoptionPet.module.css';
 import RedirectIcon from '@/assets/images/redirectArrow.svg';
 import placeholderDog from '@/assets/images/placeholder-dog.svg?url';
 import placeholderCat from '@/assets/images/placeholder-cat.svg?url';
+import placeholderOther from '@/assets/images/placeholder-other.svg?url';
 
 export default function AdoptionPet({
   picture,
@@ -20,7 +21,7 @@ export default function AdoptionPet({
         picture = placeholderCat;
         break;
       default:
-        picture == null;
+        picture = placeholderOther;
         break;
     }
   }
@@ -35,7 +36,7 @@ export default function AdoptionPet({
           className={styles.backgroundImage}
           style={{ backgroundImage: `url(${picture})` }}
         ></span>
-        <img src={picture} alt={name} />
+        <img src={picture || placeholderOther} alt={name} />
       </div>
       <a href={url} className={styles.link} target="_blank">
         More details <RedirectIcon />
