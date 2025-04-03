@@ -76,6 +76,7 @@
 
 .map {
   width: 100%;
+  margin-bottom: 16px;
 }
 
 .antModal .ant-modal-content {
@@ -177,6 +178,12 @@
 .emailBtn:hover {
   background-color: var(--primary-color);
 }
+
+.flyerBtn {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
 .emailForm {
   display: flex;
   flex-direction: column;
