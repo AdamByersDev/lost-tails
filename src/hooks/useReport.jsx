@@ -14,20 +14,25 @@ const useReport = () => {
 
     if (!data) return;
 
-    if (data?.lostLocation.length === 2) {
+    const validateLocation = (location) =>
+      Array.isArray(location) &&
+      location.length === 2 &&
+      location.every((e) => e);
+
+    if (validateLocation(data.lostLocation)) {
       const [lat, lng] = data.lostLocation;
       data.coordinates = [lat, lng];
-      data.lostLocation = await getAddressFromCoordinates(lat, lng);
+      data.lostAddress = await getAddressFromCoordinates(lat, lng);
     } else {
-      data.lostLocation = 'Unknown Location';
+      data.lostAddress = 'Unknown location';
     }
 
-    if (data?.foundLocation.length === 2) {
+    if (validateLocation(data.foundLocation)) {
       const [lat, lng] = data.foundLocation;
       data.coordinates = [lat, lng];
-      data.foundLocation = await getAddressFromCoordinates(lat, lng);
+      data.foundAddress = await getAddressFromCoordinates(lat, lng);
     } else {
-      data.foundLocation = 'Unknown Location';
+      data.foundAddress = 'Unknown location';
     }
 
     return data;

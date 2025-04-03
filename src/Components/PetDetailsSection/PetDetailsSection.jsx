@@ -55,15 +55,16 @@ export default function PetDetailsSection() {
     gender,
     color,
     size,
-    lostLocation,
-    foundLocation,
+    lostAddress,
+    foundAddress,
+    coordinates = null,
   } = report;
 
   const subject = encodeURIComponent(`Regarding your ${status} pet "${name}"`);
   const body = encodeURIComponent(`
     Hi there,\n
     I came across your ${status} pet report for "${name}" on Lost Tails. Date Report on ${date}\n
-    Last known location: ${lostLocation || 'Not specified'}
+    Last known location: ${lostAddress || 'Not specified'}
     ${customMessage}\n
     Best Regards,\n
     ${senderName}
@@ -75,8 +76,6 @@ export default function PetDetailsSection() {
     const qrCode = QRCode.toDataURL(
       `https://adambyersdev.github.io/lost-tails/lost-found/${id}`,
     );
-
-    console.log(status);
 
     const flyerStyles = StyleSheet.create({
       page: {
@@ -180,12 +179,12 @@ export default function PetDetailsSection() {
                 {status}
               </span>
             </div>
-            {report.coordinates?.length === 2 && (
+            {coordinates && (
               <div className={styles.map}>
                 <PetMap
-                  lat={report.coordinates[0]}
-                  lng={report.coordinates[1]}
-                  petName={report.name}
+                  lat={coordinates[0]}
+                  lng={coordinates[1]}
+                  petName={name}
                   onPopupClick={() => setIsMapOpen(true)}
                 />
               </div>
@@ -244,11 +243,11 @@ export default function PetDetailsSection() {
               </p>
               <p>
                 <strong>Last Location:</strong>
-                <br /> {lostLocation}
+                <br /> {lostAddress}
               </p>
               <p>
                 <strong>Found Location:</strong>
-                <br /> {foundLocation}
+                <br /> {foundAddress}
               </p>
               <Modal
                 open={isContactOpen}
@@ -291,7 +290,7 @@ export default function PetDetailsSection() {
           </div>
         </Container>
       )}
-      {report?.coordinates?.length === 2 && (
+      {coordinates && (
         <Modal
           open={isMapOpen}
           onCancel={() => setIsMapOpen(false)}
@@ -300,11 +299,7 @@ export default function PetDetailsSection() {
           width="80%"
           className={styles.antModal}
         >
-          <PetMap
-            lat={report.coordinates[0]}
-            lng={report.coordinates[1]}
-            petName={report.name}
-          />
+          <PetMap lat={coordinates[0]} lng={coordinates[1]} petName={name} />
         </Modal>
       )}
     </div>
