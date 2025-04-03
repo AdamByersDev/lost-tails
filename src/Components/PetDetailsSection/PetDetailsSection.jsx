@@ -164,122 +164,133 @@ export default function PetDetailsSection() {
       <Link to="/lost-found" className={styles.goBackBtn}>
         &larr; Go Back
       </Link>
-      <Container className={styles.detailsContainer}>
-        <div className={styles.header}>
-          <div className={styles.imageWrapper}>
-            <img src={picture} alt={name} className={styles.petImage} />
-            <span className={`${styles.tag} ${styles[status]}`}>{status}</span>
-          </div>
-          {report.coordinates?.length === 2 && (
-            <div className={styles.map}>
-              <PetMap
-                lat={report.coordinates[0]}
-                lng={report.coordinates[1]}
-                petName={report.name}
-                onPopupClick={() => setIsMapOpen(true)}
-              />
-            </div>
-          )}
-          {!(loading || status?.toLowerCase() == 'complete') && (
-            <Button className={styles.flyerBtn} onClick={printFlyer}>
-              Print Flyer
-            </Button>
-          )}
+      {loading ? (
+        <div className={styles.loadingAnimation}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
-        <div className={styles.card}>
-          <div className={styles.details}>
-            <h2>{name || 'Unknown'}</h2>
-            <p>
-              <strong>Date Report:</strong>
-              <br />
-              {date || 'Unknown'}
-            </p>
-            <p>
-              <strong>Email Contact:</strong>
-              <br />
-              {email ? (
-                <button
-                  onClick={() => setIsContactOpen(true)}
-                  className={styles.emailBtn}
-                >
-                  Contact Owner
-                </button>
-              ) : (
-                'Unknown'
-              )}
-            </p>
-            <p>
-              <strong>Breed:</strong>
-              <br />
-              {breed || 'Unknown'}
-            </p>
-            <p>
-              <strong>Species:</strong>
-              <br />
-              {species}
-            </p>
-            <p>
-              <strong>Gender:</strong>
-              <br />
-              {gender}
-            </p>
-            <p>
-              <strong>Color:</strong>
-              <br />
-              {color}
-            </p>
-            <p>
-              <strong>Size:</strong> <br />
-              {size}
-            </p>
-            <p>
-              <strong>Last Location:</strong>
-              <br /> {lostLocation}
-            </p>
-            <p>
-              <strong>Found Location:</strong>
-              <br /> {foundLocation}
-            </p>
-            <Modal
-              open={isContactOpen}
-              onCancel={() => setIsContactOpen(false)}
-              title={`Contact owner of "${name}"`}
-              className={styles.contactModal}
-              footer={() => (
-                <div className={styles.modalFooter}>
-                  <Button
-                    onClick={() => setIsContactOpen(false)}
-                    variant="outline"
-                    className={styles.modalBtn}
-                  >
-                    Cancel
-                  </Button>
-                  <a href={mailtoLink}>
-                    <Button className={styles.modalBtn}>
-                      <MailOutlined /> Send Email
-                    </Button>
-                  </a>
-                </div>
-              )}
-            >
-              <div className={styles.emailForm}>
-                <Input
-                  type="text"
-                  placeholder="Your name"
-                  value={senderName}
-                  onChange={(e) => setSenderName(e.target.value)}
-                />
-                <Input.TextArea
-                  placeholder="Write your message..."
-                  value={customMessage}
-                  onChange={(e) => setCustomMessage(e.target.value)}
-                  rows="4"
+      ) : (
+        <Container className={styles.detailsContainer}>
+          <div className={styles.header}>
+            <div className={styles.imageWrapper}>
+              <img src={picture} alt={name} className={styles.petImage} />
+              <span className={`${styles.tag} ${styles[status]}`}>
+                {status}
+              </span>
+            </div>
+            {report.coordinates?.length === 2 && (
+              <div className={styles.map}>
+                <PetMap
+                  lat={report.coordinates[0]}
+                  lng={report.coordinates[1]}
+                  petName={report.name}
+                  onPopupClick={() => setIsMapOpen(true)}
                 />
               </div>
-            </Modal>
+            )}
+            {!(loading || status?.toLowerCase() == 'complete') && (
+              <Button className={styles.flyerBtn} onClick={printFlyer}>
+                Print Flyer
+              </Button>
+            )}
           </div>
-        </div>
-      </Container>
+          <div className={styles.card}>
+            <div className={styles.details}>
+              <h2>{name || 'Unknown'}</h2>
+              <p>
+                <strong>Date Report:</strong>
+                <br />
+                {date || 'Unknown'}
+              </p>
+              <p>
+                <strong>Email Contact:</strong>
+                <br />
+                {email ? (
+                  <button
+                    onClick={() => setIsContactOpen(true)}
+                    className={styles.emailBtn}
+                  >
+                    Contact Owner
+                  </button>
+                ) : (
+                  'Unknown'
+                )}
+              </p>
+              <p>
+                <strong>Breed:</strong>
+                <br />
+                {breed || 'Unknown'}
+              </p>
+              <p>
+                <strong>Species:</strong>
+                <br />
+                {species}
+              </p>
+              <p>
+                <strong>Gender:</strong>
+                <br />
+                {gender}
+              </p>
+              <p>
+                <strong>Color:</strong>
+                <br />
+                {color}
+              </p>
+              <p>
+                <strong>Size:</strong> <br />
+                {size}
+              </p>
+              <p>
+                <strong>Last Location:</strong>
+                <br /> {lostLocation}
+              </p>
+              <p>
+                <strong>Found Location:</strong>
+                <br /> {foundLocation}
+              </p>
+              <Modal
+                open={isContactOpen}
+                onCancel={() => setIsContactOpen(false)}
+                title={`Contact owner of "${name}"`}
+                className={styles.contactModal}
+                footer={() => (
+                  <div className={styles.modalFooter}>
+                    <Button
+                      onClick={() => setIsContactOpen(false)}
+                      variant="outline"
+                      className={styles.modalBtn}
+                    >
+                      Cancel
+                    </Button>
+                    <a href={mailtoLink}>
+                      <Button className={styles.modalBtn}>
+                        <MailOutlined /> Send Email
+                      </Button>
+                    </a>
+                  </div>
+                )}
+              >
+                <div className={styles.emailForm}>
+                  <Input
+                    type="text"
+                    placeholder="Your name"
+                    value={senderName}
+                    onChange={(e) => setSenderName(e.target.value)}
+                  />
+                  <Input.TextArea
+                    placeholder="Write your message..."
+                    value={customMessage}
+                    onChange={(e) => setCustomMessage(e.target.value)}
+                    rows="4"
+                  />
+                </div>
+              </Modal>
+            </div>
+          </div>
+        </Container>
+      )}
       {report?.coordinates?.length === 2 && (
         <Modal
           open={isMapOpen}

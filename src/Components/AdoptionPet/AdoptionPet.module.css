@@ -1,6 +1,6 @@
 .container {
   width: 16rem;
-  height: 22.5rem;
+  height: 25rem;
   display: flex;
   flex-direction: column;
   background-color: var(--white-color);
@@ -9,11 +9,15 @@
   border-radius: 10px;
   overflow: hidden;
   padding: 1rem;
-  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.486);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .name {
   font-size: 1.5rem;
+}
+
+.location {
+  padding-bottom: 1.5rem;
 }
 
 .picture {

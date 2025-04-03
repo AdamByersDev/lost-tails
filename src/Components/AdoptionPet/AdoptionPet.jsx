@@ -27,7 +27,7 @@ export default function AdoptionPet({
   return (
     <article className={styles.container}>
       <h3 className={styles.name}>{name}</h3>
-      <p>
+      <p className={styles.location}>
         {city}, {state}
       </p>
       <div className={styles.picture}>

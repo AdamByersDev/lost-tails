@@ -10,9 +10,12 @@ export default function PetList() {
   return (
     <section className={styles.adoptionList}>
       <Container className={styles.adoptionListContainer}>
-        <PetsFilter data={adoptionPets} setter={setList} />
-        <div>
-          <h2 className={styles.adoptionTitle}>Adoption</h2>
+        <div className={styles.header}>
+          <h1>Adoptions</h1>
+        </div>
+        <div className={styles.content}>
+          <PetsFilter data={adoptionPets} setter={setList} />
+          {/* <h2 className={styles.adoptionTitle}>Adoption</h2> */}
           <div className={styles.adoptionListGrid}>
             {loading
               ? Array(6).fill(<AdoptionPetLoading />)
