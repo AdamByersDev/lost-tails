@@ -34,12 +34,13 @@ export default function AdoptionSection() {
           </p>
         </div>
         <div className={styles.exampleCards}>
-          {petList.map(({ id, picture, name, url, city, state }) => (
+          {petList.map(({ id, picture, name, url, species, city, state }) => (
             <AdoptionPet
               key={id}
               picture={picture}
               name={name}
               url={url}
+              species={species}
               city={city}
               state={state}
             />
