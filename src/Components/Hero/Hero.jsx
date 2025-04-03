@@ -19,10 +19,10 @@ export default function Hero() {
         <article className={styles.textContent}>
           <h1>Helping Tails Find Their Way Home.</h1>
           <div className={styles.heroButtons}>
-            <Button onClick={() => navigate('/lost-found?status=lost')}>
+            <Button onClick={() => navigate('/lost-found?status=found')}>
               Lost Pet
             </Button>
-            <Button onClick={() => navigate('/lost-found?status=found')}>
+            <Button onClick={() => navigate('/lost-found?status=lost')}>
               Found Pet
             </Button>
           </div>
