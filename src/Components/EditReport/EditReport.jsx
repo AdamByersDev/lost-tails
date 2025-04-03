@@ -37,7 +37,12 @@ const EditReport = ({ reportId, onClose }) => {
         }
 
         const updatedFormData = Object.keys(reportData).reduce((acc, cur) => {
-          if (cur === 'species' || cur === 'status') {
+          if (
+            cur === 'species' ||
+            cur === 'status' ||
+            cur === 'size' ||
+            cur === 'gender'
+          ) {
             return {
               ...acc,
               [cur]:
@@ -69,14 +74,20 @@ const EditReport = ({ reportId, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const lostLocation =
-      formData.status.toLowerCase() === 'lost'
-        ? formData.lostLocation.split(',').map((item) => item.trim())
-        : [];
-    const foundLocation =
-      formData.status.toLowerCase() === 'found'
-        ? formData.foundLocation.split(',').map((item) => item.trim())
-        : [];
+    let lostLocation = [];
+    let foundLocation = [];
+
+    if (formData.status.toLowerCase() === 'lost') {
+      lostLocation = formData.foundLocation
+        .split(',')
+        .map((item) => item.trim());
+      foundLocation = ['Unknown'];
+    } else if (formData.status.toLowerCase() === 'found') {
+      foundLocation = formData.lostLocation
+        .split(',')
+        .map((item) => item.trim());
+      lostLocation = ['Unknown'];
+    }
 
     const cleanedData = Object.keys(formData).reduce(
       (acc, cur) => ({
@@ -84,7 +95,10 @@ const EditReport = ({ reportId, onClose }) => {
         [cur]:
           cur === 'date'
             ? new Date(formData[cur]).getTime()
-            : cur === 'species' || cur === 'status'
+            : cur === 'species' ||
+                cur === 'status' ||
+                cur === 'size' ||
+                cur === 'gender'
               ? formData[cur].toLowerCase()
               : formData[cur] || 'Unknown',
       }),
