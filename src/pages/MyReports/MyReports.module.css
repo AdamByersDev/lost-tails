@@ -85,6 +85,10 @@
 
 /* Tablet layout */
 @media (min-width: 768px) {
+  .reportList {
+    min-height: 60vh;
+  }
+
   .reportContainer {
     flex-direction: row;
     align-items: flex-start;
