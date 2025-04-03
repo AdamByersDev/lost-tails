@@ -14,16 +14,20 @@ const useReport = () => {
 
     if (!data) return;
 
-    if (data?.lostLocation) {
+    if (data?.lostLocation.length === 2) {
       const [lat, lng] = data.lostLocation;
       data.coordinates = [lat, lng];
       data.lostLocation = await getAddressFromCoordinates(lat, lng);
+    } else {
+      data.lostLocation = 'Unknown Location';
     }
 
-    if (data?.foundLocation) {
+    if (data?.foundLocation.length === 2) {
       const [lat, lng] = data.foundLocation;
       data.coordinates = [lat, lng];
       data.foundLocation = await getAddressFromCoordinates(lat, lng);
+    } else {
+      data.foundLocation = 'Unknown Location';
     }
 
     return data;
