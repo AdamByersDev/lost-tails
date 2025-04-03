@@ -8,12 +8,27 @@ import useUser from '@/hooks/useUser';
 import Button from '@/UI/Button';
 import PetLoading from '../PetLoading';
 
+import { useEffect } from 'react';
+import { useLocation } from 'react-router';
+
 export default function PetList() {
   const { reports, list, setList, loading } = useReports();
 
   const { user } = useUser();
 
   const navigate = useNavigate();
+
+  const routeLocation = useLocation();
+  const queryParams = new URLSearchParams(routeLocation.search);
+  const statusFilter = queryParams.get('status');
+
+  useEffect(() => {
+    if (statusFilter) {
+      setList(reports.filter((r) => r.status === statusFilter));
+    } else {
+      setList(reports);
+    }
+  }, [statusFilter, reports, setList]);
 
   return (
     <section className={styles.list}>
