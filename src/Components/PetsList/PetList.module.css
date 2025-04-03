@@ -36,12 +36,13 @@
 .grid {
   flex: 1;
   display: grid;
-  row-gap: 2.5rem;
+  gap: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
 }
 
 .cardLink {
   text-decoration: none;
+  width: fit-content;
 }
 
 .cardLink img {
