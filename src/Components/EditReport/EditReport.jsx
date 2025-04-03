@@ -16,6 +16,7 @@ const EditReport = ({ reportId, onClose }) => {
     date: '',
     email: '',
     picture: '',
+    location: [],
   });
 
   const [loading, setLoading] = useState(true);
@@ -35,17 +36,24 @@ const EditReport = ({ reportId, onClose }) => {
             .split('T')[0];
         }
 
-        setFormData(
-          Object.keys(reportData).reduce(
-            (acc, cur) => ({
+        const updatedFormData = Object.keys(reportData).reduce((acc, cur) => {
+          if (cur === 'species' || cur === 'status') {
+            return {
               ...acc,
-              [cur]: Array.isArray(reportData[cur])
-                ? reportData[cur].join(', ')
-                : reportData[cur] || '',
-            }),
-            {},
-          ),
-        );
+              [cur]:
+                reportData[cur].charAt(0).toUpperCase() +
+                reportData[cur].slice(1),
+            };
+          }
+          return {
+            ...acc,
+            [cur]: Array.isArray(reportData[cur])
+              ? reportData[cur].join(', ')
+              : reportData[cur] || '',
+          };
+        }, {});
+
+        setFormData(updatedFormData);
       }
 
       setLoading(false);
@@ -60,6 +68,16 @@ const EditReport = ({ reportId, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const lostLocation =
+      formData.status.toLowerCase() === 'lost'
+        ? formData.lostLocation.split(',').map((item) => item.trim())
+        : [];
+    const foundLocation =
+      formData.status.toLowerCase() === 'found'
+        ? formData.foundLocation.split(',').map((item) => item.trim())
+        : [];
+
     const cleanedData = Object.keys(formData).reduce(
       (acc, cur) => ({
         ...acc,
@@ -72,6 +90,9 @@ const EditReport = ({ reportId, onClose }) => {
       }),
       {},
     );
+
+    cleanedData.lostLocation = lostLocation;
+    cleanedData.foundLocation = foundLocation;
 
     const success = await updateReport(reportId, cleanedData);
 
