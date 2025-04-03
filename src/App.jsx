@@ -13,6 +13,7 @@ import PetDetailsSection from '@/Components/PetDetailsSection';
 import PetList from '@/Components/PetsList';
 import NewReport from '@/Components/NewReport';
 import MyReports from './pages/MyReports';
+import E404 from './pages/E404';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="successful-cases" element={<SuccessfulCases />} />
         <Route path="my-reports" element={<MyReports />} />
+        <Route path="*" element={<E404 />} />
       </Routes>
       <Footer />
     </>
