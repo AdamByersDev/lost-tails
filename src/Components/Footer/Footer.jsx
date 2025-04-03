@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router';
+import useUser from '@/hooks/useUser';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Footer.module.css';
 import icon from '@/assets/images/icon.svg?url';
@@ -10,6 +11,8 @@ import emailIcon from '@/assets/images/email-icon.svg?url';
 export default function Footer() {
   const footerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,21 +91,49 @@ export default function Footer() {
         <div className={styles.footerNavContainer}>
           <h3 className={styles.footerHeader}>Quick Links</h3>
           <nav className={styles.footerNav}>
-            <NavLink to="/" className={styles.footerLink}>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `${styles.footerLink} ${isActive ? styles.active : ''}`
+              }
+            >
               Home
             </NavLink>
-            <NavLink to="/lost-found" className={styles.footerLink}>
+            <NavLink
+              to="/lost-found"
+              className={({ isActive }) =>
+                `${styles.footerLink} ${isActive ? styles.active : ''}`
+              }
+            >
               Lost & Found
             </NavLink>
-            <NavLink to="/adoption" className={styles.footerLink}>
+            <NavLink
+              to="/adoption"
+              className={({ isActive }) =>
+                `${styles.footerLink} ${isActive ? styles.active : ''}`
+              }
+            >
               Adoptions
             </NavLink>
-            <NavLink to="/donation" className={styles.footerLink}>
+            <NavLink
+              to="/donation"
+              className={({ isActive }) =>
+                `${styles.footerLink} ${isActive ? styles.active : ''}`
+              }
+            >
               Donate
             </NavLink>
-            <NavLink to="/successful-cases" className={styles.footerLink}>
-              Success Stories
-            </NavLink>
+
+            {user && (
+              <NavLink
+                to="/my-reports"
+                className={({ isActive }) =>
+                  `${styles.footerLink} ${isActive ? styles.active : ''}`
+                }
+              >
+                My Reports
+              </NavLink>
+            )}
           </nav>
         </div>
 

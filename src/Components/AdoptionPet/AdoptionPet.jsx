@@ -12,7 +12,7 @@ export default function AdoptionPet({
   state,
 }) {
   if (picture === null || picture.toLowerCase() === 'none') {
-    switch (species.toLowerCase()) {
+    switch (species?.toLowerCase()) {
       case 'dog':
         picture = placeholderDog;
         break;
