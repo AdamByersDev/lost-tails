@@ -73,7 +73,7 @@ export default function PetDetailsSection() {
 
   const printFlyer = async () => {
     const qrCode = QRCode.toDataURL(
-      `https://adambyersdev.github.io/lost-tails/${id}`,
+      `https://adambyersdev.github.io/lost-tails/lost-found/${id}`,
     );
 
     console.log(status);
