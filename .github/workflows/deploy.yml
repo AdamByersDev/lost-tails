@@ -85,6 +85,10 @@ jobs:
             npm run build
           fi
 
+      - name: Fix 404 pages
+        run: |
+          cp ./dist/index.html ./dist/404.html
+
       - name: Delete previous GitHub Pages artifact
         continue-on-error: true
         uses: geekyeggo/delete-artifact@v2
