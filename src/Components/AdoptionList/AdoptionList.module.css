@@ -18,10 +18,6 @@
   padding: 2rem 0;
 }
 
-/* .adoptionTitle {
-  padding-bottom: 1rem;
-} */
-
 .adoptionListContainer {
   display: flex;
   flex-direction: column;
@@ -31,9 +27,6 @@
 }
 
 .adoptionListGrid {
-  /* display: grid;
-  gap: 2.5rem;
-  place-content: center; */
   flex: 1;
   display: grid;
   row-gap: 2.5rem;

@@ -15,7 +15,6 @@ export default function PetList() {
         </div>
         <div className={styles.content}>
           <PetsFilter data={adoptionPets} setter={setList} />
-          {/* <h2 className={styles.adoptionTitle}>Adoption</h2> */}
           <div className={styles.adoptionListGrid}>
             {loading
               ? Array(6).fill(<AdoptionPetLoading />)
