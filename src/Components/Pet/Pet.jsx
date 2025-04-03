@@ -14,7 +14,7 @@ export default function Pet({ picture, status, name, breed, gender }) {
           <p>{breed}</p>
         </div>
         <span className={styles.gender}>
-          {gender === 'Male' ? <IoMale /> : <IoFemale />}
+          {gender === 'male' ? <IoMale /> : <IoFemale />}
         </span>
       </div>
     </article>
