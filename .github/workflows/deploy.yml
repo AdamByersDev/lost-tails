@@ -71,6 +71,7 @@ jobs:
           VITE_APP_ID=${{ secrets.VITE_APP_ID }}
           VITE_PET_FINDER_API_KEY=${{ secrets.VITE_PET_FINDER_API_KEY }}
           VITE_PET_FINDER_SECRET=${{ secrets.VITE_PET_FINDER_SECRET }}
+          VITE_IMGBB_API_KEY=${{ secrets.VITE_IMGBB_API_KEY }}
         shell: bash
 
       - name: Install Dependencies
