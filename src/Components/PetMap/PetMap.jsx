@@ -2,6 +2,8 @@ import 'leaflet/dist/leaflet.css';
 import styles from './PetMap.module.css';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { useEffect } from 'react';
+import markerIcon from '@/assets/images/marker-icon.png';
+import L from 'leaflet';
 
 function CenterMap({ lat, lng }) {
   const map = useMap();
@@ -10,6 +12,13 @@ function CenterMap({ lat, lng }) {
   }, [lat, lng, map]);
   return null;
 }
+
+const customIcon = L.icon({
+  iconUrl: markerIcon,
+  iconSize: [25, 41],
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32],
+});
 
 export default function PetMap({
   lat,
@@ -28,7 +37,7 @@ export default function PetMap({
         attribution="&copy; OpenStreetMap contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[lat, lng]}>
+      <Marker position={[lat, lng]} icon={customIcon}>
         <Popup>
           <div
             onClick={onPopupClick}
